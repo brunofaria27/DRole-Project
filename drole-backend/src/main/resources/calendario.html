@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'Rolé - Sobre</title>
+    <link rel="stylesheet" href="styles/cabecalho.css">
+    <link rel="stylesheet" href="styles/sobre.css">
+    <link rel="stylesheet" href="styles/calendario.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="scripts/login.js"></script>
+    <script>
+        // Verifica se o usuário já esta logado e se negativo, redireciona para tela de login        
+        if (!usuarioCorrente.login) {
+            window.location = "login.html";
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/a55657dc48.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body onload="init()">
+
+    <!-- inicio Header -->
+    <header class="container-fluid header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="Imagens/logo_transparente.png" width="80px" height="60px" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="indexlogado.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sobrelogado.html">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="calendario.html">Calendário</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Cadastrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profiledono.html">Perfil</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <!-- Fim Header -->
+
+    <!-- Corpo calendário -->
+    <h1>Calendário de eventos</h1>
+
+    <!-- Alertas -->
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning"></div>-->
+            </div>
+        </div>
+        <!-- End alertas -->
+
+
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <input type="button" class="btn btn-success" id="btnInsert" value="Adicionar evento" data-toggle="modal"
+                    data-target="#calendarioModal">
+            </div>
+            <div class="col-sm-6">
+                <select id="ddlViewBy">
+                    <option value="Todos" selected="selected">Todos</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Funk">Funk</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Axe">Axe</option>
+                    <option value="Sertanejo">Sertanejo</option>
+                    <option value="Eletrônica">Eletrônica</option>
+                    <option value="Trap">Trap</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-contatos" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Dia</th>
+                            <th scope="col">Estabelecimento</th>
+                            <th scope="col">Músico</th>
+                            <th scope="col">Tipo músical</th>
+                            <th scope="col">Entrada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-eventos">
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- End corpo calendário -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="calendarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mudarModalLabel">Adicionar evento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="insert_form">
+                        <!-- Inicio body -->
+                    </form id="form-evento">
+                    <div class="form-group row">
+                        <label for="dataEvento" class="col-sm-2 col-form-label">Dia:</label>
+                        <div class="col-sm-10">
+                            <input name="DATA" type="date" class="form-control" id="dateEvent"
+                                placeholder="Selecione o dia do evento" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="estabelecimentoEvento" class="col-sm-2 col-form-label">Estabelecimento:</label>
+                        <div class="col-sm-12">
+                            <input name="ESTABELECIMENTO" type="text" class="form-control" id="estabelecimento"
+                                placeholder="Local do evento" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="musicoEvento" class="col-sm-2 col-form-label">Músico:</label>
+                        <div class="col-sm-12">
+                            <input name="MUSICO" type="text" class="form-control" id="musico"
+                                placeholder="Músico que tocará no evento" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Tipo musical:</label>
+                    <select class="custom-select my-1 mr-sm-2" id="tipoMusical">
+                        <option value="Funk">Funk</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Axé">Axé</option>
+                        <option value="Sertanejo">Sertanejo</option>
+                        <option value="Eletrônica">Eletrônica</option>
+                        <option value="Trap">Trap</option>
+                    </select>
+
+                    <p></p> <!-- Pular linha no form-->
+
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Entrada evento:</label>
+                    <select class="custom-select my-1 mr-sm-2" id="entrada">
+                        <option value="+18">+18</option>
+                        <option value="-18">-18</option>
+                    </select>
+
+                    <p></p> <!-- Pular linha no form-->
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="button" class="btn btn-outline-danger"
+                                onclick="javascript:window.location.reload()">Cancelar</button>
+                            <input type="button" name="salvaralt" id="adicionaEvent" value="Salvar"
+                                class="btn btn-outline-success" onclick="javascript:window.location.reload()">
+                        </div>
+                    </div>
+                    </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

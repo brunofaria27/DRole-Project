@@ -1,0 +1,136 @@
+#tudoSobre {
+  color: rgb(212, 211, 198);
+}
+
+.cards {
+  width: 270px;
+  background-color: rgb(167, 106, 87);
+  border-radius: 40px;
+  display: inline-block;
+  padding: 15px;
+  margin: 15px;
+  text-align: center;
+}
+.cards img {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  justify-content: center;
+}
+
+.tituloCriadores {
+  text-align: center;
+  font-size: 70px;
+  color: rgb(100, 140, 141);
+  margin-bottom: 10px;
+}
+.tituloSobre {
+  text-align: center;
+  font-size: 70px;
+  color: rgb(100, 140, 141);
+  margin-top: 50px;
+}
+
+.nome {
+  font-size: 30px;
+  display: block;
+  line-height: 25px;
+  margin: 10px 0px;
+}
+
+.descricao {
+  font-size: 20px;
+  font-weight: lighter;
+  display: block;
+}
+
+.textoSobre {
+  font-size: 30px;
+  text-align: center;
+  color: rgb(66, 66, 64);
+  justify-content: center;
+}
+
+.sobre {
+  border-radius: 100px;
+  display: inline-block;
+  padding: 15px 30px;
+  margin-bottom: 300px;
+  width: 70%;
+}
+
+#tags button{
+  background-color: rgba(97,124,148, 0.76);
+  border-radius: 20px;
+  border: none;
+  margin-top: 10px;
+}
+
+#tags a{
+  text-decoration: none;
+  color: rgb(55, 54, 67);
+}
+
+#tags{
+  text-align: right;
+  margin-right: 15px;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1900px) {
+  div#card4e5inicial.cards {
+    display: none;
+  }
+}
+@media screen and (max-width: 990px) {
+  div.cards {
+    width: 60%;
+    text-align: left;
+  }
+  div.cards img{
+    float: left;
+    margin-right: 15px ;
+  }
+  div.sobre{
+    width: 80%;
+  }
+}
+@media screen and (max-width: 660px) {
+  div.cards {
+    width: 80%;
+    text-align: left;
+  }
+  div.cards img{
+    float: left;
+    margin-right: 15px;
+    height: 100px;
+    width: 100px;
+  }
+  div.sobre{
+    width: 90%;
+  }
+}
+@media screen and (max-width: 510px) {
+  div.cards {
+    text-align: center;
+    width: 97%;
+
+  }
+  div.cards img{
+    float: none;
+    margin-right: 15px ;
+  }
+  div.sobre{
+    width: 90%;
+  }
+  div #tags{
+    text-align: center;
+    margin: 0px;
+  }
+}
+@media screen and (min-width: 1900px) {
+  #card4e5 {
+    display: none;
+  }
+}
