@@ -1,6 +1,6 @@
 package model;
 
-public class Users {
+public class User {
 	private int user_id;
 	private String username;
 	private int user_type;
@@ -11,7 +11,7 @@ public class Users {
 	private String profile_description;
 	private String profile_name;
 
-	public Users(String username, int user_type, String photo_path, String email, String hashPassword,
+	public User(String username, int user_type, String photo_path, String email, String hashPassword,
 			String profile_localization, String profile_description, String profile_name) {
 		this.username = username;
 		this.user_type = user_type;
@@ -22,8 +22,35 @@ public class Users {
 		this.profile_description = profile_description;
 		this.profile_name = profile_name;
 	}
+	
+	
 
-	public Users() {
+	public User(int user_id, String username, int user_type, String photo_path, String email, String hashPassword,
+			String profile_localization, String profile_description, String profile_name) {
+		super();
+		this.user_id = user_id;
+		this.username = username;
+		this.user_type = user_type;
+		this.photo_path = photo_path;
+		this.email = email;
+		this.hashPassword = hashPassword;
+		this.profile_localization = profile_localization;
+		this.profile_description = profile_description;
+		this.profile_name = profile_name;
+	}
+
+
+	public User(String username, int user_type, String email, String hashPassword) {
+		super();
+		this.username = username;
+		this.user_type = user_type;
+		this.email = email;
+		this.hashPassword = hashPassword;
+	}
+
+
+
+	public User() {
 		this("", 0, "", "", "", "", "", "");
 	}
 
