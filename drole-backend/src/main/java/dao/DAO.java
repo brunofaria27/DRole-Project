@@ -3,9 +3,9 @@ package dao;
 import java.sql.*;
 
 public class DAO {
-	protected static Connection connection;
+	public static Connection connection;
 
-	protected static boolean connect() {
+	public static boolean connect() {
 		final String driverName = "org.postgresql.Driver";
 		final String serverName = "drole.postgres.database.azure.com";
 		final String database = "drole";
@@ -32,7 +32,7 @@ public class DAO {
 		return status;
 	}
 	
-	protected static boolean close() {
+	public static boolean close() {
 		boolean status = false;
 		
 		try {

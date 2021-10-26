@@ -22,6 +22,17 @@ public class Events {
 		this.event_status = event_status;
 		this.date_event = date_event;
 	}
+	
+	public Events(String event_name, int event_musician_id, String musical_style, int minimum_age,
+			int event_host_id, String event_status, String date_event) {
+		this.event_name = event_name;
+		this.event_musician_id = event_musician_id;
+		this.musical_style = musical_style;
+		this.minimum_age = minimum_age;
+		this.event_host_id = event_host_id;
+		this.event_status = event_status;
+		this.date_event = date_event;
+	}
 
 	public Events() {
 		this.event_id = 0;
