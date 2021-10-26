@@ -48,6 +48,27 @@ public class UserService extends UserDAO{
 
 	}
 	
+	public Object update(Request request, Response response){
+		int id = Integer.parseInt(request.params(":id"));
+
+		User user = UserDAO.getUser(id);
+
+
+		if(user != null){
+			user.setUsername(request.queryParams("username"));
+			user.setPhoto_path(request.queryParams("photo_path"));
+			user.setProfile_name(request.queryParams("profile_name"));
+			user.setProfile_localization(request.queryParams("profile_localization"));
+			user.setProfile_description(request.queryParams("profile_description"));
+
+			UserDAO.updateUser(user);
+			return id;
+		}else{
+			response.status(404);
+			return "User não encontrado";
+		}
+	}
+	
 	public Object remove(Request request, Response response) {
 		int id = Integer.parseInt(request.params(":id"));
 
@@ -61,13 +82,13 @@ public class UserService extends UserDAO{
 			return id;
 		} else {
 			response.status(404); // 404 Not found
-			return "Livro não encontrado.";
+			return "User não encontrado.";
 		}
 	}
 	
 	public Object getAll(Request request, Response response) {
 		StringBuffer returnValue = new StringBuffer("<users type=\"array\">");
-
+		
 		for (User user : UserDAO.getUsers()) {
 			returnValue.append("<user>\n" +
 					"\t<id>" + user.getUser_id() + "</id>\n" +

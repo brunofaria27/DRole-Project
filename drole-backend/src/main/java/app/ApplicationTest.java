@@ -11,7 +11,5 @@ public class ApplicationTest {
 		
 		// Para testes, tornar os métodos públicos e depois retorná-los para protected
 		DAO dao = new DAO();
-		dao.connect();
-		dao.close();
 	}
 }

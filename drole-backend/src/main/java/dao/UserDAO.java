@@ -21,10 +21,11 @@ public class UserDAO extends DAO {
 			st.close();
 			status = true;
 		} catch (SQLException e) {
+			close();
 			System.out.println(e.getMessage());
 			throw new RuntimeException(e);
 		}
-		
+
 		close();
 
 		return status;
@@ -34,6 +35,7 @@ public class UserDAO extends DAO {
 		boolean status = false;
 
 		try {
+			connect();
 			Statement st = connection.createStatement();
 			String query = "DELETE FROM users WHERE user_id = " + id;
 			st.executeUpdate(query);
@@ -41,23 +43,53 @@ public class UserDAO extends DAO {
 			status = true;
 
 		} catch (SQLException e) {
+			close();
 			throw new RuntimeException(e);
 		}
 
+		close();
 		return status;
 	}
-	
-	
-	
-	public static User getUser(int id){
-		User user = null;
-		try{
+
+	public static boolean updateUser(User user) {
+		boolean status = false;
+
+		try {
+			connect();
 			Statement st = connection.createStatement();
-			String query = "SELECT * FROM livros where id = " + id;
+			String query = "UPDATE livros SET " 
+					+ "username = '" + user.getUsername()
+					+ "', user_type = " + user.getUser_type() 
+					+ ", photo_path = '" + user.getPhoto_path() 
+					+ "', email = '" + user.getEmail() 
+					+ "', hashpassword = '" + user.getHashPassword()
+					+ "', profile_localization = '" + user.getProfile_localization() 
+					+ "', 'profile_description = '" + user.getProfile_description()
+					+ "', profile_name = '" + user.getProfile_name()
+					+ " WHERE user_id = " + user.getUser_id();
+
+			st.executeUpdate(query);
+			st.close();
+			status = true;
+
+		} catch (SQLException e) {
+			close();
+			throw new RuntimeException(e);
+		}
+
+		close();
+		return status;
+	}
+
+	public static User getUser(int id) {
+		User user = null;
+		try {
+			connect();
+			Statement st = connection.createStatement();
+			String query = "SELECT * FROM users where user_id = " + id;
 			ResultSet rs = st.executeQuery(query);
 
-
-			if(rs.next()){
+			if (rs.next()) {
 				user = new User(rs.getInt("user_id"), rs.getString("username"), rs.getInt("user_type"),
 						rs.getString("photo_path"), rs.getString("email"), rs.getString("hashpassword"),
 						rs.getString("profile_localization"), rs.getString("profile_description"),
@@ -65,18 +97,22 @@ public class UserDAO extends DAO {
 			}
 
 			st.close();
-		}catch (Exception e) {
+
+		} catch (Exception e) {
+			close();
 			System.out.println(e.getMessage());
 		}
+
+		close();
 		return user;
 	}
-	
-	
 
 	public static User[] getUsers() {
 		User[] users = null;
 		try {
-			Statement st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			connect();
+			Statement st = DAO.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = st.executeQuery("SELECT * FROM users");
 
 			if (rs.next()) {
@@ -94,9 +130,11 @@ public class UserDAO extends DAO {
 
 			st.close();
 		} catch (Exception e) {
+			close();
 			System.err.println(e.getMessage());
 		}
 
+		close();
 		return users;
 	}
 }
