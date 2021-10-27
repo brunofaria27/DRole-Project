@@ -5,11 +5,13 @@ import static spark.Spark.*;
 import model.Events;
 import services.LoginService;
 import services.UserService;
+import services.EventsService;
 
 public class Application {
+
 	private static UserService userService = new UserService();
 	private static LoginService loginService = new LoginService();
-	
+	private static EventsService eventService = new EventsService();
 
 	public static void main(String[] args) {
 
@@ -40,5 +42,11 @@ public class Application {
 		get("/user/remove/:id", (request, response) -> userService.remove(request, response));
 
 		get("/login/", (request, response) -> loginService.tryLogin(request, response)); // Avaliar método
+	
+    post("/eventos/", (request, response) -> eventService.add(request, response));
+		post("/eventos/", (request, response) -> eventService.update(request, response));
+		get("/eventos/", (request, response) -> eventService.getAll(request, response));
+		get("/eventos/:id", (request, response) -> eventService.get(request, response));
+		get("/eventos/:id", (request, response) -> eventService.remove(request, response));
 	}
 }

@@ -57,7 +57,7 @@ public class UserDAO extends DAO {
 		try {
 			connect();
 			Statement st = connection.createStatement();
-			String query = "UPDATE livros SET " 
+			String query = "UPDATE users SET " 
 					+ "username = '" + user.getUsername()
 					+ "', user_type = " + user.getUser_type() 
 					+ ", photo_path = '" + user.getPhoto_path() 
