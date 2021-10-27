@@ -64,9 +64,9 @@ public class UserDAO extends DAO {
 					+ "', email = '" + user.getEmail() 
 					+ "', hashpassword = '" + user.getHashPassword()
 					+ "', profile_localization = '" + user.getProfile_localization() 
-					+ "', 'profile_description = '" + user.getProfile_description()
+					+ "', profile_description = '" + user.getProfile_description()
 					+ "', profile_name = '" + user.getProfile_name()
-					+ " WHERE user_id = " + user.getUser_id();
+					+ "' WHERE user_id = " + user.getUser_id();
 
 			st.executeUpdate(query);
 			st.close();
