@@ -1,0 +1,24 @@
+/* COLOCAR EM TODOS CSS */
+.header{
+    background: rgb(161, 161, 161);
+    margin-bottom: 20px;
+    text-align: center;
+}
+.header_area{
+    padding: 20px;
+}
+.menu_area{
+    margin-top: 30px;
+}
+.menu_area nav a{
+    background-color: #6c747c;
+    color: white;
+    margin-right: 10px;
+}
+.menu_area nav a:hover{
+    background-color: #5b6368;
+}
+.active{
+    background-color: rgb(130, 130, 130) !important ;
+}
+/* COLOCAR EM TODOS CSS */

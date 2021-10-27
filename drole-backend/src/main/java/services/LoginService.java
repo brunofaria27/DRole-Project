@@ -10,8 +10,8 @@ public class LoginService {
 		boolean status = false;
 		User[] users = UserDAO.getUsers();
 		
-		String email = request.queryParams(":email");
-		String password = request.queryParams(":password");
+		String email = request.queryParams("email");
+		String password = request.queryParams("password");
 		
 		for(User u : users) {
 			if((u.getEmail().equals(email)) && (u.getHashPassword().equals(password))) {
