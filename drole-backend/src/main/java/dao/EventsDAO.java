@@ -7,17 +7,19 @@ import java.sql.Statement;
 import model.Events;
 
 public class EventsDAO extends DAO {
-	
+
 	public static boolean createEvent(Events event) {
 		boolean status = false;
 
 		try {
 			connect();
 			Statement st = connection.createStatement();
-			String query = "INSERT INTO events(event_name, event_musician_id, musical_style, minimum_age, event_host_id, event_status, date_event) "
-					+ "VALUES " + "('" + event.getEvent_id()
-					+ "'," + event.getEvent_name() + ",'" + event.getEvent_musician_id() + "','" + event.getMusical_style() + "','"
-					+ event.getMinimum_age() + "','" + event.getEvent_host_id() + "','" + event.getEvent_status() + "','" + event.getDate_event() + "');";
+			String query = "INSERT INTO events(event_name, event_musician_id, musical_style, minimum_age, event_host_id, event_status, date_event, event_capacity, event_formality, event_target, event_hour, event_price) "
+					+ "VALUES " + "('" + event.getEvent_name() + ",'" + event.getEvent_musician_id() + "','"
+					+ event.getMusical_style() + "','" + event.getMinimum_age() + "','" + event.getEvent_host_id()
+					+ "','" + event.getEvent_status() + "','" + event.getDate_event() + "','" + event.getEvent_capacity()
+					+ "','" + event.getEvent_formality() + "','" + event.getEvent_target() + "','" + event.getEvent_hour()
+					+ "','" + event.getEvent_price() + "');";
 
 			st.executeQuery(query);
 			st.close();
@@ -59,16 +61,14 @@ public class EventsDAO extends DAO {
 		try {
 			connect();
 			Statement st = connection.createStatement();
-			String query = "UPDATE events SET " 
-					+ "event_id = '" + event.getEvent_id()
-					+ "', event_name = " + event.getEvent_name() 
-					+ ", event_musician_id = '" + event.getEvent_musician_id() 
-					+ "', musical_style = '" + event.getMusical_style() 
-					+ "', minimum_age = '" + event.getMinimum_age()
-					+ "', event_host_id = '" + event.getEvent_host_id() 
-					+ "', event_status = '" + event.getEvent_status()
-					+ "', date_event = '" + event.getDate_event()
-					+ " WHERE event_id = " + event.getEvent_id();
+			String query = "UPDATE events SET " + "event_name = '" + event.getEvent_name() + "', event_musician_id = "
+					+ event.getEvent_musician_id() + ", musical_style = '" + event.getMusical_style()
+					+ "', minimum_age = " + event.getMinimum_age() + ", event_host_id = " + event.getEvent_host_id()
+					+ ", event_status = '" + event.getEvent_status() + "', date_event = '" + event.getDate_event()
+					+ "', date_event = '" + event.getDate_event() + "', event_capacity = '" + event.getEvent_capacity()
+					+ "', event_formality = '" + event.getEvent_formality() + "', event_target = '"
+					+ event.getEvent_target() + "', event_hour = '" + event.getEvent_hour() + "', event_price = '"
+					+ event.getEvent_price() + "' WHERE event_id = " + event.getEvent_id();
 
 			st.executeUpdate(query);
 			st.close();
@@ -94,7 +94,9 @@ public class EventsDAO extends DAO {
 			if (rs.next()) {
 				event = new Events(rs.getInt("event_id"), rs.getString("event_name"), rs.getInt("event_musician_id"),
 						rs.getString("musical_style"), rs.getInt("minimum_age"), rs.getInt("event_host_id"),
-						rs.getString("event_status"), rs.getString("date_event"));
+						rs.getString("event_status"), rs.getString("date_event"), rs.getInt("event_capacity"),
+						rs.getInt("event_formality"), rs.getInt("event_target"), rs.getInt("event_hour"),
+						rs.getInt("event_price"));
 			}
 
 			st.close();
@@ -122,9 +124,11 @@ public class EventsDAO extends DAO {
 				rs.beforeFirst();
 
 				for (int i = 0; rs.next(); i++) {
-					events[i] = new Events(rs.getInt("event_id"), rs.getString("event_name"), rs.getInt("event_musician_id"),
-							rs.getString("musical_style"), rs.getInt("minimum_age"), rs.getInt("event_host_id"),
-							rs.getString("event_status"), rs.getString("date_event"));
+					events[i] = new Events(rs.getInt("event_id"), rs.getString("event_name"),
+							rs.getInt("event_musician_id"), rs.getString("musical_style"), rs.getInt("minimum_age"),
+							rs.getInt("event_host_id"), rs.getString("event_status"), rs.getString("date_event"),
+							rs.getInt("event_capacity"), rs.getInt("event_formality"), rs.getInt("event_target"),
+							rs.getInt("event_hour"), rs.getInt("event_price"));
 				}
 			}
 
@@ -137,7 +141,7 @@ public class EventsDAO extends DAO {
 		close();
 		return events;
 	}
-	
+
 	public static Events[] getEventsbyMusicalStyle(String style) {
 		Events[] events = null;
 		try {
@@ -152,9 +156,11 @@ public class EventsDAO extends DAO {
 				rs.beforeFirst();
 
 				for (int i = 0; rs.next(); i++) {
-					events[i] = new Events(rs.getInt("event_id"), rs.getString("event_name"), rs.getInt("event_musician_id"),
-							rs.getString("musical_style"), rs.getInt("minimum_age"), rs.getInt("event_host_id"),
-							rs.getString("event_status"), rs.getString("date_event"));
+					events[i] = new Events(rs.getInt("event_id"), rs.getString("event_name"),
+							rs.getInt("event_musician_id"), rs.getString("musical_style"), rs.getInt("minimum_age"),
+							rs.getInt("event_host_id"), rs.getString("event_status"), rs.getString("date_event"),
+							rs.getInt("event_capacity"), rs.getInt("event_formality"), rs.getInt("event_target"),
+							rs.getInt("event_hour"), rs.getInt("event_price"));
 				}
 			}
 
