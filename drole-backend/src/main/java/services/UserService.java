@@ -12,9 +12,19 @@ public class UserService extends UserDAO{
 		int userType = Integer.parseInt(request.queryParams("user_type"));
 		String email = request.queryParams("email");
 		String password = request.queryParams("password");
+	
 		
 		User user = new User(username, userType, email, password);
 		
+		User[] existentUsers = UserDAO.getUsers();
+		
+		for(User u : existentUsers) {
+			if(u.getEmail().equals(email) || u.getUsername().equals(username)){
+				response.status(409);
+				return "Email or usename already exist";
+			}
+		}
+			
 		UserDAO.createUser(user);
 		
 		response.status(201);

@@ -17,7 +17,7 @@ public class UserDAO extends DAO {
 					+ "'," + user.getUser_type() + "," + "NULL" + ",'" + user.getEmail() + "','"
 					+ user.getHashPassword() + "'," + "NULL" + "," + "NULL" + ",'" + user.getProfile_name() + "');";
 
-			st.executeQuery(query);
+			st.executeUpdate(query);
 			st.close();
 			status = true;
 		} catch (SQLException e) {
