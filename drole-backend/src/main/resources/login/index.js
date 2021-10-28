@@ -14,13 +14,32 @@ function tryLogin() {
       email: username,
       password: password,
     },
-  })
-    .done(function (data) {
+    success: function (data) {
+      $(data)
+        .find("user")
+        .each(function () {
+          var obj = new Object();
+
+          obj.id = $(this).find("id").text();
+          obj.username = $(this).find("username").text();
+          obj.userType = $(this).find("userType").text();
+          obj.userPhoto = $(this).find("userPhoto").text();
+          obj.profileName = $(this).find("profileName").text();
+          obj.localization = $(this).find("localization").text();
+          obj.description = $(this).find("description").text();
+
+          var jsonString = JSON.stringify(obj);
+          sessionStorage.setItem('currentUser', jsonString);
+
+          //console.log(jsonString);
+        });
+
       window.location = "../home/index.html";
-    })
-    .fail(function () {
+    },
+    error: function () {
       alert("Nenhum usuário com essas credenciais foi encontrado na base!");
-    });
+    },
+  });
 }
 
 function createUser() {
@@ -37,20 +56,17 @@ function createUser() {
       contentType: "application/x-www-form-urlencoded",
       method: "POST",
       data: {
-        "username": username,
-        "email": email,
-        "password": password,
-        "user_type": userType,
+        username: username,
+        email: email,
+        password: password,
+        user_type: userType,
       },
     })
-      .done(function (data) {
-        
-      })
+      .done(function (data) {})
       .fail(function (data) {
-        if(data.status == 409)
+        if (data.status == 409)
           alert("Já existe um usuário com esse e-mail cadastrado!");
-        else
-          alert("Houve um problema em seu cadastro: " + data.responseText)
+        else alert("Houve um problema em seu cadastro: " + data.responseText);
       });
   } else {
     alert("As senhas informadas não são iguais!");
