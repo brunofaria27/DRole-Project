@@ -15,7 +15,7 @@ public class EventsDAO extends DAO {
 			connect();
 			Statement st = connection.createStatement();
 			String query = "INSERT INTO events(event_name, event_musician_id, musical_style, minimum_age, event_host_id, event_status, date_event, event_capacity, event_formality, event_target, event_hour, event_price) "
-					+ "VALUES " + "('" + event.getEvent_name() + ",'" + event.getEvent_musician_id() + "','"
+					+ "VALUES " + "('" + event.getEvent_name() + "','" + event.getEvent_musician_id() + "','"
 					+ event.getMusical_style() + "','" + event.getMinimum_age() + "','" + event.getEvent_host_id()
 					+ "','" + event.getEvent_status() + "','" + event.getDate_event() + "','" + event.getEvent_capacity()
 					+ "','" + event.getEvent_formality() + "','" + event.getEvent_target() + "','" + event.getEvent_hour()

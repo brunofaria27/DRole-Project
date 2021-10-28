@@ -29,9 +29,8 @@ function tryLogin() {
           obj.description = $(this).find("description").text();
 
           var jsonString = JSON.stringify(obj);
-          localStorage.setItem("currentUser", jsonString);
+          localStorage.setItem('currentUser', jsonString);
 
-          //console.log(jsonString);
         });
 
       window.location = "../home/index.html";

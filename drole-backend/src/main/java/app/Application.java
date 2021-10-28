@@ -44,11 +44,8 @@ public class Application {
 
 		get("/login/", (request, response) -> loginService.tryLogin(request, response)); // Avaliar método
 	
-    	post("/eventos/create", (request, response) -> eventService.add(request, response));
-		post("/eventos/", (request, response) -> eventService.update(request, response));
-		get("/eventos/", (request, response) -> eventService.getAll(request, response));
-		get("/eventos/:id", (request, response) -> eventService.get(request, response));
-		get("/eventosR/:id", (request, response) -> eventService.remove(request, response));
+    	post("/events/create", (request, response) -> eventService.add(request, response));
+
 		
 		//post("/score/", (request, response) -> scoreService.add(request, response));
 		get("/scoreUp/:id", (request, response) -> scoreService.update(request, response));
