@@ -69,18 +69,25 @@
                 </div>
                 <div class="modal-body">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" method="post">
+                        <form class="form" method="post">
                             <h3 class="text-center text-info">Novo usuário</h3>
+                            <div id="sucessCadas">
+                                <!-- JS SUCESS LOGIN -->
+                            </div>
                             <div class="form-group">
                                 <label for="login" class="text-info">Usuário</label><br>
                                 <input type="text" name="txt_login" id="txt_login" class="form-control">
                             </div>
-                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Tipo de perfil</label>
-                            <select class="custom-select my-1 mr-sm-2" id="user-type">
-                                <option value="2">Estabelecimento</option>
-                                <option value="3">Músico</option>
-                                <option value="1">Frequentador</option>
-                            </select>
+
+                            <div class="form-group">
+                                <label class="my-1 mr-2 text-info" for="login">Tipo de perfil</label>
+                                <select class="custom-select my-1 mr-sm-2" id="user-type">
+                                    <option value="2">Estabelecimento</option>
+                                    <option value="3">Músico</option>
+                                    <option value="1">Frequentador</option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="email" class="text-info">Email</label><br>
                                 <input type="text" name="txt_email" id="txt_email" class="form-control">
@@ -112,7 +119,7 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2020 Copyright:
-            <a class="text-white" href="login.html">D'Rolé</a>
+            <a class="text-white" href="../login/index.html">D'Rolé</a>
         </div>
         <!-- Copyright -->
     </footer>

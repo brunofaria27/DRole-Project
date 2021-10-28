@@ -5,6 +5,20 @@ document
   .getElementById("btn-save-event")
   .addEventListener("click", createEvent);
 
+window.onload = () => {
+  event.preventDefault();
+  let obj = JSON.parse(localStorage.getItem("currentUser"));
+  let user_type = obj.userType;
+
+  // Se o usuário for do tipo estabelecimento ou adm poderá ver o botão de adicionar evento
+  if (user_type == 2 || user_type == 4) {
+    $(
+      '<input type="button" class="btn btn-success" id="btnInsert" value="Adicionar evento" data-toggle="modal" data-target="#calendarioModal">'
+    ).appendTo("#buttonAddEvent");
+  }
+
+};
+
 function showMusicians() {
   event.preventDefault();
 
@@ -18,6 +32,7 @@ function showMusicians() {
         .each(function () {
           var name = $(this).find("profileName").text();
           var value = $(this).find("id").text();
+
           if (name != "null") {
             $(
               '<option id="event_musician_id" value="' +
@@ -27,6 +42,7 @@ function showMusicians() {
                 "</option>"
             ).appendTo("#musicians");
           }
+
         });
     },
     error: function () {

@@ -30,6 +30,7 @@ function tryLogin() {
 
           var jsonString = JSON.stringify(obj);
           localStorage.setItem('currentUser', jsonString);
+
         });
 
       window.location = "../home/index.html";
@@ -61,7 +62,11 @@ function createUser() {
       },
     })
       .done(function (data) {
-        window.location = "../login/index.html";
+        $(
+          '<div class="alert alert-success" role="alert">Parabéns! Agora você está cadastrado, siga para o login e aproveite <strong>' +
+            username +
+            "</strong></div>"
+        ).appendTo("#sucessCadas");
       })
       .fail(function (data) {
         if (data.status == 409)
