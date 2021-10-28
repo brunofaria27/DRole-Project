@@ -67,7 +67,7 @@ function createUser() {
           '<div class="alert alert-success" role="alert">Parabéns! Agora você está cadastrado, siga para o login e aproveite <strong>' +
             username +
             "</strong></div>"
-        ).appendTo("#sucessLogin");
+        ).appendTo("#sucessCadas");
       })
       .fail(function (data) {
         if (data.status == 409)

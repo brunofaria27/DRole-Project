@@ -10,7 +10,8 @@ window.onload = () => {
   let obj = JSON.parse(localStorage.getItem("currentUser"));
   let user_type = obj.userType;
 
-  if (user_type == 2) {
+  // Se o usuário for do tipo estabelecimento ou adm poderá ver o botão de adicionar evento
+  if (user_type == 2 || user_type == 4) {
     $(
       '<input type="button" class="btn btn-success" id="btnInsert" value="Adicionar evento" data-toggle="modal" data-target="#calendarioModal">'
     ).appendTo("#buttonAddEvent");
@@ -32,12 +33,7 @@ function showMusicians() {
           var name = $(this).find("profileName").text();
           var value = $(this).find("id").text();
           $(
-            '<option id="event_musician_id" value="' +
-              value +
-              '">' +
-              name +
-              "</option>"
-          ).appendTo("#musicians");
+            '<option id="event_musician_id" value="' + value + '">' + name + "</option>").appendTo("#musicians");
         });
     },
     error: function () {
