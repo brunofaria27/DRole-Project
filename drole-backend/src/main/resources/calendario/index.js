@@ -18,7 +18,7 @@ function showMusicians() {
         .each(function () {
           var name = $(this).find("profileName").text();
           var value = $(this).find("id").text();
-          $('<option value="' + value + '">' + name + "</option>").appendTo(
+          $('<option id="event_musician_id" value="' + value + '">' + name + "</option>").appendTo(
             "#musicians"
           );
         });
@@ -34,11 +34,12 @@ function createEvent() {
   event.preventDefault();
 
   let event_name = document.getElementById("event_name").value;
-  let event_musician_id = document.getElementById("event_musician_id").value;
+  let event_musician_id = document.getElementById("musicians").value;
   let musical_style = document.getElementById("musical_style").value;
   let minimum_age = document.getElementById("minimum_age").value;
-  let event_host_id = document.getElementById("event_host_id").value;
-  let event_status = document.getElementById("event_status").value;
+  let obj = JSON.parse(localStorage.getItem('currentUser'));
+  let event_host_id = obj.id;
+  let event_status = 'Pendente';
   let date_event = document.getElementById("date_event").value;
   let event_capacity = document.getElementById("event_capacity").value;
   let event_formality = document.getElementById("event_formality").value;
@@ -47,7 +48,7 @@ function createEvent() {
   let event_price = document.getElementById("event_price").value;
 
   $.ajax({
-    type: "POST",
+    method: "POST",
     url: "http://localhost:4568/eventos/create",
     contentType: "application/x-www-form-urlencoded",
     data: {
@@ -64,11 +65,11 @@ function createEvent() {
       event_hour: event_hour,
       event_price: event_price,
     },
-  })
-    .done(function (data) {})
-    .fail(function (data) {
-      if (data.status == 409)
-        alert("Já existe um usuário com esse e-mail cadastrado!");
-      else alert("Houve um problema em seu cadastro: " + data.responseText);
-    });
+    success: function (data) {
+     alert(data);
+    },
+    error: function () {
+      alert("Ocorreu um erro inesperado durante o processamento.");
+    },
+  });
 }
