@@ -5,6 +5,19 @@ document
   .getElementById("btn-save-event")
   .addEventListener("click", createEvent);
 
+window.onload = () => {
+  event.preventDefault();
+  let obj = JSON.parse(localStorage.getItem("currentUser"));
+  let user_type = obj.userType;
+
+  if (user_type == 2) {
+    $(
+      '<input type="button" class="btn btn-success" id="btnInsert" value="Adicionar evento" data-toggle="modal" data-target="#calendarioModal">'
+    ).appendTo("#buttonAddEvent");
+  }
+
+};
+
 function showMusicians() {
   event.preventDefault();
 
@@ -18,9 +31,13 @@ function showMusicians() {
         .each(function () {
           var name = $(this).find("profileName").text();
           var value = $(this).find("id").text();
-          $('<option id="event_musician_id" value="' + value + '">' + name + "</option>").appendTo(
-            "#musicians"
-          );
+          $(
+            '<option id="event_musician_id" value="' +
+              value +
+              '">' +
+              name +
+              "</option>"
+          ).appendTo("#musicians");
         });
     },
     error: function () {
@@ -30,16 +47,15 @@ function showMusicians() {
 }
 
 function createEvent() {
-  
   event.preventDefault();
 
   let event_name = document.getElementById("event_name").value;
   let event_musician_id = document.getElementById("musicians").value;
   let musical_style = document.getElementById("musical_style").value;
   let minimum_age = document.getElementById("minimum_age").value;
-  let obj = JSON.parse(localStorage.getItem('currentUser'));
+  let obj = JSON.parse(localStorage.getItem("currentUser"));
   let event_host_id = obj.id;
-  let event_status = 'Pendente';
+  let event_status = "Pendente";
   let date_event = document.getElementById("date_event").value;
   let event_capacity = document.getElementById("event_capacity").value;
   let event_formality = document.getElementById("event_formality").value;
@@ -66,7 +82,7 @@ function createEvent() {
       event_price: event_price,
     },
     success: function (data) {
-     alert(data);
+      alert(data);
     },
     error: function () {
       alert("Ocorreu um erro inesperado durante o processamento.");
