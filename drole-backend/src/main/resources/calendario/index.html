@@ -5,31 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D'Rolé - Sobre</title>
-    <link rel="stylesheet" href="styles/cabecalho.css">
-    <link rel="stylesheet" href="styles/sobre.css">
-    <link rel="stylesheet" href="styles/calendario.css">
+    <link rel="stylesheet" href="../styles/cabecalho.css">
+    <link rel="stylesheet" href="../styles/sobre.css">
+    <link rel="stylesheet" href="calendario.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="scripts/login.js"></script>
-    <script>
-        // Verifica se o usuário já esta logado e se negativo, redireciona para tela de login        
-        if (!usuarioCorrente.login) {
-            window.location = "login.html";
-        }
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/a55657dc48.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 </head>
 
-<body onload="init()">
+<body>
 
     <!-- inicio Header -->
     <header class="container-fluid header">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="images/logo_transparente.png" width="80px" height="60px" alt="Logo">
+                    <img src="../images/logo transparente.png" width="80px" height="60px" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -40,13 +33,13 @@
                 <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="../home/index.html">Home</a>
+                            <a class="nav-link" href="indexlogado.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="sobrelogado.html">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Calendário</a>
+                            <a class="nav-link" href="calendario.html">Calendário</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="login.html">Cadastrar</a>
@@ -122,87 +115,137 @@
     </div>
     <!-- End corpo calendário -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="calendarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+
+    <!-- Inicio Modal Sistema Inteligente -->
+    <div class="modal fade" id="calendarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="mudarModalLabel">Adicionar evento</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sistema de recomendação - Calendário</h5>
                 </div>
                 <div class="modal-body">
-                    <form method="post" id="insert_form">
-                        <!-- Inicio body -->
-                    </form id="form-evento">
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Capacidade do Evento</label>
+                    <select class="custom-select my-1 mr-sm-2" id="event_capacity">
+                        <option value="1">10 - 50 pessoas</option>
+                        <option value="2">50 - 100 pessoas</option>
+                        <option value="3">100 - 200 pessoas</option>
+                        <option value="4">200 - 1000 pessoas</option>
+                        <option value="5">1000+ pessoas</option>
+                    </select>
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Formalidade do Evento</label>
+                    <select class="custom-select my-1 mr-sm-2" id="event_formality">
+                        <option value="1">Informal</option>
+                        <option value="2">Pouco formal</option>
+                        <option value="3">Formal</option>
+                        <option value="4">Muito formal</option>
+                        <option value="5">Cerimonial</option>
+                    </select>
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Público Alvo do Evento</label>
+                    <select class="custom-select my-1 mr-sm-2" id="event_target">
+                        <option value="1">0 - 18 anos</option>
+                        <option value="2">18 - 25 anos</option>
+                        <option value="3">25 - 40 anos</option>
+                        <option value="4">40 - 65 anos</option>
+                        <option value="5">65+ anos</option>
+                    </select>
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Horário do Evento</label>
+                    <select class="custom-select my-1 mr-sm-2" id="event_hour">
+                        <option value="1">8:00 - 11:00</option>
+                        <option value="2">11:00 - 15:00</option>
+                        <option value="3">15:00 - 18:00</option>
+                        <option value="4">18:00 - 22:00</option>
+                        <option value="5">22:00 - 8:00</option>
+                    </select>
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Gasto Médio por Pessoa</label>
+                    <select class="custom-select my-1 mr-sm-2" id="event_price">
+                        <option value="1">R$00,00 - R$20,00</option>
+                        <option value="2">R$20,00 - R$50,00</option>
+                        <option value="3">R$50,00 - R$100,00</option>
+                        <option value="4">R$100,00 - R$300,00</option>
+                        <option value="5">R$300,00+</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dadosModal"
+                        data-dismiss="modal" aria-label="Close" id="btn-prox-modal">Próximo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fim modal Sistema Inteligente -->
+
+    <!-- Inicio Modal dados evento -->
+    <div class="modal fade" id="dadosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Criação do evento - Calendário</h5>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="my-1 mr-2" for="inlineFormCustomSelectPref">
+                        <p style="align-items: center;">O tipo músical indicado para seu evento é <strong>TESTE</strong>
+                        </p>
+                    </div>
+
                     <div class="form-group row">
-                        <label for="dataEvento" class="col-sm-2 col-form-label">Dia:</label>
-                        <div class="col-sm-10">
-                            <input name="DATA" type="date" class="form-control" id="dateEvent"
+                        <label for="nomeEvento" class="col-sm-12 col-form-label">Nome do Evento:</label>
+                        <div class="col-sm-12">
+                            <input name="NOME" type="text" class="form-control" id="event_name"
+                                placeholder="Nome do evento" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="dataEvento" class="col-sm-12 col-form-label">Dia:</label>
+                        <div class="col-sm-12">
+                            <input name="DATA" type="date" class="form-control" id="date_event"
                                 placeholder="Selecione o dia do evento" autocomplete="off">
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="estabelecimentoEvento" class="col-sm-2 col-form-label">Estabelecimento:</label>
-                        <div class="col-sm-12">
-                            <input name="ESTABELECIMENTO" type="text" class="form-control" id="estabelecimento"
-                                placeholder="Local do evento" autocomplete="off">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="musicoEvento" class="col-sm-2 col-form-label">Músico:</label>
-                        <div class="col-sm-12">
-                            <input name="MUSICO" type="text" class="form-control" id="musico"
-                                placeholder="Músico que tocará no evento" autocomplete="off">
-                        </div>
-                    </div>
-
                     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Tipo musical:</label>
-                    <select class="custom-select my-1 mr-sm-2" id="tipoMusical">
+                    <select class="custom-select my-1 mr-sm-2" id="musical_style">
                         <option value="Funk">Funk</option>
                         <option value="Pop">Pop</option>
                         <option value="Rock">Rock</option>
                         <option value="Axé">Axé</option>
                         <option value="Sertanejo">Sertanejo</option>
                         <option value="Eletrônica">Eletrônica</option>
-                        <option value="Trap">Trap</option>
+                        <option value="Clássica">Clássica</option>
+                        <option value="Samba">Samba</option>
+                        <option value="Pagode">Pagode</option>
                     </select>
 
-                    <p></p> <!-- Pular linha no form-->
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Músico:</label>
+                    <select class="custom-select my-1 mr-sm-2" id="musicians">
+                        <!-- js vai aqui -->
+                    </select>
 
                     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Entrada evento:</label>
-                    <select class="custom-select my-1 mr-sm-2" id="entrada">
+                    <select class="custom-select my-1 mr-sm-2" id="minimum_age">
                         <option value="+18">+18</option>
                         <option value="-18">-18</option>
                     </select>
 
-                    <p></p> <!-- Pular linha no form-->
-
-                    <div class="form-group row">
-                        <div class="col-sm-10">
-                            <button type="button" class="btn btn-outline-danger"
-                                onclick="javascript:window.location.reload()">Cancelar</button>
-                            <input type="button" name="salvaralt" id="adicionaEvent" value="Salvar"
-                                class="btn btn-outline-success" onclick="javascript:window.location.reload()">
-                        </div>
-                    </div>
-                    </form>
-                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="javascript:window.location.reload()">Close</button>
+                    <button id="btn-save-event" type="button" class="btn btn-outline-success" data-toggle="modal"
+                        data-target="#dadosModal" data-dismiss="modal" aria-label="Close"
+                        onclick="javascript:window.location.reload()">Salvar</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Modal -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+    <!-- Fim modal dados evento -->
+    <script src="index.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
