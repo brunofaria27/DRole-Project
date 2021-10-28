@@ -29,7 +29,7 @@ function tryLogin() {
           obj.description = $(this).find("description").text();
 
           var jsonString = JSON.stringify(obj);
-          sessionStorage.setItem('currentUser', jsonString);
+          localStorage.setItem('currentUser', jsonString);
 
           //console.log(jsonString);
         });
@@ -62,7 +62,9 @@ function createUser() {
         user_type: userType,
       },
     })
-      .done(function (data) {})
+      .done(function (data) {
+        window.location = "../login/index.html";
+      })
       .fail(function (data) {
         if (data.status == 409)
           alert("Já existe um usuário com esse e-mail cadastrado!");
