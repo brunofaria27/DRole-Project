@@ -30,8 +30,6 @@ function tryLogin() {
 
           var jsonString = JSON.stringify(obj);
           localStorage.setItem('currentUser', jsonString);
-
-          //console.log(jsonString);
         });
 
       window.location = "../home/index.html";

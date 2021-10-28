@@ -18,9 +18,15 @@ function showMusicians() {
         .each(function () {
           var name = $(this).find("profileName").text();
           var value = $(this).find("id").text();
-          $('<option id="event_musician_id" value="' + value + '">' + name + "</option>").appendTo(
-            "#musicians"
-          );
+          if (name != "null") {
+            $(
+              '<option id="event_musician_id" value="' +
+                value +
+                '">' +
+                name +
+                "</option>"
+            ).appendTo("#musicians");
+          }
         });
     },
     error: function () {
@@ -30,16 +36,14 @@ function showMusicians() {
 }
 
 function createEvent() {
-  
   event.preventDefault();
 
   let event_name = document.getElementById("event_name").value;
   let event_musician_id = document.getElementById("musicians").value;
   let musical_style = document.getElementById("musical_style").value;
   let minimum_age = document.getElementById("minimum_age").value;
-  let obj = JSON.parse(localStorage.getItem('currentUser'));
-  let event_host_id = obj.id;
-  let event_status = 'Pendente';
+  let event_host_id = JSON.parse(localStorage.getItem("currentUser")).id;
+  let event_status = "Pendente";
   let date_event = document.getElementById("date_event").value;
   let event_capacity = document.getElementById("event_capacity").value;
   let event_formality = document.getElementById("event_formality").value;
@@ -48,9 +52,8 @@ function createEvent() {
   let event_price = document.getElementById("event_price").value;
 
   $.ajax({
+    url: "http://localhost:4568/events/create",
     method: "POST",
-    url: "http://localhost:4568/eventos/create",
-    contentType: "application/x-www-form-urlencoded",
     data: {
       event_name: event_name,
       event_musician_id: event_musician_id,
@@ -66,10 +69,10 @@ function createEvent() {
       event_price: event_price,
     },
     success: function (data) {
-     alert(data);
+      //console.log(data);
     },
     error: function () {
-      alert("Ocorreu um erro inesperado durante o processamento.");
+      console.log("nao foi :)");
     },
   });
 }
