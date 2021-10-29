@@ -18,6 +18,14 @@ window.onload = () => {
       '<input type="button" class="btn btn-success" id="btnInsert" value="Adicionar evento" data-toggle="modal" data-target="#calendarioModal">'
     ).appendTo("#buttonAddEvent");
   }
+
+  // Se o usuário não for do tipo frequentador poderá ver o link para perfil
+  if (user_type == 2 || user_type == 4 || user_type == 3) {
+    $(
+      '<a class="nav-link" href="../profile/index.html">Perfil</a>'
+    ).appendTo("#showProfile");
+  }
+
 };
 
 
