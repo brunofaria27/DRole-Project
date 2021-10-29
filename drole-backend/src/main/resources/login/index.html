@@ -36,13 +36,16 @@
                 <div id="login-box" class="col-md-12">
                     <form id="login-form" class="form" method="post">
                         <h3 class="text-center text-info">LOGIN</h3>
+                        <div id="sucessLogin">
+                            <!-- JS SUCESS CADASTRO -->
+                        </div>
                         <div class="form-group">
                             <label for="username" class="text-info">E-mail</label><br>
-                            <input type="text" name="username" id="username" class="form-control">
+                            <input type="text" name="username" id="username" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="password" class="text-info">Senha</label><br>
-                            <input type="password" name="password" id="password" class="form-control">
+                            <input type="password" name="password" id="password" class="form-control" required>
                         </div>
                         <div class="form-group text-right">
                             <input type="submit" name="submit" class="btn btn-info btn-md" id="submit-login"
@@ -72,16 +75,16 @@
                         <form class="form" method="post">
                             <h3 class="text-center text-info">Novo usuário</h3>
                             <div id="sucessCadas">
-                                <!-- JS SUCESS LOGIN -->
+                                <!-- JS SUCESS CADASTRO -->
                             </div>
                             <div class="form-group">
                                 <label for="login" class="text-info">Usuário</label><br>
-                                <input type="text" name="txt_login" id="txt_login" class="form-control">
+                                <input type="text" name="txt_login" id="txt_login" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label class="my-1 mr-2 text-info" for="login">Tipo de perfil</label>
-                                <select class="custom-select my-1 mr-sm-2" id="user-type">
+                                <select class="custom-select my-1 mr-sm-2" id="user-type" required>
                                     <option value="2">Estabelecimento</option>
                                     <option value="3">Músico</option>
                                     <option value="1">Frequentador</option>
@@ -90,15 +93,15 @@
 
                             <div class="form-group">
                                 <label for="email" class="text-info">Email</label><br>
-                                <input type="text" name="txt_email" id="txt_email" class="form-control">
+                                <input type="text" name="txt_email" id="txt_email" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="senha" class="text-info">Senha</label><br>
-                                <input type="password" name="txt_senha" id="txt_senha" class="form-control">
+                                <input type="password" name="txt_senha" id="txt_senha" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="senha2" class="text-info">Confirmação de senha</label><br>
-                                <input type="password" name="txt_senha2" id="txt_senha2" class="form-control">
+                                <input type="password" name="txt_senha2" id="txt_senha2" class="form-control" required>
                             </div>
                         </form>
                     </div>
