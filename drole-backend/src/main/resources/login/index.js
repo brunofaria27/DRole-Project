@@ -2,7 +2,7 @@ document.getElementById("submit-login").addEventListener("click", tryLogin);
 document.getElementById("btn_salvar").addEventListener("click", createUser);
 
 function tryLogin() {
-  event.preventDefault();
+  window.event.preventDefault();
   let username = document.getElementById("username").value;
   let password = document.getElementById("password").value;
 
