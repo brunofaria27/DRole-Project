@@ -59,7 +59,7 @@ public class UserService extends UserDAO {
 		User user = UserDAO.getUser(id);
 
 		if (user != null) {
-			user.setUsername(request.queryParams("username"));
+//			user.setUsername(request.queryParams("username"));
 			user.setPhoto_path(request.queryParams("photo_path"));
 			user.setProfile_name(request.queryParams("profile_name"));
 			user.setProfile_localization(request.queryParams("profile_localization"));

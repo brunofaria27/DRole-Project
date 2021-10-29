@@ -153,5 +153,4 @@ function showEvents() {
       alert("Ocorreu um erro inesperado durante o processamento.");
     },
   });
-  showMusicians();
 }
