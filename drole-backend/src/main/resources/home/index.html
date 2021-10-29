@@ -9,14 +9,6 @@
     <title>D'Rolé - Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="scripts/login.js"></script>
-    <script>
-        // Verifica se o usuÃ¡rio jÃ¡ esta logado e se negativo, redireciona para tela de login        
-        if (!usuarioCorrente.login) {
-            window.location = "login.html";
-        }
-    </script>
-
 </head>
 
 <body>
@@ -45,11 +37,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../calendario/index.html">Calendário</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.html">Entrar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../profile/index.html">Perfil</a>
+                        <li id="showProfile" class="nav-item">
+                            <!-- JS AQ -->
                         </li>
 
                     </ul>
@@ -297,6 +286,7 @@
         <!-- Copyright -->
     </footer>
 
+    <script src="../home/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

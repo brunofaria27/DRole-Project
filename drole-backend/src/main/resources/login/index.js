@@ -36,7 +36,9 @@ function tryLogin() {
       window.location = "../home/index.html";
     },
     error: function () {
-      alert("Nenhum usuário com essas credenciais foi encontrado na base!");
+      $(
+        '<div class="alert alert-danger" role="alert">Nenhum usuário com essas credenciais foi encontrado, tente novamente!</div>'
+      ).appendTo("#sucessLogin").fadeIn(300).delay(3000).fadeOut(400);
     },
   });
 }
@@ -63,18 +65,24 @@ function createUser() {
     })
       .done(function (data) {
         $(
-          '<div class="alert alert-success" role="alert">Parabéns! Agora você está cadastrado, siga para o login e aproveite <strong>' +
-            username +
-            "</strong></div>"
-        ).appendTo("#sucessCadas");
+          '<div class="alert alert-success" role="alert">Parabéns! Agora você está cadastrado, siga para o login e aproveite <strong>' +username + "</strong></div>"
+        ).appendTo("#sucessCadas").fadeIn(300).delay(10000).fadeOut(400);
       })
       .fail(function (data) {
-        if (data.status == 409)
-          alert("Já existe um usuário com esse e-mail cadastrado!");
-        else alert("Houve um problema em seu cadastro: " + data.responseText);
+        if (data.status == 409) {
+          $(
+            '<div class="alert alert-danger" role="alert">CUIDADO! Já existe um usuário com o email <strong>' + email + "</strong> cadastrado, tente novamente!</div>"
+          ).appendTo("#sucessCadas").fadeIn(300).delay(3000).fadeOut(400);
+        } else {
+          $(
+            '<div class="alert alert-danger" role="alert">Houve um problema em seu cadastro:' + data.responseText + '</div>'
+          ).appendTo("#sucessCadas").fadeIn(300).delay(3000).fadeOut(400);
+        }
       });
   } else {
-    alert("As senhas informadas não são iguais!");
+    $(
+      '<div class="alert alert-danger" role="alert">As senhas informadas devem ser iguais para concluir o cadastro!</div>'
+    ).appendTo("#sucessCadas").fadeIn(300).delay(3000).fadeOut(400);
   }
 }
 
