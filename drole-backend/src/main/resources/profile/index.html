@@ -11,6 +11,7 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
    <script src="https://kit.fontawesome.com/a55657dc48.js" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
    <!-- Bootstrap -->
    <title>D'Rolé - Perfil</title>
 </head>
@@ -66,9 +67,8 @@
                            class="rounded mb-2 img-thumbnail">
                      </div>
 
-                     <div id="mudaNomeTipo" class="media-body mb-5 text-white">
-                        <h4 id="mudaNome" class="mt-0 mb-0">Nome</h4>
-                        <p id="mudaTipo" class="small mb-4 tipo">Tipo</p>
+                     <div id="changeNameType" class="media-body mb-5 text-white">
+                        <!-- JS -->
                      </div>
 
                   </div>
@@ -87,8 +87,8 @@
                </div> <!-- End sobre -->
 
                <div class="px-4 py-3">
-                  <div class="p-4 rounded shadow-sm bg-light">
-                     <p class="p-2" id="mudaSobre">Escreva sobre vocês(s).</p>
+                  <div id="changeAbout" class="p-4 rounded shadow-sm bg-light">
+                     <!-- JS -->
                   </div>
                </div> <!-- End sobre -->
 
@@ -100,8 +100,10 @@
                   <h5 class="mb-0">Localização</h5>
                </div>
 
-               <div id="mudaLocal" class="px-4 py-3">
-                  <p>Digite sua localização</p>
+               <div class="px-4 py-3">
+                  <div id="changeLocal" class="p-4 rounded shadow-sm bg-light">
+                     <!-- JS -->
+                  </div>
                </div> <!-- End sobre -->
 
             </div>
@@ -132,7 +134,7 @@
                   <div class="form-group row">
                      <label for="nomeEditavel" class="col-sm-2 col-form-label">Nome</label>
                      <div class="col-sm-10">
-                        <input name="NAME" type="text" class="form-control" id="NAME" placeholder="Nome apresentado no perfil" autocomplete="off">
+                        <input name="NAME" type="text" class="form-control" id="nameProfile" placeholder="Nome apresentado no perfil" autocomplete="off">
                      </div>
                   </div>
 
@@ -140,21 +142,21 @@
                      <span id="msg"></span> <!-- Alerta para dados alterados -->
                      <label for="sobreEditavel" class="col-sm-2 col-form-label">Sobre</label>
                      <div class="col-sm-10">
-                        <input name="sobre" type="text" class="form-control" id="sobre" placeholder="Sobre você(s)." autocomplete="off">
+                        <input name="sobre" type="text" class="form-control" id="aboutDescription" placeholder="Sobre você(s)." autocomplete="off">
                      </div>
                   </div>
 
                   <div class="form-group row">
                      <label for="localizacaoEditavel" class="col-sm-2 col-form-label">Local</label>
                      <div class="col-sm-10">
-                        <input name="local" type="text" class="form-control" id="local" placeholder="Escreva a sua localização." autocomplete="off">
+                        <input name="local" type="text" class="form-control" id="localizationInput" placeholder="Escreva a sua localização." autocomplete="off">
                      </div>
                   </div>
 
                   <div class="form-group row">
                      <div class="col-sm-10">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal" aria-label="Close" >Cancelar</button>
-                        <input type="button" name="salvaralt" id="salvaalt" value="Salvar" class="btn btn-outline-success">
+                        <input type="button" name="salvaralt" id="saveProfile" value="Salvar" class="btn btn-outline-success">
                      </div>
                   </div>
 
@@ -180,9 +182,6 @@
    <!-- Script modal -->
    <script src="../profile/index.js"></script>
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
       crossorigin="anonymous"></script>
