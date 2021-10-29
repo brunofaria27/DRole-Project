@@ -36,22 +36,26 @@ public class Application {
 	
 
 		post("/user/create", (request, response) -> userService.add(request, response));
-		post("/user/", (request, response) -> userService.update(request, response));
+		put("/user/", (request, response) -> userService.update(request, response));
 		get("/user/", (request, response) -> userService.getAll(request, response));
-		get("/eventos/musicos", (request, response) -> userService.getMusicians(request, response));
+		get("/events/musicians", (request, response) -> userService.getMusicians(request, response));
 		get("/user/:id", (request, response) -> userService.get(request, response));
-		get("/user/remove/:id", (request, response) -> userService.remove(request, response));
+		delete("/user/:id", (request, response) -> userService.remove(request, response));
 
-		get("/login/", (request, response) -> loginService.tryLogin(request, response)); // Avaliar método
+		get("/login/", (request, response) -> loginService.tryLogin(request, response));
 	
     	post("/events/create", (request, response) -> eventService.add(request, response));
-
-		
-		//post("/score/", (request, response) -> scoreService.add(request, response));
-		get("/scoreUp/:id", (request, response) -> scoreService.update(request, response));
+    	get("/events/", (request, response) -> eventService.getAll(request, response));
+    	get("/events/data", (request, response) -> eventService.getAllData(request, response));
+    	put("/events/", (request, response) -> eventService.update(request, response));
+    	get("/events/:id", (request, response) -> eventService.get(request, response));
+    	delete("/events/:id", (request, response) -> eventService.remove(request, response));
+    	
+		post("/score/", (request, response) -> scoreService.add(request, response));
+		put("/score/:id", (request, response) -> scoreService.update(request, response));
 		get("/scores/", (request, response) -> scoreService.getAll(request, response));
 		get("/score/:id", (request, response) -> scoreService.get(request, response));
 		get("/likes/:id", (request, response) -> scoreService.getLikes(request, response));
-		get("/scoreR/:id", (request, response) -> scoreService.remove(request, response));
+		delete("/scoreR/:id", (request, response) -> scoreService.remove(request, response));
 	}
 }

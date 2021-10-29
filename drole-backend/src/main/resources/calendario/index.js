@@ -6,7 +6,9 @@ document
   .addEventListener("click", createEvent);
 
 window.onload = () => {
-  event.preventDefault();
+  window.event.preventDefault();
+  showEvents();
+
   let obj = JSON.parse(localStorage.getItem("currentUser"));
   let user_type = obj.userType;
 
@@ -26,12 +28,13 @@ window.onload = () => {
 
 };
 
+
 function showMusicians() {
-  event.preventDefault();
+  window.event.preventDefault();
 
   $.ajax({
     type: "GET",
-    url: "http://localhost:4568/eventos/musicos",
+    url: "http://localhost:4568/events/musicians",
     dataType: "xml",
     success: function (xml) {
       $(xml)
@@ -49,7 +52,6 @@ function showMusicians() {
                 "</option>"
             ).appendTo("#musicians");
           }
-
         });
     },
     error: function () {
@@ -59,7 +61,7 @@ function showMusicians() {
 }
 
 function createEvent() {
-  event.preventDefault();
+  window.event.preventDefault();
 
   let event_name = document.getElementById("event_name").value;
   let event_musician_id = document.getElementById("musicians").value;
@@ -92,10 +94,64 @@ function createEvent() {
       event_price: event_price,
     },
     success: function (data) {
-      //console.log(data);
+      window.location = "../calendario/index.html";
     },
     error: function () {
-      console.log("nao foi :)");
+      alert("Ocorreu um erro inesperado durante o processamento.");
     },
   });
+}
+
+function showEvents() {
+  window.event.preventDefault();
+
+  let current_id = JSON.parse(localStorage.getItem("currentUser")).id;
+
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:4568/events/data",
+    dataType: "xml",
+    success: function (xml) {
+      $(xml)
+        .find("event")
+        .each(function () {
+          var date = $(this).find("date").text();
+          var musicianName = $(this).find("musicianName").text();
+          var hostName = $(this).find("hostName").text();
+          var hostId = $(this).find("hostId").text();
+          var musicianId = $(this).find("musicianId").text();
+          var musicalStyle = $(this).find("musicalStyle").text();
+          var minimumAge = $(this).find("minimumAge").text();
+          var entrance;
+          if(minimumAge == 1){
+            entrance = '18+'
+          }else{
+            entrance = '18-'
+          }
+
+          $(`<tr>
+          <td scope="row"> ${date}</td>
+          <td scope="row"> ${hostName}</td>
+          <td scope="row"> ${musicianName}</td>
+          <td scope="row"> ${musicalStyle}</td>
+          <td scope="row"> ${entrance}</td>
+          `).appendTo("#table-events");
+
+          if(current_id == hostId){
+            console.log("cheguei");
+            $(`</tr>`).appendTo("#table-events");
+          }
+          else if(current_id == musicianId){
+            $(`</tr>`).appendTo("#table-events");
+          }
+          else{
+            $(`</tr>`).appendTo("#table-events");
+          }
+        });
+    },
+    error: function () {
+      alert("Ocorreu um erro inesperado durante o processamento.");
+    },
+  });
+  showMusicians();
 }

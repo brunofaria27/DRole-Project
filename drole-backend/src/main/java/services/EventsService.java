@@ -2,6 +2,7 @@ package services;
 
 
 import dao.EventsDAO;
+import model.EventData;
 import model.Events;
 import spark.*;
 
@@ -23,7 +24,7 @@ public class EventsService extends EventsDAO {
 
 		Events event = new Events(event_name, event_musician_id, musical_style, minimum_age, event_host_id,
 				event_status, date_event, event_capacity, event_formality, event_target, event_hour, event_price);
-
+		
 		EventsDAO.createEvent(event);
 
 		response.status(201);
@@ -107,6 +108,26 @@ public class EventsService extends EventsDAO {
 					+ "</capacity>\n" + "\t<formality>" + event.getEvent_formality() + "</formality>\n" + "\t<target>"
 					+ event.getEvent_target() + "</target>\n" + "\t<hour>" + event.getEvent_hour() + "</hour>\n"
 					+ "\t<price>" + event.getEvent_price() + "</price>\n" + "</event>\n");
+		}
+
+		returnValue.append("</events>");
+		response.header("Content-Type", "application/xml");
+		response.header("Content-Encoding", "UTF-8");
+		return returnValue.toString();
+	}
+	
+	public Object getAllData(Request request, Response response) {
+		StringBuffer returnValue = new StringBuffer("<events type=\"array\">");
+
+		for (EventData event : EventsDAO.getEventsData()) {
+			returnValue.append("<event>\n" + "\t<id>" + event.getEvent_id() + "</id>\n" + "\t<name>"
+					+ event.getEvent_name() + "</name>\n" + "\t<musicianName>" + event.getEvent_musician_name()
+					+ "</musicianName>\n" + "\t<musicalStyle>" + event.getMusical_style() + "</musicalStyle>\n"
+					+ "\t<minimumAge>" + event.getMinimum_age() + "</minimumAge>\n" + "\t<status>" + event.getEvent_status() + "</status>\n"
+					+ "\t<date>" + event.getDate_event() + "</date>\n" + "\t<hostName>" + event.getEvent_host_name()
+					+ "</hostName>\n" + "\t<musicianId>" + event.getEvent_musician_id()
+					+ "</musicianId>\n" + "\t<hostId>" + event.getEvent_host_id()
+					+ "</hostId>\n" + "</event>\n");
 		}
 
 		returnValue.append("</events>");
