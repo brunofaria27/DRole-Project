@@ -31,6 +31,7 @@ function showProfiles() {
           var type = $(this).find("userType").text();
           var description = $(this).find("description").text();
           var photo_path = $(this).find("userPhoto").text();
+          var likes = $(this).find("userLikes").text();
 
           if(type == 2) type = 'Estabelecimento';
           else if(type == 3) type = 'Músico';
@@ -46,10 +47,10 @@ function showProfiles() {
                     <p class="card-text">${description}</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Avaliação</li>
+                    <li class="list-group-item">${likes}</li>
                 </ul>
                 <div class="card-body">
-                    <button id="btn-card-profile" value="${id}" type="button" class="btn btn-dark">Visitar Perfil</button>
+                    <button value="${id}" type="button" onclick="showProfile(${id})" class="btn btn-dark">Visitar Perfil</button>
                 </div>
             </div>`
             ).appendTo("#show_profiles");
@@ -62,50 +63,53 @@ function showProfiles() {
   });
 }
 
-function showProfile() {
+function showProfile(profile_id) {
   window.event.preventDefault();
 
-  let profile_id = document.getElementById("btn-card-profile").value
+  console.log(profile_id);
+  let obj = JSON.parse(localStorage.getItem("currentUser"));
+  let current_id = obj.id;
+  let user_type = obj.userType;
 
-  // $.ajax({
-  //   type: "GET",
-  //   url: "http://localhost:4568/user",
-  //   dataType: "xml",
-  //   success: function (xml) {
-  //     $(xml)
-  //       .find("user")
-  //       .each(function () {
-  //         var name = $(this).find("profileName").text();
-  //         var id = $(this).find("id").text();
-  //         var type = $(this).find("userType").text();
-  //         var description = $(this).find("description").text();
-  //         var photo_path = $(this).find("userPhoto").text();
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:4568/user/" + profile_id,
+    dataType: "xml",
+    contentType: "application/json",
+    data: {
+      current_id: current_id,
+    },
+    success: function (xml) {
+      $(xml)
+      .find("user")
+      .each(function () {
+        var profileName = $(this).find("profileName").text();
+        var profileDescription = $(this).find("description").text();
+        var profilePhoto = $(this).find("userPhoto").text();
+        var profileLocalization = $(this).find("localization").text();
 
-  //         if(type == 2) type = 'Estabelecimento';
-  //         else if(type == 3) type = 'Músico';
+        if(profileName != "null" && profileLocalization != null && profileDescription != null) {
+          $('<h4 class="mt-0 mb-0">' + profileName + '</h4>').appendTo("#changeNameType");
+          $('<p class="p-2">' + profileDescription + '</p>').appendTo("#changeAbout");
+          $('<p class="p-2">' + profileLocalization + '</p>').appendTo("#changeLocal");
 
-  //         if (name != "null") {
-  //           $(`
-  //           <div class="card col-2" style="width: 18rem;">
-  //               <img src="${photo_path}" class="card-img-top" alt="...">
-  //               <div class="card-body">
-  //                   <h5 class="card-title">${name}</h5>
-  //                   <p class="card-text">${type}</p>
-  //                   <p class="card-text">${description}</p>
-  //               </div>
-  //               <ul class="list-group list-group-flush">
-  //                   <li class="list-group-item">Avaliação</li>
-  //               </ul>
-  //               <div class="card-body">
-  //                   <button id="btn-card-profile" value="${id}" type="button" class="btn btn-dark">Visitar Perfil</button>
-  //               </div>
-  //           </div>`
-  //           ).appendTo("#show_profles");
-  //         }
-  //       });
-  //   },
-  //   error: function () {
-  //     alert("Ocorreu um erro inesperado durante o processamento.");
-  //   },
-  // });
+          if(user_type == 2) {
+            $('<p class="small mb-4 tipo">Estabelecimento</p>').appendTo("#changeNameType");
+          } else if(user_type == 3) {
+            $('<p class="small mb-4 tipo">Músico</p>').appendTo("#changeNameType");
+          }
+        } else {
+          $('<h4 class="mt-0 mb-0">Nome</h4>').appendTo("#changeNameType");
+          $('<p class="p-2">Escreva sobre vocês(s).</p>').appendTo("#changeAbout");
+          $('<p class="p-2">Digite sua localização</p>').appendTo("#changeLocal");
+          $('<p class="small mb-4 tipo">Tipo</p>').appendTo("#changeNameType");
+        }
+
+        window.location = "../profile/index.html";
+      });
+    },
+    error: function () {
+      alert("Ocorreu um erro inesperado durante o processamento.");
+    },
+  });
 }

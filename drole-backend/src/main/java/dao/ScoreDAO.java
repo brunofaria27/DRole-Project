@@ -96,16 +96,16 @@ public class ScoreDAO extends DAO {
 		return score;
 	}
 	
-	public static boolean hasScore(int id) {
+	public static boolean hasScore(int current_id, int profile_id) {
 		boolean status = false;
 		try {
 			connect();
 			Statement st = connection.createStatement();
-			String query = "SELECT * FROM score WHERE valued_id = " + id;
+			String query = "SELECT rate FROM score WHERE valuer_id = "+ current_id +" AND valued_id = " + profile_id;
 			ResultSet rs = st.executeQuery(query);
 
 			if (rs.next()) {
-				status = true;
+				status = rs.getBoolean("rate");
 			}
 
 			st.close();

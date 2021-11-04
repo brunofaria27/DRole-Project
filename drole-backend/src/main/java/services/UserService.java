@@ -1,5 +1,6 @@
 package services;
 
+import dao.ScoreDAO;
 import dao.UserDAO;
 import model.User;
 import spark.*;
@@ -33,22 +34,31 @@ public class UserService extends UserDAO {
 
 	public Object get(Request request, Response response) {
 		int id = Integer.parseInt(request.params(":id"));
+		
+		//int current = Integer.parseInt(request.queryParams("current_id"));
+		
+		boolean status = true;
+				//ScoreDAO.hasScore(current, id);
 
 		User user = UserDAO.getUser(id);
 
 		if (user != null) {
 			response.header("Content-Type", "application/xml");
 			response.header("Content-Encoding", "UTF-8");
+			
+			
 
 			return "<user>\n" + "\t<id>" + user.getUser_id() + "</id>\n" + "\t<username>" + user.getUsername()
 					+ "</username>\n" + "\t<userType>" + user.getUser_type() + "</userType>\n" + "\t<userPhoto>"
 					+ user.getPhoto_path() + "</userPhoto>\n" + "\t<email>" + user.getEmail() + "</email>\n"
 					+ "\t<profileName>" + user.getProfile_name() + "</profileName>\n" + "\t<localization>"
 					+ user.getProfile_localization() + "</localization>\n" + "\t<description>"
-					+ user.getProfile_description() + "</description>\n" + "</user>\n";
+					+ user.getProfile_description() + "</description>\n" + "\t<userLikes>"
+					+ user.getUser_likes() + "</userLikes>" + "\t<currentLike>"
+					+ status + "</currentLike>" + "</user>\n";
 		} else {
 			response.status(404); // 404 Not found
-			return "User " + id + " n√£o encontrado.";
+			return "User " + id + " n„o encontrado.";
 		}
 
 	}
@@ -98,7 +108,8 @@ public class UserService extends UserDAO {
 					+ "\t<userPhoto>" + user.getPhoto_path() + "</userPhoto>\n" + "\t<email>" + user.getEmail()
 					+ "</email>\n" + "\t<profileName>" + user.getProfile_name() + "</profileName>\n"
 					+ "\t<localization>" + user.getProfile_localization() + "</localization>\n" + "\t<description>"
-					+ user.getProfile_description() + "</description>\n" + "</user>\n");
+					+ user.getProfile_description() + "</description>\n" + "\t<userLikes>"
+					+ user.getUser_likes() + "\t</userLikes>" + "</user>\n");
 		}
 
 		returnValue.append("</users>");
@@ -117,7 +128,8 @@ public class UserService extends UserDAO {
 						+ "\t<userPhoto>" + user.getPhoto_path() + "</userPhoto>\n" + "\t<email>" + user.getEmail()
 						+ "</email>\n" + "\t<profileName>" + user.getProfile_name() + "</profileName>\n"
 						+ "\t<localization>" + user.getProfile_localization() + "</localization>\n" + "\t<description>"
-						+ user.getProfile_description() + "</description>\n" + "</user>\n");
+						+ user.getProfile_description() + "</description>\n" + "\t<userLikes>"
+						+ user.getUser_likes() + "\t</userLikes>"+ "</user>\n");
 			}
 		}
 
