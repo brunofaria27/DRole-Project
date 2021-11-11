@@ -63,13 +63,7 @@ public class EventsService extends EventsDAO {
 		Events event = EventsDAO.getEvent(id);
 
 		if (event != null) {
-			event.setEvent_name(request.queryParams("event_name"));
-			event.setEvent_musician_id(Integer.parseInt(request.queryParams("event_musician_id")));
-			event.setMusical_style(request.queryParams("musical_style"));
-			event.setMinimum_age(Integer.parseInt(request.queryParams("minimum_age")));
-			event.setEvent_host_id(Integer.parseInt(request.queryParams("event_host_id")));
 			event.setEvent_status(request.queryParams("event_status"));
-			event.setDate_event(request.queryParams("date_event"));
 
 			EventsDAO.updateEvent(event);
 			return id;

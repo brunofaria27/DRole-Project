@@ -47,7 +47,7 @@ public class Application {
     	post("/events/create", (request, response) -> eventService.add(request, response));
     	get("/events/", (request, response) -> eventService.getAll(request, response));
     	get("/events/data", (request, response) -> eventService.getAllData(request, response));
-    	put("/events/", (request, response) -> eventService.update(request, response));
+    	put("/events/:id", (request, response) -> eventService.update(request, response));
     	get("/events/:id", (request, response) -> eventService.get(request, response));
     	delete("/events/:id", (request, response) -> eventService.remove(request, response));
     	

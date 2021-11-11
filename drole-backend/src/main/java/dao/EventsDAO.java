@@ -66,10 +66,10 @@ public class EventsDAO extends DAO {
 					+ event.getEvent_musician_id() + ", musical_style = '" + event.getMusical_style()
 					+ "', minimum_age = " + event.getMinimum_age() + ", event_host_id = " + event.getEvent_host_id()
 					+ ", event_status = '" + event.getEvent_status() + "', date_event = '" + event.getDate_event()
-					+ "', date_event = '" + event.getDate_event() + "', event_capacity = '" + event.getEvent_capacity()
-					+ "', event_formality = '" + event.getEvent_formality() + "', event_target = '"
-					+ event.getEvent_target() + "', event_hour = '" + event.getEvent_hour() + "', event_price = '"
-					+ event.getEvent_price() + "' WHERE event_id = " + event.getEvent_id();
+					+ "', event_capacity = '" + event.getEvent_capacity() + "', event_formality = '"
+					+ event.getEvent_formality() + "', event_target = '" + event.getEvent_target() + "', event_hour = '"
+					+ event.getEvent_hour() + "', event_price = '" + event.getEvent_price() + "' WHERE event_id = "
+					+ event.getEvent_id();
 
 			st.executeUpdate(query);
 			st.close();

@@ -69,8 +69,29 @@
             <div id="buttonAddEvent" class="col-sm-6">
                 <!-- JS BUTTON AQ -->
             </div>
+
+        </div>
+        <div class="row" id="div-first-table-events">
+            <!-- <div class="col-sm-12">
+                <table id="grid-contatos" class="table table-striped">
+                    <h1>Eventos Pendentes</h1>
+                    <thead>
+                        <tr>
+                            <th scope="col">Dia</th>
+                            <th scope="col">Estabelecimento</th>
+                            <th scope="col">Músico</th>
+                            <th scope="col">Tipo músical</th>
+                            <th scope="col">Entrada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-pending-events">
+                    </tbody>
+                </table>
+            </div> -->
+        </div>
+        <div class="row">
             <div class="col-sm-6">
-                <select id="ddlViewBy">
+                <select id="filter-musical-style">
                     <option value="Todos" selected="selected">Todos</option>
                     <option value="Pop">Pop</option>
                     <option value="Funk">Funk</option>
@@ -78,16 +99,19 @@
                     <option value="Axe">Axe</option>
                     <option value="Sertanejo">Sertanejo</option>
                     <option value="Eletrônica">Eletrônica</option>
-                    <option value="Trap">Trap</option>
+                    <option value="Clássica">Clássica</option>
+                    <option value="Pagode">Pagode</option>
+                    <option value="Samba">Samba</option>
                 </select>
             </div>
         </div>
-
-        <div class="row">
+        <div class="row" id="div-scnd-table-events">
             <div class="col-sm-12">
-                <table id="grid-contatos" class="table table-striped">
+                <table id="grid-events2" class="table table-striped">
+                    <h1 id="table-title">Eventos Confirmados</h1>
                     <thead>
                         <tr>
+                            <th scope="col">Nome</th>
                             <th scope="col">Dia</th>
                             <th scope="col">Estabelecimento</th>
                             <th scope="col">Músico</th>
@@ -100,6 +124,8 @@
                 </table>
             </div>
         </div>
+
+
     </div>
     <!-- End corpo calendário -->
 
