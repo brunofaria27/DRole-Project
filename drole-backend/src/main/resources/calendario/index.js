@@ -12,6 +12,7 @@ window.onload = () => {
     .addEventListener("change", function () {
       document.getElementById("table-events").innerHTML = "";
 
+
       let tablePendentes = document.getElementById("table-pending-events");
       if (tablePendentes) tablePendentes.remove();
 
@@ -126,10 +127,16 @@ function showEvents(filtro) {
   let current_id = JSON.parse(localStorage.getItem("currentUser")).id;
   let userType = JSON.parse(localStorage.getItem("currentUser")).userType;
 
+  if(filtro == "Recusados"){
+    document.getElementById("table-title").innerHTML = "Eventos Recusados";
+  }else{
+    document.getElementById("table-title").innerHTML = "Eventos Confirmados";
+  }
+
   if (userType == 2 || userType == 3 || userType == 4) {
     $(`<div class="col-sm-12">
     <table id="grid-events1" class="table table-striped">
-        <h1 id="pending-table-title">Pendentes</h1>
+        <h1 id="pending-table-title">Eventos Pendentes</h1>
         <thead>
             <tr>
                 <th scope="col">Nome</th>    
