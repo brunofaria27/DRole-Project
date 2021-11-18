@@ -2,6 +2,7 @@ package app;
 
 import static spark.Spark.*;
 
+import lib.Recommender;
 import services.LoginService;
 import services.UserService;
 import services.EventsService;
@@ -12,6 +13,7 @@ public class Application {
 	public static LoginService loginService = new LoginService();
 	public static EventsService eventService = new EventsService();
 	public static ScoreService scoreService = new ScoreService();
+	public static Recommender recommender = new Recommender();
 
 	public static void main(String[] args) {
 
