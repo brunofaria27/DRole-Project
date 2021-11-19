@@ -15,6 +15,11 @@ a.nav-link{
 .menu_area nav a:hover{
     background-color: #121313;
 }
+a:hover{
+    transform: scale(1.5);
+    transition-duration: 0.5s;
+}
+
 .static {
     position:absolute;
     background: white;
