@@ -127,16 +127,16 @@ function showEvents(filtro) {
   let current_id = JSON.parse(localStorage.getItem("currentUser")).id;
   let userType = JSON.parse(localStorage.getItem("currentUser")).userType;
 
-  if(filtro == "Recusados"){
-    document.getElementById("table-title").innerHTML = "Eventos Recusados";
-  }else{
-    document.getElementById("table-title").innerHTML = "Eventos Confirmados";
-  }
+  // if(filtro == "Recusados"){
+  //   document.getElementById("table-title").innerHTML = "Eventos Recusados";
+  // }else{
+  //   document.getElementById("table-title").innerHTML = "Eventos Confirmados";
+  // }
 
   if (userType == 2 || userType == 3 || userType == 4) {
     $(`<div class="col-sm-12">
     <table id="grid-events1" class="table table-striped">
-        <h1 id="pending-table-title">Eventos Pendentes</h1>
+        <img id="tituloSec" src="../images/títuloPendentes.png" alt="Eventos Pendentes">
         <thead>
             <tr>
                 <th scope="col">Nome</th>    
@@ -177,6 +177,7 @@ function showEvents(filtro) {
           } else {
             entrance = "18-";
           }
+          console.log(event_status);
 
           if (event_status == "Pendente") {
             if (userType == 3 || userType == 4) {
@@ -188,8 +189,10 @@ function showEvents(filtro) {
                       <td scope="row"> ${musicianName}</td>
                       <td scope="row"> ${musicalStyle}</td>
                       <td scope="row"> ${entrance}</td>
-                      <td scope="row"> <button type="button" value="${eventId}" id="btn-accept-event-${eventId}" class="btn btn-success">Aceitar Evento</button>
-                                       <button type="button" value="${eventId}" id="btn-deny-event-${eventId}" class="btn btn-danger">Recusar Evento</button> </td>
+                      <td scope="row"> <button class="btn-event" type="button" value="${eventId}" id="btn-accept-event-${eventId}">
+                      <img id="btn-accept-img" src="../images/check.png" alt="Aceitar Evento" width="30px" height="30px"></button>
+                                       <button class="btn-event" type="button" value="${eventId}" id="btn-deny-event-${eventId}" >
+                      <img id="btn-deny-img" src="../images/X.png" alt="Recusar Evento" width="30px" height="30px"></button> </td>
                     </tr>`).appendTo("#table-pending-events");
 
               document.addEventListener("click", function (e) {
@@ -215,7 +218,7 @@ function showEvents(filtro) {
                     <td scope="row"> ${musicianName}</td>
                     <td scope="row"> ${musicalStyle}</td>
                     <td scope="row"> ${entrance}</td>
-                    <td scope="row"><span class="badge badge-warning">Aguardando resposta do Músico</span>
+                    <td scope="row"><img id="btn-pendent-img" src="../images/interrogacao.png" alt="" width="30px" height="30px">
                    </tr>`).appendTo("#table-pending-events");
               //}
             }

@@ -150,7 +150,9 @@ public class EventsDAO extends DAO {
 			Statement st = DAO.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = st.executeQuery(
-					"SELECT event_id, event_name, event_host_id, event_musician_id, s.profile_name AS event_host_name, u.profile_name AS event_musician_name, musical_style, minimum_age, event_status, date_event FROM users AS u INNER JOIN(SELECT event_id, event_name, event_host_id, profile_name, musical_style, minimum_age, event_status, date_event, event_musician_id FROM events INNER JOIN users ON event_host_id = user_id WHERE user_type = 2) AS s ON u.user_id = s.event_musician_id");
+					"SELECT event_id, event_name, event_host_id, event_musician_id, s.profile_name AS event_host_name, u.profile_name AS event_musician_name, musical_style, minimum_age, "
+					+ "event_status, date_event FROM users AS u INNER JOIN(SELECT event_id, event_name, event_host_id, profile_name, musical_style, minimum_age, event_status, date_event, "
+					+ "event_musician_id FROM events INNER JOIN users ON event_host_id = user_id) AS s ON u.user_id = s.event_musician_id");
 
 			if (rs.next()) {
 				rs.last();

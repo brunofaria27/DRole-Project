@@ -1,6 +1,6 @@
 /* COLOCAR EM TODOS CSS */
 .header{
-    background: rgb(161, 161, 161);
+    background: #121313;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -11,14 +11,14 @@
     margin-top: 30px;
 }
 .menu_area nav a{
-    background-color: #6c747c;
+    background-color: #121313;
     color: white;
     margin-right: 10px;
 }
 .menu_area nav a:hover{
-    background-color: #5b6368;
+    background-color: #121313;
 }
 .active{
-    background-color: rgb(130, 130, 130) !important ;
+    background-color: #121313 !important ;
 }
 /* COLOCAR EM TODOS CSS */
