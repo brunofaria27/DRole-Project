@@ -15,12 +15,5 @@ a.nav-link{
 .menu_area nav a:hover{
     background-color: #121313;
 }
-.static {
-    position:absolute;
-    background: white;
-}
-  
-.static:hover {
-    opacity:0;
-}
+
 /* COLOCAR EM TODOS CSS */

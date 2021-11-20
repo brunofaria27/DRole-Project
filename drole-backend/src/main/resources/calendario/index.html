@@ -22,9 +22,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="../images/Logo.svg" alt="logo" class="static" width="100px" height="100px">
                     <img src="../images/Logo.gif" alt="logo" class="active" width="100px" height="100px">
-                    <!-- <img src="../images/logo transparente.png" width="80px" height="60px" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -59,16 +57,12 @@
 
     <!-- Alertas -->
     <div class="container">
-        <div class="row">
-            <div id="msg" class="col-sm-10 offset-sm-1 ">
-                <!--<div class="alert alert-warning"></div>-->
-            </div>
-        </div>
+
         <!-- End alertas -->
 
 
         <div class="form-group row">
-            <div id="buttonAddEvent" class="col-sm-6">
+            <div id="buttonAddEvent" class="col-sm-12">
                 <!-- JS BUTTON AQ -->
             </div>
 
@@ -91,26 +85,30 @@
                 </table>
             </div> -->
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <select id="filter-musical-style">
-                    <option value="Todos" selected="selected">Todos</option>
-                    <option value="Pop">Pop</option>
-                    <option value="Funk">Funk</option>
-                    <option value="Rock">Rock</option>
-                    <option value="Axe">Axe</option>
-                    <option value="Sertanejo">Sertanejo</option>
-                    <option value="Eletrônica">Eletrônica</option>
-                    <option value="Clássica">Clássica</option>
-                    <option value="Pagode">Pagode</option>
-                    <option value="Samba">Samba</option>
-                </select>
-            </div>
-        </div>
+
         <div class="row" id="div-scnd-table-events">
             <div class="col-sm-12">
                 <table id="grid-events2" class="table table-striped">
-                <img id="tituloSec" src="../images/títuloConfirmados.png" alt="Eventos Confirmados">
+                    <div>
+                        <img id="table_title" src="" alt="Eventos Confirmados">
+                        <div id="filter-select">
+                            <select id="filter-musical-style">
+                                <div id="select-options">
+                                <option value="Todos" selected="selected">Todos</option>
+                                <option value="Pop">Pop</option>
+                                <option value="Funk">Funk</option>
+                                <option value="Rock">Rock</option>
+                                <option value="Axe">Axe</option>
+                                <option value="Sertanejo">Sertanejo</option>
+                                <option value="Eletrônica">Eletrônica</option>
+                                <option value="Clássica">Clássica</option>
+                                <option value="Pagode">Pagode</option>
+                                <option value="Samba">Samba</option>
+                            </div>
+                            </select>
+                        </div>
+                    </div>
+
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
