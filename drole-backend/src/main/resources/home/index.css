@@ -13,3 +13,10 @@ body {
 #profiles-grid{
     align-items: center;
 }
+
+.btn-event {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+  }
