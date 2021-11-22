@@ -39,21 +39,19 @@ function showProfiles() {
 
           if (name != "null") {
             $(`
-            <div class="card col-2" style="width: 18rem;">
-                <img src="${photo_path}" class="card-img-top" alt="...">
+            <div class="card col-mb-4" style="width: 18rem; height:40rem; border-radius:2%">
+                <img src="${photo_path}" class="card-img-top" alt="..." style="width: 100%;height: 15vw;object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">${name}</h5>
                     <p class="card-text">${type}</p>
                     <p class="card-text">${description}</p>
+                    <p class="card-text">Avaliação</li>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">${likes}</li>
-                </ul>
-                <div class="card-body">
-                    <button value="${id}" type="button" onclick="showProfile(${id})" class="btn btn-dark">Visitar Perfil</button>
-                </div>
+
+                <div class="card-body text-center">
+                    <button id="btn-card-profile" value="${id}" type="button" class="btn btn-warning">Visitar Perfil</button>
             </div>`
-            ).appendTo("#show_profiles");
+            ).appendTo("#profiles-grid");
           }
         });
     },

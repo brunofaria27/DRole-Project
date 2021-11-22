@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/cabecalho.css">
+    <link rel="stylesheet" href="index.css">
     <title>D'Rolé - Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a55657dc48.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 </head>
 
 <body>
@@ -20,7 +22,9 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="../images/logo transparente.png" width="80px" height="60px" alt="Logo">
+                    <img src="../images/Logo.svg" alt="logo" class="static" width="100px" height="100px">
+                    <img src="../images/Logo.gif" alt="logo" class="active" width="100px" height="100px">
+                    <!-- <img src="../images/logo transparente.png" width="80px" height="60px" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -31,18 +35,17 @@
                 <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="../home/index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="sobrelogado.html">Sobre</a>
+                            <a class="nav-link" href="../sobre/index.html">Sobre</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../calendario/index.html">Calendário</a>
                         </li>
                         <li id="showProfile" class="nav-item">
-                            <!-- JS AQ -->
+                            <!-- Shows Perfil para dono -->
                         </li>
-
                     </ul>
                 </div>
 
@@ -51,23 +54,16 @@
     </header>
     <!-- Fim Header -->
 
+    <div id="body-content">
+        <div id="grid-container">
+            <div class="row row-cols-1 row-cols-md-2" id="profiles-grid">
 
-    <div class="row" id="show_profiles">
-        <div class="card col-2" style="width: 18rem;">
-            <img src="../images/gilboa.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Nome do Usuário TESTE</h5>
-                <p class="card-text">Tipo do perfil</p>
-                <p class="card-text">Descrição do perfil</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Avaliação</li>
-            </ul>
-            <div class="card-body">
-                <button id="btn-card-profile" type="button" class="btn btn-dark">Visitar Perfil</button>
             </div>
         </div>
+
     </div>
+
+
 
     <!-- Modal 1
     <div class="modal fade" id="modalBar1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

@@ -7,7 +7,24 @@ document
 
 window.onload = () => {
   window.event.preventDefault();
-  showEvents();
+  document
+    .getElementById("filter-musical-style")
+    .addEventListener("change", function () {
+      document.getElementById("table-events").innerHTML = "";
+
+      let tablePendentes = document.getElementById("table-pending-events");
+      if (tablePendentes) tablePendentes.remove();
+
+      let tituloPendente = document.getElementById("pending-table-title");
+      if (tituloPendente) tituloPendente.remove();
+
+      let rowsPendente = document.getElementById("grid-events1");
+      if (rowsPendente) rowsPendente.remove();
+
+      showEvents(document.getElementById("filter-musical-style").value);
+    });
+
+  showEvents("Todos");
 
   let obj = JSON.parse(localStorage.getItem("currentUser"));
   let user_type = obj.userType;
@@ -15,19 +32,21 @@ window.onload = () => {
   // Se o usuário for do tipo estabelecimento ou adm poderá ver o botão de adicionar evento
   if (user_type == 2 || user_type == 4) {
     $(
-      '<input type="button" class="btn btn-success" id="btnInsert" value="Adicionar evento" data-toggle="modal" data-target="#calendarioModal">'
+      `<button data-bs-toggle="tooltip" data-bs-placement="top" title="Adicionar Evento" class="btn-event" type="button" value="Adicionar evento" id="btnInsert" data-toggle="modal" data-target="#calendarioModal">
+                      <img id="btn-accept-img" src="../images/AddEvento.gif" alt="Adicionar Evento"></button>`
     ).appendTo("#buttonAddEvent");
   }
 
   // Se o usuário não for do tipo frequentador poderá ver o link para perfil
   if (user_type == 2 || user_type == 4 || user_type == 3) {
-    $(
-      '<a class="nav-link" href="../profile/index.html">Perfil</a>'
-    ).appendTo("#showProfile");
+    $('<a class="nav-link" href="../profile/index.html">Perfil</a>').appendTo(
+      "#showProfile"
+    );
+    $(`<option value="Recusados">Apenas Recusados</option>`).appendTo(
+      "#filter-musical-style"
+    );
   }
-
 };
-
 
 function showMusicians() {
   window.event.preventDefault();
@@ -102,10 +121,39 @@ function createEvent() {
   });
 }
 
-function showEvents() {
+function showEvents(filtro) {
   window.event.preventDefault();
 
   let current_id = JSON.parse(localStorage.getItem("currentUser")).id;
+  let userType = JSON.parse(localStorage.getItem("currentUser")).userType;
+
+  if (filtro == "Recusados") {
+    document.getElementById("table_title").src =
+      "../images/títuloRecusados.png";
+  } else {
+    document.getElementById("table_title").src =
+      "../images/títuloConfirmados.png";
+  }
+
+  if (userType == 2 || userType == 3 || userType == 4) {
+    $(`<div class="col-sm-12">
+    <table id="grid-events1" class="table table-striped">
+        <img id="pending-table-title" class="tituloSec" src="../images/títuloPendentes.png" alt="Eventos Pendentes">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>    
+                <th scope="col">Dia</th>
+                <th scope="col">Estabelecimento</th>
+                <th scope="col">Músico</th>
+                <th scope="col">Tipo músical</th>
+                <th scope="col">Entrada</th>
+                <th id="status-th" scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody id="table-pending-events">
+        </tbody>
+    </table>`).appendTo("#div-first-table-events");
+  }
 
   $.ajax({
     type: "GET",
@@ -115,6 +163,9 @@ function showEvents() {
       $(xml)
         .find("event")
         .each(function () {
+          var event_status = $(this).find("status").text();
+          var eventName = $(this).find("name").text();
+          var eventId = $(this).find("id").text();
           var date = $(this).find("date").text();
           var musicianName = $(this).find("musicianName").text();
           var hostName = $(this).find("hostName").text();
@@ -123,29 +174,89 @@ function showEvents() {
           var musicalStyle = $(this).find("musicalStyle").text();
           var minimumAge = $(this).find("minimumAge").text();
           var entrance;
-          if(minimumAge == 1){
-            entrance = '18+'
-          }else{
-            entrance = '18-'
+          if (minimumAge == 1) {
+            entrance = "18+";
+          } else {
+            entrance = "18-";
           }
 
-          $(`<tr>
-          <td scope="row"> ${date}</td>
-          <td scope="row"> ${hostName}</td>
-          <td scope="row"> ${musicianName}</td>
-          <td scope="row"> ${musicalStyle}</td>
-          <td scope="row"> ${entrance}</td>
-          `).appendTo("#table-events");
+          if (event_status == "Pendente") {
+            if (userType == 3 || userType == 4) {
+              //if (current_id == musicianId) {
+              $(`<tr>
+                      <td scope="row"> ${eventName}</td>
+                      <td scope="row"> ${date}</td>
+                      <td scope="row"> ${hostName}</td>
+                      <td scope="row"> ${musicianName}</td>
+                      <td scope="row"> ${musicalStyle}</td>
+                      <td scope="row"> ${entrance}</td>
+                      <td scope="row"> <button data-bs-toggle="tooltip" data-bs-placement="top" title="Aceitar Evento" class="btn-event" type="button" value="${eventId}" id="btn-accept-event-${eventId}">
+                      <img id="btn-accept-img" src="../images/check.png" alt="Aceitar Evento" width="30px" height="30px"></button>
+                                       <button data-bs-toggle="tooltip" data-bs-placement="top" title="Recusar Evento" class="btn-event" type="button" value="${eventId}" id="btn-deny-event-${eventId}" >
+                      <img id="btn-deny-img" src="../images/X.png" alt="Recusar Evento" width="30px" height="30px"></button> </td>
+                      
+                    </tr>`).appendTo("#table-pending-events");
 
-          if(current_id == hostId){
-            console.log("cheguei");
-            $(`</tr>`).appendTo("#table-events");
-          }
-          else if(current_id == musicianId){
-            $(`</tr>`).appendTo("#table-events");
-          }
-          else{
-            $(`</tr>`).appendTo("#table-events");
+              document.addEventListener("click", function (e) {
+                var btnId = "btn-accept-event-" + eventId;
+                if (e.target && e.target.id == btnId) {
+                  UpdateEventStatus(eventId, "Aceito");
+                }
+              });
+
+              document.addEventListener("click", function (e) {
+                var btnId = "btn-deny-event-" + eventId;
+                if (e.target && e.target.id == btnId) {
+                  UpdateEventStatus(eventId, "Recusado");
+                }
+              });
+              //}
+            } else if (userType == 2) {
+              //if (current_id == hostId) {
+              $(`<tr>
+                    <td scope="row"> ${eventName}</td>
+                    <td scope="row"> ${date}</td>
+                    <td scope="row"> ${hostName}</td>
+                    <td scope="row"> ${musicianName}</td>
+                    <td scope="row"> ${musicalStyle}</td>
+                    <td scope="row"> ${entrance}</td>
+                    <td scope="row"><img data-bs-toggle="tooltip" data-bs-placement="top" title="Aguardando Resposta do Músico" id="btn-pendent-img" src="../images/interrogacao.png" alt="" width="30px" height="30px">
+                   </tr>`).appendTo("#table-pending-events");
+              //}
+            }
+          } else if (filtro == "Todos") {
+            if (event_status == "Aceito") {
+              $(`<tr>
+                  <td scope="row"> ${eventName}</td>
+                  <td scope="row"> ${date}</td>
+                  <td scope="row"> ${hostName}</td>
+                  <td scope="row"> ${musicianName}</td>
+                  <td scope="row"> ${musicalStyle}</td>
+                  <td scope="row"> ${entrance}</td>
+                  </tr>`).appendTo("#table-events");
+            }
+          } else if (filtro == "Recusados") {
+            //if (current_id == hostId) {
+            if (event_status == "Recusado") {
+              $(`<tr>
+                  <td scope="row"> ${eventName}</td>
+                  <td scope="row"> ${date}</td>
+                  <td scope="row"> ${hostName}</td>
+                  <td scope="row"> ${musicianName}</td>
+                  <td scope="row"> ${musicalStyle}</td>
+                  <td scope="row"> ${entrance}</td>
+                  </tr>`).appendTo("#table-events");
+            }
+            //}
+          } else if (musicalStyle == filtro) {
+            $(`<tr>
+                <td scope="row"> ${eventName}</td>
+                <td scope="row"> ${date}</td>
+                <td scope="row"> ${hostName}</td>
+                <td scope="row"> ${musicianName}</td>
+                <td scope="row"> ${musicalStyle}</td>
+                <td scope="row"> ${entrance}</td>
+                </tr>`).appendTo("#table-events");
           }
         });
     },
@@ -153,4 +264,25 @@ function showEvents() {
       alert("Ocorreu um erro inesperado durante o processamento.");
     },
   });
+}
+
+function UpdateEventStatus(eventId, status) {
+  window.event.preventDefault();
+
+  console.log(eventId + status);
+
+  $.ajax({
+    url: "http://localhost:4568/events/" + eventId,
+    datatype: "json",
+    method: "PUT",
+    data: {
+      event_status: status,
+    },
+  })
+    .done(function (data) {
+      window.location.reload();
+    })
+    .fail(function (data) {
+      alert("Falha ao aceitar/recusar o evento!");
+    });
 }

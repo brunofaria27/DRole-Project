@@ -54,6 +54,8 @@ function showProfile() {
               $('<p class="small mb-4 tipo">Estabelecimento</p>').appendTo("#changeNameType");
             } else if(user_type == 3) {
               $('<p class="small mb-4 tipo">Músico</p>').appendTo("#changeNameType");
+            } else if(user_type == 4) {
+              $('<p class="small mb-4 tipo">Administrador</p>').appendTo("#changeNameType");
             }
           } else {
             $('<h4 class="mt-0 mb-0">Nome</h4>').appendTo("#changeNameType");

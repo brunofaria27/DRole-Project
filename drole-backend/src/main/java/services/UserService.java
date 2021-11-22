@@ -2,6 +2,7 @@ package services;
 
 import dao.ScoreDAO;
 import dao.UserDAO;
+import lib.Recommender;
 import model.User;
 import spark.*;
 
@@ -132,6 +133,10 @@ public class UserService extends UserDAO {
 						+ user.getUser_likes() + "\t</userLikes>"+ "</user>\n");
 			}
 		}
+		
+		String hard = "[{\"type\":\"\", \"value_capacity\":1, \"value_formality\": 2, \"value_target\": 4, \"value_hour\": 4, \"value_price\": 2}]";
+		Recommender recommender = new Recommender();
+		recommender.classify(hard);
 
 		returnValue.append("</users>");
 		response.header("Content-Type", "application/xml");
