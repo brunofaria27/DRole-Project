@@ -35,7 +35,8 @@ public class Application {
 		});
 
 		before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
-	
+		
+		post("/events/ia", (request, response) -> userService.SistemaInteligente(request, response));
 
 		post("/user/create", (request, response) -> userService.add(request, response));
 		put("/user/update/:id", (request, response) -> userService.update(request, response));

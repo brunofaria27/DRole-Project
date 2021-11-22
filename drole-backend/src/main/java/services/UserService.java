@@ -1,5 +1,10 @@
 package services;
 
+import java.util.Map;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import dao.UserDAO;
 import lib.Recommender;
 import model.User;
@@ -121,14 +126,29 @@ public class UserService extends UserDAO {
 						+ user.getProfile_description() + "</description>\n" + "</user>\n");
 			}
 		}
-		
-		String hard = "[{\"type\":\"\", \"value_capacity\":1, \"value_formality\": 2, \"value_target\": 4, \"value_hour\": 4, \"value_price\": 2}]";
-		Recommender recommender = new Recommender();
-		recommender.classify(hard);
 
+	
 		returnValue.append("</users>");
 		response.header("Content-Type", "application/xml");
 		response.header("Content-Encoding", "UTF-8");
 		return returnValue.toString();
+	}
+	
+	public Object SistemaInteligente(Request request, Response response) {
+		int event_capacity = Integer.parseInt(request.queryParams("event_capacity"));
+		int event_formality = Integer.parseInt(request.queryParams("event_formality"));
+		int event_target = Integer.parseInt(request.queryParams("event_target"));
+		int event_hour = Integer.parseInt(request.queryParams("event_hour"));
+		int event_price = Integer.parseInt(request.queryParams("event_price"));
+		
+		String hard = "[{\"type\":\"\", \"value_capacity\":" + event_capacity + ", \"value_formality\":" + event_formality +", \"value_target\": " + event_target + ", \"value_hour\":" + event_hour + ", \"value_price\":" + event_price + "}]";
+		Recommender recommender = new Recommender();
+		
+		JSONObject jsonObj = new JSONObject((Map) recommender.classify(hard));
+	    JSONArray objs = (JSONArray) jsonObj.get("Scored Labels");
+	    
+	    System.out.println(objs);
+		
+		return "OK";
 	}
 }

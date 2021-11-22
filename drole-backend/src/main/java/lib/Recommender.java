@@ -21,7 +21,7 @@ public class Recommender {
         List<Map<String, Object>> classifiedFeatures = null;
         try {
             HttpResponse<String> response  = client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(response.body());
+            response.body();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

@@ -4,6 +4,9 @@ document
 document
   .getElementById("btn-save-event")
   .addEventListener("click", createEvent);
+document
+  .getElementById("btn-prox-modal")
+  .addEventListener("click", getValuesForm);
 
 window.onload = () => {
   window.event.preventDefault();
@@ -286,3 +289,43 @@ function UpdateEventStatus(eventId, status) {
       alert("Falha ao aceitar/recusar o evento!");
     });
 }
+
+function getValuesForm() {
+  var valueCapacity = document.getElementById("event_capacity").value;
+  var valueFormality = document.getElementById("event_formality").value;
+  var valueTarget = document.getElementById("event_target").value;
+  var valueHour = document.getElementById("event_hour").value;
+  var valuePrice = document.getElementById("event_price").value;
+
+  $.ajax({
+    url: "http://localhost:4568/events/ia",
+    method: "POST",
+    data: {
+      event_capacity: valueCapacity,
+      event_formality: valueFormality,
+      event_target: valueTarget,
+      event_hour: valueHour,
+      event_price: valuePrice,
+    },
+    success: function (data) {
+      console.log("Azure Requisition");
+      // Código para mostrar aq
+    },
+    error: function () {
+      alert("Ocorreu um erro inesperado durante o processamento.");
+    },
+  });
+}
+
+/* 
+function getSistemaInteligente() {
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:4568/events/ia",
+    dataType: "json",
+  })
+      .done(function (data) {
+          console.log(data);
+      });
+}
+*/
