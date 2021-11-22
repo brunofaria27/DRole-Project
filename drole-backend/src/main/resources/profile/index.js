@@ -23,16 +23,19 @@ window.onload = () => {
 };
 
 function showProfile() {
-  event.preventDefault();
+  window.event.preventDefault();
 
   let obj = JSON.parse(localStorage.getItem("currentUser"));
   let user_id = obj.id;
   let user_type = obj.userType;
 
   $.ajax({
-    type: "GET",
+    type: "POST",
     url: "http://localhost:4568/user/" + user_id,
     dataType: "xml",
+    data: {
+      current_id: user_id,
+    },
     success: function (xml) {
       $(xml)
         .find("user")
