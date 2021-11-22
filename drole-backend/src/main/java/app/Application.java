@@ -41,7 +41,7 @@ public class Application {
 		put("/user/update/:id", (request, response) -> userService.update(request, response));
 		get("/user/", (request, response) -> userService.getAll(request, response));
 		get("/events/musicians", (request, response) -> userService.getMusicians(request, response));
-		get("/user/:id", (request, response) -> userService.get(request, response));
+		post("/user/:id", (request, response) -> userService.get(request, response));
 //		delete("/user/remove/:id", (request, response) -> userService.remove(request, response));
 
 		get("/login/", (request, response) -> loginService.tryLogin(request, response));
@@ -57,7 +57,6 @@ public class Application {
 		put("/score/:id", (request, response) -> scoreService.update(request, response));
 		get("/scores/", (request, response) -> scoreService.getAll(request, response));
 		get("/score/:id", (request, response) -> scoreService.get(request, response));
-		get("/likes/:id", (request, response) -> scoreService.getLikes(request, response));
 		delete("/scoreR/:id", (request, response) -> scoreService.remove(request, response));
 	}
 }

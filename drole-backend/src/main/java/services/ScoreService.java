@@ -1,8 +1,6 @@
 package services;
 
-import dao.EventsDAO;
 import dao.ScoreDAO;
-import model.Events;
 import model.Score;
 import spark.*;
 
@@ -89,20 +87,6 @@ public class ScoreService extends ScoreDAO {
 		return returnValue.toString();
 	}
 
-	public Object getLikes(Request request, Response response) {
-		int id = Integer.parseInt(request.params(":id"));
+	
 
-		boolean status = ScoreDAO.hasScore(id);
-
-		if (status != false) {
-			response.header("Content-Type", "application/xml");
-			response.header("Content-Encoding", "UTF-8");
-
-			return "<score>\n" + "\t<valued_id>" + id + "</valued_id>\n" + "\t<likes>" + ScoreDAO.getLikes(id) + "</likes>\n" + "</score>\n";
-		} else {
-			response.status(404); // 404 Not found
-			return "Score " + id + " não encontrado.";
-		}
-
-	}
 }

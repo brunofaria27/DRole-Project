@@ -10,9 +10,10 @@ public class User {
 	private String profile_localization;
 	private String profile_description;
 	private String profile_name;
+	private int user_likes;
 
 	public User(String username, int user_type, String photo_path, String email, String hashPassword,
-			String profile_localization, String profile_description, String profile_name) {
+			String profile_localization, String profile_description, String profile_name, int user_likes) {
 		this.username = username;
 		this.user_type = user_type;
 		this.photo_path = photo_path;
@@ -21,12 +22,13 @@ public class User {
 		this.profile_localization = profile_localization;
 		this.profile_description = profile_description;
 		this.profile_name = profile_name;
+		this.user_likes = user_likes;
 	}
 	
 	
 
 	public User(int user_id, String username, int user_type, String photo_path, String email, String hashPassword,
-			String profile_localization, String profile_description, String profile_name) {
+			String profile_localization, String profile_description, String profile_name, int user_likes) {
 		super();
 		this.user_id = user_id;
 		this.username = username;
@@ -37,6 +39,7 @@ public class User {
 		this.profile_localization = profile_localization;
 		this.profile_description = profile_description;
 		this.profile_name = profile_name;
+		this.user_likes = user_likes;
 	}
 
 
@@ -51,7 +54,7 @@ public class User {
 
 
 	public User() {
-		this("", 0, "", "", "", "", "", "");
+		this("", 0, "", "", "", "", "", "", 0);
 	}
 
 	public int getUser_id() {
@@ -121,6 +124,16 @@ public class User {
 	public void setProfile_name(String profile_name) {
 		this.profile_name = profile_name;
 	}
+
+	public int getUser_likes() {
+		return user_likes;
+	}
+
+	public void setUser_likes(int user_likes) {
+		this.user_likes = user_likes;
+	}
+
+
 
 	@Override
 	public String toString() {
