@@ -7,6 +7,9 @@ document
 document
   .getElementById("btn-prox-modal")
   .addEventListener("click", getValuesForm);
+document
+  .getElementById("showEventType")
+  .addEventListener("click", getSistemaInteligente);
 
 window.onload = () => {
   window.event.preventDefault();
@@ -298,7 +301,7 @@ function getValuesForm() {
   var valuePrice = document.getElementById("event_price").value;
 
   $.ajax({
-    url: "http://localhost:4568/events/ia",
+    url: "http://localhost:4568/events/musicians",
     method: "POST",
     data: {
       event_capacity: valueCapacity,
@@ -309,7 +312,6 @@ function getValuesForm() {
     },
     success: function (data) {
       console.log("Azure Requisition");
-      // Código para mostrar aq
     },
     error: function () {
       alert("Ocorreu um erro inesperado durante o processamento.");
@@ -317,15 +319,29 @@ function getValuesForm() {
   });
 }
 
-/* 
+
 function getSistemaInteligente() {
+  var valueCapacity = document.getElementById("event_capacity").value;
+  var valueFormality = document.getElementById("event_formality").value;
+  var valueTarget = document.getElementById("event_target").value;
+  var valueHour = document.getElementById("event_hour").value;
+  var valuePrice = document.getElementById("event_price").value;
+
   $.ajax({
-    type: "GET",
-    url: "http://localhost:4568/events/ia",
-    dataType: "json",
+    type: "POST",
+    url: "http://localhost:4568/events/create/si",
+    datatype: "json",
+    data: {
+      event_capacity: valueCapacity,
+      event_formality: valueFormality,
+      event_target: valueTarget,
+      event_hour: valueHour,
+      event_price: valuePrice,
+    },
   })
       .done(function (data) {
-          console.log(data);
+        $(`<div class="alert alert-success" role="alert">O tipo de estilo musical mais adequado para seu evento é <strong>${data === 'Axe' ? 'Axé' : data}</strong></div>`
+            ).appendTo("#notificationSi").fadeIn(300).delay(10000).fadeOut(400);
       });
 }
-*/
+

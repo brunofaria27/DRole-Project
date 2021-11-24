@@ -1,9 +1,8 @@
 package services;
 
-import java.util.Map;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import dao.UserDAO;
 import lib.Recommender;
@@ -141,14 +140,20 @@ public class UserService extends UserDAO {
 		int event_hour = Integer.parseInt(request.queryParams("event_hour"));
 		int event_price = Integer.parseInt(request.queryParams("event_price"));
 		
-		String hard = "[{\"type\":\"\", \"value_capacity\":" + event_capacity + ", \"value_formality\":" + event_formality +", \"value_target\": " + event_target + ", \"value_hour\":" + event_hour + ", \"value_price\":" + event_price + "}]";
+		String hard = "[{\"type\":\"\", \"value_capacity\":" + event_capacity + ", \"value_formality\":" + event_formality + ", \"value_target\":" + event_target + ", \"value_hour\":" + event_hour + ", \"value_price\":" + event_price + "}]";
 		Recommender recommender = new Recommender();
+		String recomenda = recommender.classify(hard);
+		JSONObject jsonObject = new JSONObject(recomenda);
+//		System.out.println(jsonObject.get("result"));
+		JSONArray jsonArray = (JSONArray) jsonObject.get("result");
+//		System.out.println(((JSONObject) jsonArray.get(0)).get("Scored Labels"));
 		
-		JSONObject jsonObj = new JSONObject((Map) recommender.classify(hard));
-	    JSONArray objs = (JSONArray) jsonObj.get("Scored Labels");
-	    
-	    System.out.println(objs);
-		
-		return "OK";
+		return ((JSONObject) jsonArray.get(0)).get("Scored Labels");
 	}
+
+	public Object getEventType(Request request, Response response) {
+		return SistemaInteligente(request, response);
+	}
+
 }
+
