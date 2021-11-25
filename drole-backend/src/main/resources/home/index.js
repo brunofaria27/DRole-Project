@@ -39,7 +39,7 @@ function showProfiles() {
           if (name != "null") {
             $(`
             <div class="card col-mb-4" style="width: 18rem; height:40rem; border-radius:2%">
-                <img src="${photo_path}" class="card-img-top" alt="..." style="width: 100%;height: 15vw;object-fit: cover;">
+                <img src="${photo_path}" class="card-img-top" alt="..." style="width: 100%; height: 15vw; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">${name}</h5>
                     <p class="card-text">${type}</p>
@@ -47,7 +47,7 @@ function showProfiles() {
                     <p class="card-text">Avaliação</li>
                 </div>
                 <div class="card-body text-center">
-                    <button id="btn-card-profile" value="${id}" type="button" class="btn btn-warning">Visitar Perfil</button>
+                    <button id="btn-card-profile" value="${id}" type="button"  class="btn-event" ><img id="btn-visit-img" src="../images/VisitarPerfil.png" alt="Visitar Perfil" width="100%" height="80px"></button>
             </div>`
             ).appendTo("#profiles-grid");
           }

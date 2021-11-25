@@ -43,7 +43,8 @@ public class Application {
 		post("/events/musicians", (request, response) -> userService.SistemaInteligente(request, response));
 		post("/events/create/si", (request, response) -> userService.getEventType(request, response));
 		get("/user/:id", (request, response) -> userService.get(request, response));
-//		delete("/user/remove/:id", (request, response) -> userService.remove(request, response));
+		post("/user/:id", (request, response) -> userService.get(request, response));
+    //		delete("/user/remove/:id", (request, response) -> userService.remove(request, response));
 
 		get("/login/", (request, response) -> loginService.tryLogin(request, response));
 	
@@ -58,7 +59,6 @@ public class Application {
 		put("/score/:id", (request, response) -> scoreService.update(request, response));
 		get("/scores/", (request, response) -> scoreService.getAll(request, response));
 		get("/score/:id", (request, response) -> scoreService.get(request, response));
-		get("/likes/:id", (request, response) -> scoreService.getLikes(request, response));
 		delete("/scoreR/:id", (request, response) -> scoreService.remove(request, response));
 	}
 }
