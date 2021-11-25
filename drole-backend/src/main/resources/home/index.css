@@ -7,11 +7,24 @@ body {
     margin: 15px;
     background-color: rgba(0, 0, 0, 0.39)!important;
     border-radius: 20%;
-    color: white;
+    color: rgb(230, 225, 225);
 }
 
 #profiles-grid{
-    align-items: center;
+    justify-content: center;
+
+}
+
+.card-body{
+    padding: 5px !important; 
+}
+
+#like-img{
+    margin-bottom: 6px;
+}
+
+#profile-cards{
+    justify-content: center;
 }
 
 .btn-event {

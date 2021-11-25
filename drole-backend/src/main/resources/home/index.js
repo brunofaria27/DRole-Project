@@ -31,23 +31,25 @@ function showProfiles() {
           var type = $(this).find("userType").text();
           var description = $(this).find("description").text();
           var photo_path = $(this).find("userPhoto").text();
-
+          var likes = $(this).find("userLikes").text();
+          
+          
           if(type == 2) type = 'Estabelecimento';
           else if(type == 3) type = 'Músico';
           else if(type == 4) type = 'ADM';
 
           if (name != "null") {
             $(`
-            <div class="card col-mb-4" style="width: 18rem; height:40rem; border-radius:2%">
-                <img src="${photo_path}" class="card-img-top" alt="..." style="width: 100%; height: 15vw; object-fit: cover;">
+            <div id="profile-cards" class="card col-mb-4" style="width: 18rem; height:35rem; border-radius:2%">
+                <img src="${photo_path}" class="card-img-top" alt="..." style="width: 100%; height: 40%; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">${name}</h5>
                     <p class="card-text">${type}</p>
                     <p class="card-text">${description}</p>
-                    <p class="card-text">Avaliação</li>
+                    ${likes}<img data-bs-toggle="tooltip" data-bs-placement="top" title="Likes deste Perfil" id="like-img" src="../images/like.png" alt="Likes" width="35px" height="35px">
                 </div>
-                <div class="card-body text-center">
-                    <button id="btn-card-profile" value="${id}" type="button"  class="btn-event" ><img id="btn-visit-img" src="../images/VisitarPerfil.png" alt="Visitar Perfil" width="100%" height="80px"></button>
+                <div class="card-body text-right">
+                    <button data-bs-toggle="tooltip" data-bs-placement="top" title="Visitar Perfil" id="btn-card-profile" value="${id}" type="button" class="btn-event" ><img id="btn-visit-img" src="../images/VisitarPerfil.png" alt="Visitar Perfil" width="100%" height="50px"></button>
             </div>`
             ).appendTo("#profiles-grid");
           }
