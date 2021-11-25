@@ -11,17 +11,17 @@ public class Recommender {
     private static final String MODEL_URL = "http://337f59df-5b23-41b3-8d3c-044cb54a2dd9.brazilsouth.azurecontainer.io/score";
 
 
-    public List<Map<String, Object>> classify(String hard) {
+    public String classify(String hard) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(MODEL_URL))
                 .headers("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(hard))
                 .build();
 
-        List<Map<String, Object>> classifiedFeatures = null;
+        String classifiedFeatures = null;
         try {
             HttpResponse<String> response  = client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(response.body());
+            return response.body();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

@@ -35,14 +35,16 @@ public class Application {
 		});
 
 		before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
-	
 
 		post("/user/create", (request, response) -> userService.add(request, response));
 		put("/user/update/:id", (request, response) -> userService.update(request, response));
 		get("/user/", (request, response) -> userService.getAll(request, response));
 		get("/events/musicians", (request, response) -> userService.getMusicians(request, response));
+		post("/events/musicians", (request, response) -> userService.SistemaInteligente(request, response));
+		post("/events/create/si", (request, response) -> userService.getEventType(request, response));
+		get("/user/:id", (request, response) -> userService.get(request, response));
 		post("/user/:id", (request, response) -> userService.get(request, response));
-//		delete("/user/remove/:id", (request, response) -> userService.remove(request, response));
+    //		delete("/user/remove/:id", (request, response) -> userService.remove(request, response));
 
 		get("/login/", (request, response) -> loginService.tryLogin(request, response));
 	

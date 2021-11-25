@@ -1,5 +1,9 @@
 package services;
 
+import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import dao.ScoreDAO;
 import dao.UserDAO;
 import lib.Recommender;
@@ -59,7 +63,7 @@ public class UserService extends UserDAO {
 					+ status + "</currentLike>" + "</user>\n";
 		} else {
 			response.status(404); // 404 Not found
-			return "User " + id + " n�o encontrado.";
+			return "User " + id + " não encontrado.";
 		}
 
 	}
@@ -80,7 +84,7 @@ public class UserService extends UserDAO {
 			return id;
 		} else {
 			response.status(404);
-			return "User não encontrado";
+			return "User nÃ£o encontrado";
 		}
 	}
 
@@ -96,7 +100,7 @@ public class UserService extends UserDAO {
 			return id;
 		} else {
 			response.status(404); // 404 Not found
-			return "User não encontrado.";
+			return "User nÃ£o encontrado.";
 		}
 	}
 
@@ -133,14 +137,35 @@ public class UserService extends UserDAO {
 						+ user.getUser_likes() + "\t</userLikes>"+ "</user>\n");
 			}
 		}
-		
-		String hard = "[{\"type\":\"\", \"value_capacity\":1, \"value_formality\": 2, \"value_target\": 4, \"value_hour\": 4, \"value_price\": 2}]";
-		Recommender recommender = new Recommender();
-		recommender.classify(hard);
 
+	
 		returnValue.append("</users>");
 		response.header("Content-Type", "application/xml");
 		response.header("Content-Encoding", "UTF-8");
 		return returnValue.toString();
 	}
+	
+	public Object SistemaInteligente(Request request, Response response) {
+		int event_capacity = Integer.parseInt(request.queryParams("event_capacity"));
+		int event_formality = Integer.parseInt(request.queryParams("event_formality"));
+		int event_target = Integer.parseInt(request.queryParams("event_target"));
+		int event_hour = Integer.parseInt(request.queryParams("event_hour"));
+		int event_price = Integer.parseInt(request.queryParams("event_price"));
+		
+		String hard = "[{\"type\":\"\", \"value_capacity\":" + event_capacity + ", \"value_formality\":" + event_formality + ", \"value_target\":" + event_target + ", \"value_hour\":" + event_hour + ", \"value_price\":" + event_price + "}]";
+		Recommender recommender = new Recommender();
+		String recomenda = recommender.classify(hard);
+		JSONObject jsonObject = new JSONObject(recomenda);
+//		System.out.println(jsonObject.get("result"));
+		JSONArray jsonArray = (JSONArray) jsonObject.get("result");
+//		System.out.println(((JSONObject) jsonArray.get(0)).get("Scored Labels"));
+		
+		return ((JSONObject) jsonArray.get(0)).get("Scored Labels");
+	}
+
+	public Object getEventType(Request request, Response response) {
+		return SistemaInteligente(request, response);
+	}
+
 }
+
