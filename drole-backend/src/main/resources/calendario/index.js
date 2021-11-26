@@ -197,19 +197,20 @@ function showEvents(filtro) {
                       
                     </tr>`).appendTo("#table-pending-events");
 
-              document.addEventListener("click", function (e) {
-                var btnId = "btn-accept-event-" + eventId;
-                if (e.target && e.target.id == btnId) {
+              var btnId = "btn-accept-event-" + eventId;
+              document
+                .getElementById(btnId)
+                .addEventListener("click", function (e) {
                   UpdateEventStatus(eventId, "Aceito");
-                }
-              });
+                });
 
-              document.addEventListener("click", function (e) {
-                var btnId = "btn-deny-event-" + eventId;
-                if (e.target && e.target.id == btnId) {
+              var btnId2 = "btn-deny-event-" + eventId;
+              document
+                .getElementById(btnId2)
+                .addEventListener("click", function (e) {
                   UpdateEventStatus(eventId, "Recusado");
-                }
-              });
+                });
+
               //}
             } else if (userType == 2) {
               //if (current_id == hostId) {
