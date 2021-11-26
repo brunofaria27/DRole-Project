@@ -52,10 +52,67 @@
     </header>
     <!-- Fim Header -->
 
-    <div id="body-content">
+    <div class="container-fluid" id="body-content">
         <div id="grid-container">
             <div class="row row-cols-1 row-cols-md-2" id="profiles-grid">
 
+            </div>
+        </div>
+
+        <div id="grid-container">
+            <div class="row " id="show-profile-grid">
+                <div id="show-profile-card" class="card col-mb-4" style="width: 45rem;">
+                    <div class="px-4 pt-0 pb-4 cover">
+                        <div class="media align-items-end profile-head">
+
+                            <div id="profilePic" class="profile mr-3">
+                                <img id="imgPreview" src="../images/noimg.png" alt="..." width="130px"
+                                    class="rounded mb-2 img-thumbnail">
+                            </div>
+
+                            <div id="profileName" class="media-body mb-5">
+                                <h4>NOME</h4>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row" id="profile-info-row">
+
+                            <div id="type">
+                                <h6 class="font-weight-light d-block">Tipo de Perfil</h6>
+                            </div>
+                            <div id="likes">
+                                <h6 class="font-weight-bold mb-0 d-block">X</h6><small
+                                    class="ont-weight-light d-block">Curtidas</small>
+                            </div>
+                        </ul>
+                    </div> <!-- End porcentagem de avaliaÃ§Ã£o -->
+
+                    <div id="tituloAbout" class="px-4 py-3">
+                        <h5 class="mb-0">Sobre</h5>
+                    </div> <!-- End sobre -->
+
+                    <div class="px-4 py-3">
+                        <div id="about" class="p-4 rounded shadow-sm bg-light">
+                            <!-- JS -->
+                        </div>
+                    </div> <!-- End sobre -->
+
+                    <div class="py-4 px-4">
+                        <hr>
+                    </div>
+
+                    <div id="tituloLocal" class="px-4 py-3">
+                        <h5 class="mb-0">Localização</h5>
+                    </div>
+
+                    <div class="px-4 py-3">
+                        <div id="localization" class="p-4 rounded shadow-sm bg-light">
+                            teste
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -288,6 +345,7 @@
     </main> -->
 
 
+    <script src="../profile/index.js"></script>
     <script src="index.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"

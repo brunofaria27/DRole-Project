@@ -40,18 +40,15 @@ public class UserService extends UserDAO {
 	public Object get(Request request, Response response) {
 		int id = Integer.parseInt(request.params(":id"));
 		
-		//int current = Integer.parseInt(request.queryParams("current_id"));
+		int current = Integer.parseInt(request.queryParams("current_id"));
 		
-		boolean status = true;
-				//ScoreDAO.hasScore(current, id);
+		boolean status = ScoreDAO.hasScore(current, id);
 
 		User user = UserDAO.getUser(id);
 
 		if (user != null) {
 			response.header("Content-Type", "application/xml");
 			response.header("Content-Encoding", "UTF-8");
-			
-			
 
 			return "<user>\n" + "\t<id>" + user.getUser_id() + "</id>\n" + "\t<username>" + user.getUsername()
 					+ "</username>\n" + "\t<userType>" + user.getUser_type() + "</userType>\n" + "\t<userPhoto>"
