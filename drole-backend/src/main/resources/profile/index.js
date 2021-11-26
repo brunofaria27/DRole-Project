@@ -1,7 +1,7 @@
 document.getElementById("saveProfile").addEventListener("click", updateProfile);
 
 window.onload = () => {
-  event.preventDefault();
+  window.event.preventDefault();
   showProfile();
 
   let obj = JSON.parse(localStorage.getItem("currentUser"));
@@ -49,6 +49,7 @@ function showProfile() {
             $('<h4 class="mt-0 mb-0">' + profileName + '</h4>').appendTo("#changeNameType");
             $('<p class="p-2">' + profileDescription + '</p>').appendTo("#changeAbout");
             $('<p class="p-2">' + profileLocalization + '</p>').appendTo("#changeLocal");
+            $(`<img id="imgPreview" src="${profilePhoto}" alt="..." width="130" class="rounded mb-2 img-thumbnail"></img>`).appendTo("#profilePic");
 
             if(user_type == 2) {
               $('<p class="small mb-4 tipo">Estabelecimento</p>').appendTo("#changeNameType");
@@ -62,6 +63,7 @@ function showProfile() {
             $('<p class="p-2">Escreva sobre vocês(s).</p>').appendTo("#changeAbout");
             $('<p class="p-2">Digite sua localização</p>').appendTo("#changeLocal");
             $('<p class="small mb-4 tipo">Tipo</p>').appendTo("#changeNameType");
+            $('<img id="imgPreview" src="https://picsum.photos/id/1005/80/80" alt="..." width="130" class="rounded mb-2 img-thumbnail"></img>').appendTo("#profilePic");
           }
 
         });
@@ -73,7 +75,7 @@ function showProfile() {
 }
 
 function updateProfile() {
-  event.preventDefault();
+  window.event.preventDefault();
 
   let obj = JSON.parse(localStorage.getItem("currentUser"));
   let user_id = obj.id;

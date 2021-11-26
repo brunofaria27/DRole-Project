@@ -1,35 +1,83 @@
 body {
-    background: #121313 !important;
-  }
+  background: #121313 !important;
+}
 
 .card {
-    padding: 0.8rem;
-    margin: 15px;
-    background-color: rgba(0, 0, 0, 0.39)!important;
-    border-radius: 20%;
-    color: rgb(230, 225, 225);
+  padding: 0.8rem 0.8rem 0.3rem 0.8rem;
+  margin: 15px;
+  background-color: rgba(0, 0, 0, 0.39) !important;
+  border-radius: 5% !important;
+  color: rgb(230, 225, 225);
 }
 
-#profiles-grid{
-    justify-content: center;
-
+#profiles-grid,
+#show-profile-grid {
+  justify-content: center;
 }
 
-.card-body{
-    padding: 5px !important; 
+#show-profile-card {
+  padding: 0rem !important;
 }
 
-#like-img{
-    margin-bottom: 6px;
+#profile-photo {
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-#profile-cards{
-    justify-content: center;
+.card-body {
+  padding: 5px !important;
 }
+
+.like-img {
+  margin-bottom: 6px;
+}
+
+#profile-cards,
+#show-profile-card {
+  justify-content: center;
+}
+
+#type{
+  text-align: left;
+  width: 80%;
+}
+
+#profile-info-row{
+  padding: 0px 24px 0px 185px;
+}
+
+#likes{
+  text-align: center;
+  justify-content: end;
+}
+
 
 .btn-event {
-    background-color: transparent;
-    padding: 0;
-    border: 0;
-    cursor: pointer;
-  }
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.profile-head {
+  transform: translateY(5rem);
+}
+
+.cover {
+  background-image: url(https://picsum.photos/1500/400?random);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 25px 25px 0px 0px;
+}
+
+.corExemplo {
+  float: left;
+}
+
+input#inputComentario {
+  margin-bottom: 10px;
+}
+
+#buttonEnviar {
+  width: 55px;
+}
