@@ -16,6 +16,7 @@ body {
 }
 
 #show-profile-card {
+  border-radius: 25px !important;
   padding: 0rem !important;
 }
 
@@ -37,6 +38,7 @@ body {
   justify-content: center;
 }
 
+
 #type{
   text-align: left;
   width: 80%;
@@ -44,6 +46,7 @@ body {
 
 #profile-info-row{
   padding: 0px 24px 0px 185px;
+  margin-bottom: 10px;
 }
 
 #likes{
@@ -80,4 +83,17 @@ input#inputComentario {
 
 #buttonEnviar {
   width: 55px;
+}
+
+#imgPreview{
+  background-color: rgba(0, 0, 0) !important;
+  border: 0;
+}
+
+#about, #localization{
+  background-color: rgba(0, 0, 0, 0.39) !important;
+}
+
+#tituloAbout, #tituloLocal{
+  padding-bottom: 0px  !important;
 }
