@@ -5,6 +5,7 @@
 	<groupId>test</groupId>
 	<artifactId>drole-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.sparkjava</groupId>
@@ -27,6 +28,10 @@
    			<version>20201115</version>
  		</dependency>
 	</dependencies>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
 	<build>
         <plugins>
             <plugin>
