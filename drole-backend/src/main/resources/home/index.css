@@ -29,8 +29,15 @@ body {
   padding: 5px !important;
 }
 
-.like-img {
-  margin-bottom: 6px;
+#like-img {
+  margin: 0px 10px 0px 5px;
+}
+
+#like-img-div{
+  display: flex;
+  align-items: flex-end; 
+  justify-content: start;
+  padding-bottom: 10px;
 }
 
 #profile-cards,
@@ -46,12 +53,14 @@ body {
 
 #profile-info-row{
   padding: 0px 24px 0px 185px;
-  margin-bottom: 10px;
 }
 
 #likes{
   text-align: center;
+  display: flex;
+  align-items: flex-end; 
   justify-content: end;
+  padding-right: 24px;
 }
 
 
@@ -97,3 +106,4 @@ input#inputComentario {
 #tituloAbout, #tituloLocal{
   padding-bottom: 0px  !important;
 }
+
