@@ -133,6 +133,7 @@ public class UserDAO extends DAO {
 			}
 
 			st.close();
+			st2.close();
 		} catch (Exception e) {
 			close();
 			System.err.println(e.getMessage());

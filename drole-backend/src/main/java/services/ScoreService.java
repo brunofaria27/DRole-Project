@@ -10,9 +10,8 @@ public class ScoreService extends ScoreDAO {
 
 		int valued_id = Integer.parseInt(request.queryParams("profile_id"));
 		int valuer_id = Integer.parseInt(request.queryParams("user_id"));
-		boolean rate = Boolean.parseBoolean(request.queryParams("switch_value")); // valor do botao
 
-		Score score = new Score(rate, valuer_id, valued_id);
+		Score score = new Score(true, valuer_id, valued_id);
 
 		ScoreDAO.createScore(score);
 
@@ -22,10 +21,10 @@ public class ScoreService extends ScoreDAO {
 	}
 
 	public Object get(Request request, Response response) {
-		int id = Integer.parseInt(request.params(":id"));
+		int valuer = Integer.parseInt(request.params(":id"));
+		int valued = Integer.parseInt(request.params(":id2"));
 
-		Score score = ScoreDAO.getScore(id);
-
+		Score score = ScoreDAO.getScore(valuer, valued);
 		if (score != null) {
 			response.header("Content-Type", "application/xml");
 			response.header("Content-Encoding", "UTF-8");
@@ -35,21 +34,22 @@ public class ScoreService extends ScoreDAO {
 					+ "</valuer_id>\n" + "</score>\n";
 		} else {
 			response.status(404); // 404 Not found
-			return "Score " + id + " não encontrado.";
+			return "Score não encontrado.";
 		}
 
 	}
 
 	public Object update(Request request, Response response) {
-		int id = Integer.parseInt(request.params(":id"));
+		int valuer = Integer.parseInt(request.params(":id"));
+		int valued = Integer.parseInt(request.params(":id2"));
 
-		Score score = ScoreDAO.getScore(id);
+		Score score = ScoreDAO.getScore(valuer, valued);
 
 		if (score != null) {
 			score.setScore(!(score.isRate()));
 
 			ScoreDAO.updateScore(score);
-			return id;
+			return score.getScore_id();
 		} else {
 			response.status(404);
 			return "Score não encontrado";
@@ -57,15 +57,16 @@ public class ScoreService extends ScoreDAO {
 	}
 
 	public Object remove(Request request, Response response) {
-		int id = Integer.parseInt(request.params(":id"));
-
-		Score score = ScoreDAO.getScore(id);
+		int valuer = Integer.parseInt(request.params(":id"));
+		int valued = Integer.parseInt(request.params(":id2"));
+		
+		Score score = ScoreDAO.getScore(valuer, valued);
 
 		if (score != null) {
 
-			ScoreDAO.deleteScore(id);
+			ScoreDAO.deleteScore(valuer, valued);
 			response.status(200); // success
-			return id;
+			return score.getScore_id();
 		} else {
 			response.status(404); // 404 Not found
 			return "Score não encontrado.";

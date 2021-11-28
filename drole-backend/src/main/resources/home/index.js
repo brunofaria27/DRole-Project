@@ -71,6 +71,9 @@ function showProfiles() {
 function showProfile(xml, profile_id) {
   window.event.preventDefault();
 
+  let obj = JSON.parse(localStorage.getItem("currentUser"));
+  let current_id = obj.id;
+
   document.getElementById("profiles-grid").innerHTML = "";
   document.getElementById("show-profile-grid").innerHTML = `
   <div id="show-profile-card" class="card col-mb-4" style="width: 45rem;">
@@ -155,14 +158,35 @@ function showProfile(xml, profile_id) {
         if (currentLike == 'true') {
           document.getElementById(
             "likes"
-          ).innerHTML = `<img data-bs-toggle="tooltip" data-bs-placement="top" title="Likes deste Perfil"
-        id="like-img" src="../images/filledLike.png" alt="Likes" style="margin-bottom: 2px;" width="25px" height="25px">${likes}`;
+          ).innerHTML = `
+          <button here data-bs-toggle="tooltip" data-bs-placement="top" title="Dar Like" id="like-btn-${id}" value="${id}" type="button" class="btn-event">
+          <img data-bs-toggle="tooltip" data-bs-placement="top" title="Likes deste Perfil"
+          id="like-img" src="../images/filledLike.png" alt="Likes" style="margin-bottom: 2px;" width="25px" height="25px"></button>${likes}`;
+
+          var btnId = "like-btn-" + id;
+          document
+            .getElementById(btnId)
+            .addEventListener("click", function (e) {
+              addLike(current_id, id);
+            });
         } else {
           document.getElementById(
             "likes"
-          ).innerHTML = `<img data-bs-toggle="tooltip" data-bs-placement="top" title="Likes deste Perfil"
-      id="like-img" src="../images/like.png" alt="Likes" style="margin-bottom: 2px;" width="25px" height="25px">${likes}`;
+          ).innerHTML = `
+          <button here data-bs-toggle="tooltip" data-bs-placement="top" title="Dar Like" id="dislike-btn-${id}" value="${id}" type="button" class="btn-event">
+          <img data-bs-toggle="tooltip" data-bs-placement="top" title="Likes deste Perfil"
+          id="like-img" src="../images/like.png" alt="Likes" style="margin-bottom: 2px;" width="25px" height="25px"></button>${likes}`;
         }
       }
     });
+}
+
+function addLike(current_id, profile_id) {
+
+
+}
+
+function removeLike(current_id, profile_id) {
+
+  
 }
