@@ -14,7 +14,7 @@ public class UserDAO extends DAO {
 			Statement st = connection.createStatement();
 			String query = "INSERT INTO users(username, user_type, photo_path, email, hashpassword, "
 					+ "profile_localization, profile_description,profile_name, user_likes) VALUES " + "('" + user.getUsername()
-					+ "'," + user.getUser_type() + "," + "NULL" + ",'" + user.getEmail() + "','"
+					+ "'," + user.getUser_type() + "," + "'../images/noimg.png'" + ",'" + user.getEmail() + "','"
 					+ user.getHashPassword() + "'," + "NULL" + "," + "NULL" + ",'" + user.getProfile_name() + "0" + "');";
 
 			st.executeUpdate(query);
@@ -83,9 +83,7 @@ public class UserDAO extends DAO {
 			connect();
 			Statement st = DAO.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			Statement st2 = DAO.connection.createStatement();
-			String query = "UPDATE users SET user_likes = likes FROM (SELECT likes, valued_id FROM users JOIN (SELECT valued_id, COUNT (rate) AS \"likes\" FROM score WHERE rate = true GROUP BY valued_id) as likes_table ON user_id = " + profile_id + " AND user_id = valued_id) AS B WHERE B.valued_id = user_id";
-			st2.executeUpdate(query);
+
 			ResultSet rs = st.executeQuery("SELECT * FROM USERS WHERE user_id = " + profile_id);
 
 			if (rs.next()) {
@@ -112,10 +110,7 @@ public class UserDAO extends DAO {
 			connect();
 			Statement st = DAO.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			Statement st2 = DAO.connection.createStatement();
-			
-			st2.executeUpdate("UPDATE users SET user_likes = likes FROM (SELECT likes, valued_id FROM users JOIN (SELECT valued_id, COUNT (rate) AS \"likes\" FROM score WHERE rate = true GROUP BY valued_id) as likes_table ON user_id = valued_id AND user_id = valued_id) AS B WHERE B.valued_id = user_id");
-			
+
 			ResultSet rs = st.executeQuery("SELECT * FROM USERS");
 			
 			
@@ -133,7 +128,6 @@ public class UserDAO extends DAO {
 			}
 
 			st.close();
-			st2.close();
 		} catch (Exception e) {
 			close();
 			System.err.println(e.getMessage());

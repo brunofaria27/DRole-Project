@@ -13,14 +13,14 @@ public class ScoreDAO extends DAO {
 		try {
 			connect();
 			Statement st = connection.createStatement();
-			String query = "INSERT INTO score(score, valued_id, valuer_id) " + "VALUES " + "('" + score.isRate() + "',"
+			String query = "INSERT INTO score(rate, valued_id, valuer_id) " + "VALUES " + "('" + score.isRate() + "',"
 					+ score.getValued_id() + ",'" + score.getValuer_id() + "');";
-			st.executeQuery(query);
+			st.executeUpdate(query);
 			st.close();
 			
 			Statement st2 = DAO.connection.createStatement();
 			st2.executeUpdate(
-					"UPDATE users SET user_likes = likes FROM (SELECT likes, valued_id FROM users JOIN (SELECT valued_id, COUNT (rate) AS \"likes\" FROM score WHERE rate = true GROUP BY valued_id) as likes_table ON user_id = valued_id AND user_id = valued_id) AS B WHERE B.valued_id = user_id");
+					"UPDATE users SET user_likes = (SELECT COUNT(*) FROM score WHERE valued_id = " + score.getValued_id() + ") WHERE user_id = " + score.getValued_id() + ";");
 			st2.close();
 
 			status = true;
@@ -41,13 +41,13 @@ public class ScoreDAO extends DAO {
 		try {
 			connect();
 			Statement st = connection.createStatement();
-			String query = "DELETE FROM score WHERE valued_id = " + profile_id + " AND valuer_id = " + current_id;
+			String query = "DELETE FROM score WHERE valued_id = " + profile_id + " AND valuer_id = " + current_id + ";";
 			st.executeUpdate(query);
 			st.close();
 
 			Statement st2 = DAO.connection.createStatement();
 			st2.executeUpdate(
-					"UPDATE users SET user_likes = likes FROM (SELECT likes, valued_id FROM users JOIN (SELECT valued_id, COUNT (rate) AS \"likes\" FROM score WHERE rate = true GROUP BY valued_id) as likes_table ON user_id = valued_id AND user_id = valued_id) AS B WHERE B.valued_id = user_id");
+					"UPDATE users SET user_likes = (SELECT COUNT(*) FROM score WHERE valued_id = " + profile_id + ") WHERE user_id = " + profile_id + ";");
 			st2.close();
 
 			status = true;

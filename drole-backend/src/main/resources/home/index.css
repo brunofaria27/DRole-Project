@@ -63,12 +63,24 @@ body {
   padding-right: 24px;
 }
 
+button {
+  border: none !important;
+  outline: none !important;
+}
 
 .btn-event {
   background-color: transparent;
   padding: 0;
-  border: 0;
+  border: none;
   cursor: pointer;
+}
+
+.like-btn {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .profile-head {
