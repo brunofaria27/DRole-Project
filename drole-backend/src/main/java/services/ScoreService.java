@@ -11,7 +11,7 @@ public class ScoreService extends ScoreDAO {
 		int valued_id = Integer.parseInt(request.queryParams("profile_id"));
 		int valuer_id = Integer.parseInt(request.queryParams("user_id"));
 
-		Score score = new Score(true, valuer_id, valued_id);
+		Score score = new Score(true, valued_id, valuer_id);
 
 		ScoreDAO.createScore(score);
 
@@ -57,8 +57,9 @@ public class ScoreService extends ScoreDAO {
 	}
 
 	public Object remove(Request request, Response response) {
-		int valuer = Integer.parseInt(request.params(":id"));
-		int valued = Integer.parseInt(request.params(":id2"));
+		
+		int valued = Integer.parseInt(request.queryParams("profile_id"));
+		int valuer = Integer.parseInt(request.queryParams("user_id"));
 		
 		Score score = ScoreDAO.getScore(valuer, valued);
 

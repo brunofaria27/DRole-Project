@@ -59,6 +59,6 @@ public class Application {
 		put("/score/:id/:id2", (request, response) -> scoreService.update(request, response));
 		get("/scores/", (request, response) -> scoreService.getAll(request, response));
 		get("/score/:id/:id2", (request, response) -> scoreService.get(request, response));
-		delete("/score/:id/:id2", (request, response) -> scoreService.remove(request, response));
+		post("/score/remove", (request, response) -> scoreService.remove(request, response));
 	}
 }
