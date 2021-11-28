@@ -38,7 +38,7 @@ public class Application {
 
 		post("/user/create", (request, response) -> userService.add(request, response));
 		put("/user/update/:id", (request, response) -> userService.update(request, response));
-		get("/user/", (request, response) -> userService.getAll(request, response));
+		get("/users/:id", (request, response) -> userService.getAll(request, response));
 		get("/events/musicians", (request, response) -> userService.getMusicians(request, response));
 		post("/events/musicians", (request, response) -> userService.SistemaInteligente(request, response));
 		post("/events/create/si", (request, response) -> userService.getEventType(request, response));
@@ -56,9 +56,9 @@ public class Application {
     	delete("/events/:id", (request, response) -> eventService.remove(request, response));
     	
 		post("/score/", (request, response) -> scoreService.add(request, response));
-		put("/score/:id", (request, response) -> scoreService.update(request, response));
+		put("/score/:id/:id2", (request, response) -> scoreService.update(request, response));
 		get("/scores/", (request, response) -> scoreService.getAll(request, response));
-		get("/score/:id", (request, response) -> scoreService.get(request, response));
-		delete("/scoreR/:id", (request, response) -> scoreService.remove(request, response));
+		get("/score/:id/:id2", (request, response) -> scoreService.get(request, response));
+		delete("/score/:id/:id2", (request, response) -> scoreService.remove(request, response));
 	}
 }

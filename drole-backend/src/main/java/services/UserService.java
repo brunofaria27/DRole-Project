@@ -102,6 +102,8 @@ public class UserService extends UserDAO {
 	}
 
 	public Object getAll(Request request, Response response) {
+		int id = Integer.parseInt(request.params(":id"));
+		
 		StringBuffer returnValue = new StringBuffer("<users type=\"array\">");
 
 		for (User user : UserDAO.getUsers()) {
@@ -111,7 +113,8 @@ public class UserService extends UserDAO {
 					+ "</email>\n" + "\t<profileName>" + user.getProfile_name() + "</profileName>\n"
 					+ "\t<localization>" + user.getProfile_localization() + "</localization>\n" + "\t<description>"
 					+ user.getProfile_description() + "</description>\n" + "\t<userLikes>"
-					+ user.getUser_likes() + "\t</userLikes>" + "</user>\n");
+					+ user.getUser_likes() + "</userLikes>\n" + "\t<currentLike>"
+					+ ScoreDAO.hasScore(id, user.getUser_id()) + "</currentLike>\n" + "</user>\n");
 		}
 
 		returnValue.append("</users>");

@@ -15,9 +15,14 @@ public class ScoreDAO extends DAO {
 			Statement st = connection.createStatement();
 			String query = "INSERT INTO score(score, valued_id, valuer_id) " + "VALUES " + "('" + score.isRate() + "',"
 					+ score.getValued_id() + ",'" + score.getValuer_id() + "');";
-
 			st.executeQuery(query);
 			st.close();
+			
+			Statement st2 = DAO.connection.createStatement();
+			st2.executeUpdate(
+					"UPDATE users SET user_likes = likes FROM (SELECT likes, valued_id FROM users JOIN (SELECT valued_id, COUNT (rate) AS \"likes\" FROM score WHERE rate = true GROUP BY valued_id) as likes_table ON user_id = valued_id AND user_id = valued_id) AS B WHERE B.valued_id = user_id");
+			st2.close();
+
 			status = true;
 		} catch (SQLException e) {
 			close();
@@ -30,15 +35,21 @@ public class ScoreDAO extends DAO {
 		return status;
 	}
 
-	public static boolean deleteScore(int id) {
+	public static boolean deleteScore(int current_id, int profile_id) {
 		boolean status = false;
 
 		try {
 			connect();
 			Statement st = connection.createStatement();
-			String query = "DELETE FROM score WHERE score_id = " + id;
+			String query = "DELETE FROM score WHERE valued_id = " + profile_id + " AND valuer_id = " + current_id;
 			st.executeUpdate(query);
 			st.close();
+
+			Statement st2 = DAO.connection.createStatement();
+			st2.executeUpdate(
+					"UPDATE users SET user_likes = likes FROM (SELECT likes, valued_id FROM users JOIN (SELECT valued_id, COUNT (rate) AS \"likes\" FROM score WHERE rate = true GROUP BY valued_id) as likes_table ON user_id = valued_id AND user_id = valued_id) AS B WHERE B.valued_id = user_id");
+			st2.close();
+
 			status = true;
 
 		} catch (SQLException e) {
@@ -61,6 +72,12 @@ public class ScoreDAO extends DAO {
 
 			st.executeUpdate(query);
 			st.close();
+
+			Statement st2 = DAO.connection.createStatement();
+			st2.executeUpdate(
+					"UPDATE users SET user_likes = likes FROM (SELECT likes, valued_id FROM users JOIN (SELECT valued_id, COUNT (rate) AS \"likes\" FROM score WHERE rate = true GROUP BY valued_id) as likes_table ON user_id = valued_id AND user_id = valued_id) AS B WHERE B.valued_id = user_id");
+			st2.close();
+
 			status = true;
 
 		} catch (SQLException e) {
@@ -72,12 +89,12 @@ public class ScoreDAO extends DAO {
 		return status;
 	}
 
-	public static Score getScore(int id) {
+	public static Score getScore(int valuer, int valued) {
 		Score score = null;
 		try {
 			connect();
 			Statement st = connection.createStatement();
-			String query = "SELECT * FROM score WHERE score_id = " + id;
+			String query = "SELECT * FROM score WHERE valuer_id = " + valuer + " AND valued_id = " + valued;
 			ResultSet rs = st.executeQuery(query);
 
 			if (rs.next()) {
@@ -95,13 +112,13 @@ public class ScoreDAO extends DAO {
 		close();
 		return score;
 	}
-	
+
 	public static boolean hasScore(int current_id, int profile_id) {
 		boolean status = false;
 		try {
 			connect();
 			Statement st = connection.createStatement();
-			String query = "SELECT rate FROM score WHERE valuer_id = "+ current_id +" AND valued_id = " + profile_id;
+			String query = "SELECT rate FROM score WHERE valuer_id = " + current_id + " AND valued_id = " + profile_id;
 			ResultSet rs = st.executeQuery(query);
 
 			if (rs.next()) {
@@ -118,7 +135,6 @@ public class ScoreDAO extends DAO {
 		close();
 		return status;
 	}
-
 
 	public static Score[] getScores() {
 		Score[] score = null;
@@ -148,6 +164,7 @@ public class ScoreDAO extends DAO {
 		close();
 		return score;
 	}
+
 	public static int getLikes(int id) {
 		int likes = 0;
 		try {
