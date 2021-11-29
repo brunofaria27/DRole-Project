@@ -346,3 +346,11 @@ function getSistemaInteligente() {
       });
 }
 
+document.getElementById("btn-save-event").addEventListener("click", function(e) {
+  if(document.getElementById("event_name").value == null || document.getElementById("date_event").value == "" || document.getElementById("musical_style").value == "" || document.getElementById("musicians").value == "" || document.getElementById("minimum_age").value == "") {
+    alert('campo vazio');
+    document.getElementById("btn-save-event").disabled = true;
+  } else {
+    document.getElementById("btn-save-event").disabled = false;
+  }
+});
