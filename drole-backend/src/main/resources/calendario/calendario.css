@@ -1,5 +1,9 @@
 label {
+  color: rgb(230, 225, 225);
+}
+#txtTitles {
   font-weight: bolder;
+  color: rgb(230, 225, 225);
 }
 ::placeholder {
   color: rgb(0, 0, 0) !important;

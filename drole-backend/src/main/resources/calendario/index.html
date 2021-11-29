@@ -117,10 +117,10 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Sistema de recomendação - Calendário</h5>
+                    <h5 class="modal-title" id="txtTitles">Sistema de recomendação - Calendário</h5>
                 </div>
                 <div class="modal-body">
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Capacidade do Evento</label>
+                    <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Capacidade do Evento</label>
                     <select class="custom-select my-1 mr-sm-2" id="event_capacity">
                         <option value="1">10 - 50 pessoas</option>
                         <option value="2">50 - 100 pessoas</option>
@@ -128,7 +128,7 @@
                         <option value="4">200 - 1000 pessoas</option>
                         <option value="5">1000+ pessoas</option>
                     </select>
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Formalidade do Evento</label>
+                    <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Formalidade do Evento</label>
                     <select class="custom-select my-1 mr-sm-2" id="event_formality">
                         <option value="1">Informal</option>
                         <option value="2">Pouco formal</option>
@@ -136,7 +136,7 @@
                         <option value="4">Muito formal</option>
                         <option value="5">Cerimonial</option>
                     </select>
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Público Alvo do Evento</label>
+                    <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Público Alvo do Evento</label>
                     <select class="custom-select my-1 mr-sm-2" id="event_target">
                         <option value="1">0 - 18 anos</option>
                         <option value="2">18 - 25 anos</option>
@@ -144,7 +144,7 @@
                         <option value="4">40 - 65 anos</option>
                         <option value="5">65+ anos</option>
                     </select>
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Horário do Evento</label>
+                    <label id="txtModal"class="my-1 mr-2" for="inlineFormCustomSelectPref">Horário do Evento</label>
                     <select class="custom-select my-1 mr-sm-2" id="event_hour">
                         <option value="1">8:00 - 11:00</option>
                         <option value="2">11:00 - 15:00</option>
@@ -152,7 +152,7 @@
                         <option value="4">18:00 - 22:00</option>
                         <option value="5">22:00 - 8:00</option>
                     </select>
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Gasto Médio por Pessoa</label>
+                    <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Gasto Médio por Pessoa</label>
                     <select class="custom-select my-1 mr-sm-2" id="event_price">
                         <option value="1">R$00,00 - R$20,00</option>
                         <option value="2">R$20,00 - R$50,00</option>
@@ -177,61 +177,59 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Criação do evento - Calendário</h5>
+                    <h5 class="modal-title" id="txtTitles">Criação do evento - Calendário</h5>
                 </div>
 
                 <div class="modal-body">
 
-                    <div class="my-1 mr-2" for="inlineFormCustomSelectPref">
-                        <!-- <p style="align-items: center;">O tipo músical indicado para seu evento é
-                            <strong>TESTE</strong>
-                        </p> -->
-                        <button id="showEventType" type="button" class="btn btn-dark">Mostrar tipo de evento adequando</button>
-                        <div id="notificationSi" class="my-1 mr-2" for="inlineFormCustomSelectPref">
-                            <!-- JAVASCRIPT NOTIFICATION -->
+                    <form>
+                        <div class="my-1 mr-2" for="inlineFormCustomSelectPref">
+                            <button id="showEventType" type="button" class="btn btn-dark">Mostrar tipo de evento adequando</button>
+                            <div id="notificationSi" class="my-1 mr-2" for="inlineFormCustomSelectPref">
+                                <!-- JAVASCRIPT NOTIFICATION -->
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="nomeEvento" class="col-sm-12 col-form-label">Nome do Evento:</label>
-                        <div class="col-sm-12">
-                            <input name="NOME" type="text" class="form-control" id="event_name"
-                                placeholder="Nome do evento" autocomplete="off">
+    
+                        <div class="form-group row">
+                            <label id="txtModal" for="nomeEvento" class="col-sm-12 col-form-label">Nome do Evento:</label>
+                            <div class="col-sm-12">
+                                <input name="NOME" type="text" class="form-control" id="event_name"
+                                    placeholder="Nome do evento" autocomplete="off" required="required">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="dataEvento" class="col-sm-12 col-form-label">Dia:</label>
-                        <div class="col-sm-12">
-                            <input name="DATA" type="date" class="form-control" id="date_event"
-                                placeholder="Selecione o dia do evento" autocomplete="off">
+    
+                        <div class="form-group row">
+                            <label id="txtModal" for="dataEvento" class="col-sm-12 col-form-label">Dia:</label>
+                            <div class="col-sm-12">
+                                <input name="DATA" type="date" class="form-control" id="date_event"
+                                    placeholder="Selecione o dia do evento" autocomplete="off" required="required">
+                            </div>
                         </div>
-                    </div>
-
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Tipo musical:</label>
-                    <select class="custom-select my-1 mr-sm-2" id="musical_style">
-                        <option value="Funk">Funk</option>
-                        <option value="Pop">Pop</option>
-                        <option value="Rock">Rock</option>
-                        <option value="Axé">Axé</option>
-                        <option value="Sertanejo">Sertanejo</option>
-                        <option value="Eletrônica">Eletrônica</option>
-                        <option value="Clássica">Clássica</option>
-                        <option value="Samba">Samba</option>
-                        <option value="Pagode">Pagode</option>
-                    </select>
-
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Músico:</label>
-                    <select class="custom-select my-1 mr-sm-2" id="musicians">
-                        <!-- js vai aqui -->
-                    </select>
-
-                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Entrada evento:</label>
-                    <select class="custom-select my-1 mr-sm-2" id="minimum_age">
-                        <option value="1">+18</option>
-                        <option value="0">-18</option>
-                    </select>
-
+    
+                        <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Tipo musical:</label>
+                        <select class="custom-select my-1 mr-sm-2" id="musical_style">
+                            <option value="Funk">Funk</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Axé">Axé</option>
+                            <option value="Sertanejo">Sertanejo</option>
+                            <option value="Eletrônica">Eletrônica</option>
+                            <option value="Clássica">Clássica</option>
+                            <option value="Samba">Samba</option>
+                            <option value="Pagode">Pagode</option>
+                        </select>
+    
+                        <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Músico:</label>
+                        <select class="custom-select my-1 mr-sm-2" id="musicians">
+                            <!-- js vai aqui -->
+                        </select>
+    
+                        <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Entrada evento:</label>
+                        <select class="custom-select my-1 mr-sm-2" id="minimum_age">
+                            <option value="1">+18</option>
+                            <option value="0">-18</option>
+                        </select>    
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
