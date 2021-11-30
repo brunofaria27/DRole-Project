@@ -10,15 +10,19 @@ public class UserDAO extends DAO {
 		boolean status = false;
 
 		try {
+			PreparedStatement stmt = null;
 			connect();
-			Statement st = connection.createStatement();
-			String query = "INSERT INTO users(username, user_type, photo_path, email, hashpassword, "
-					+ "profile_localization, profile_description,profile_name, user_likes) VALUES " + "('" + user.getUsername()
-					+ "'," + user.getUser_type() + "," + "'../images/noimg.png'" + ",'" + user.getEmail() + "','"
-					+ user.getHashPassword() + "'," + "NULL" + "," + "NULL" + ",'" + user.getProfile_name() + "0" + "');";
 
-			st.executeUpdate(query);
-			st.close();
+			String query = "INSERT INTO users(username, user_type, photo_path, email, hashpassword, profile_localization, profile_description, profile_name, user_likes)"
+					+ " VALUES (?, ?, '../images/noimg.png', ?, ?, ?, null, null, 0);";
+			stmt = connection.prepareStatement(query);
+			stmt.setString(1, user.getUsername());
+			stmt.setInt(2, user.getUser_type());
+			stmt.setString(3, user.getEmail());
+			stmt.setString(4, user.getHashPassword());
+			stmt.setString(5, user.getProfile_name());
+			stmt.executeUpdate();
+			
 			status = true;
 		} catch (SQLException e) {
 			close();
@@ -53,18 +57,23 @@ public class UserDAO extends DAO {
 
 	public static boolean updateUser(User user) {
 		boolean status = false;
+		
 
 		try {
+			PreparedStatement stmt = null;
 			connect();
-			Statement st = connection.createStatement();
-			String query = "UPDATE users SET " + "username = '" + user.getUsername() + "', user_type = "
-					+ user.getUser_type() + ", photo_path = '" + user.getPhoto_path() + "', email = '" + user.getEmail()
-					+ "', hashpassword = '" + user.getHashPassword() + "', profile_localization = '"
-					+ user.getProfile_localization() + "', profile_description = '" + user.getProfile_description()
-					+ "', profile_name = '" + user.getProfile_name() + "' WHERE user_id = " + user.getUser_id();
 
-			st.executeUpdate(query);
-			st.close();
+			String query = "UPDATE users SET username = ?, photo_path = ?, profile_localization = ?, profile_description = ?"
+			+ ", profile_name = ? WHERE user_id = ?;";
+
+			stmt = connection.prepareStatement(query);
+			stmt.setString(1, user.getUsername());
+			stmt.setString(2, user.getPhoto_path());
+			stmt.setString(3, user.getProfile_localization());
+			stmt.setString(4, user.getProfile_description());
+			stmt.setString(5, user.getProfile_name());
+			stmt.setInt(6, user.getUser_id());
+			stmt.executeUpdate();
 			status = true;
 
 		} catch (SQLException e) {
