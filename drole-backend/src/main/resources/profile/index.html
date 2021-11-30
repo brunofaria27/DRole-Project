@@ -20,35 +20,37 @@
    <!-- inicio Header -->
    <header class="container-fluid header">
       <nav class="navbar navbar-expand-lg navbar-light">
-         <div class="container">
-            <a class="navbar-brand" href="#">
-               <img src="../images/logo_transparente.png" width="80px" height="60px" alt="Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
+          <div class="container">
+              <a class="navbar-brand" href="#">
+                  <img src="../images/Logo.gif" alt="logo" class="active" width="100px" height="100px">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse"
+                  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
 
-            <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
-               <ul class="navbar-nav">
-                  <li class="nav-item active">
-                     <a class="nav-link" href="../home/index.html">Home</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="../sobre/index.html">Sobre</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="../calendario/index.html">Calendário</a>
-                  </li>
-                  <li id="showProfile" class="nav-item">
-                     <!-- Shows Perfil para dono -->
-                  </li>
-               </ul>
-            </div>
-         </div>
+              <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
+                  <ul class="navbar-nav">
+                      <li class="nav-item active">
+                          <a class="nav-link" href="../home/index.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="../sobre/index.html">Sobre</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="../calendario/index.html">Calendário</a>
+                      </li>
+                      <li id="showProfile" class="nav-item">
+                          <!-- Shows Perfil para dono -->
+                      </li>
+                  </ul>
+              </div>
+
+          </div>
       </nav>
-   </header>
-   <!-- Fim Header -->
+  </header>
+  <!-- Fim Header -->
 
    <!-- Inicio Perfil -->
    <div id="mudaCor" class="containerPerfil">
@@ -117,15 +119,16 @@
       <div class="modal-dialog" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="mudarModalLabel">Editar Perfil</h5>
+               <h5 class="modal-title" id="txtTitles">Editar Perfil</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <div class="modal-body">
-               <form method="post" id="insert_form">
+               <form method="post" id="insert_form" action="">
                   <!-- Inicio body -->
                   <div class="custom-file">
                      <input id="minhafoto" type="file" class="custom-file-input">
-                     <label class=" custom-file-label arquivo" for="customFileLang">Selecione a foto de perfil</label>
+                     <label id="Sendminhafoto" class=" custom-file-label arquivo" for="customFileLang">Selecione a foto de perfil</label>
                   </div> <!-- Selecionar foto do perfil -->
 
                   <p></p> <!-- Pular linha no form-->
@@ -163,25 +166,13 @@
                            class="btn btn-outline-success">
                      </div>
                   </div>
-
                </form>
             </div>
+            
          </div>
       </div>
    </div>
    <!-- End modal -->
-
-   <footer class="text-center text-white" style="background-color: rgb(161, 161, 161);">
-      <!-- Grid container -->
-      <div class="container p-4"></div>
-      <!-- Grid container -->
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-         © 2020 Copyright:
-         <a class="text-white" href="indexlogado.html">D'Rolé</a>
-      </div>
-      <!-- Copyright -->
-   </footer>
 
    <!-- Script modal -->
    <script src="../profile/index.js"></script>
