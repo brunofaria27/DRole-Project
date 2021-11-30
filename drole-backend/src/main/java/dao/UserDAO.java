@@ -13,7 +13,7 @@ public class UserDAO extends DAO {
 			connect();
 			Statement st = connection.createStatement();
 			String query = "INSERT INTO users(username, user_type, photo_path, email, hashpassword, "
-					+ "profile_localization, profile_description,profile_name, user_likes) VALUES " + "('" + user.getUsername()
+					+ "profile_localization, profile_description, profile_name, user_likes) VALUES " + "('" + user.getUsername()
 					+ "'," + user.getUser_type() + "," + "'../images/noimg.png'" + ",'" + user.getEmail() + "','"
 					+ user.getHashPassword() + "'," + "NULL" + "," + "NULL" + ",'" + user.getProfile_name() + "0" + "');";
 

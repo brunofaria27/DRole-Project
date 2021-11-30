@@ -175,6 +175,9 @@ function showProfile(xml, profile_id) {
             document
               .getElementById("like-img")
               .setAttribute("src", "../images/filledLike.png");
+            document
+              .getElementById("like-img")
+              .setAttribute("title", "Remover Like");
             likes += 1;
             document.getElementById("num-likes").innerHTML = likes;
 
@@ -183,6 +186,9 @@ function showProfile(xml, profile_id) {
             document
               .getElementById("like-img")
               .setAttribute("src", "../images/like.png");
+            document
+              .getElementById("like-img")
+              .setAttribute("title", "Dar Like");
             likes -= 1;
             document.getElementById("num-likes").innerHTML = likes;
             removeLike(current_id, id);
