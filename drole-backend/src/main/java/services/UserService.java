@@ -40,10 +40,6 @@ public class UserService extends UserDAO {
 	public Object get(Request request, Response response) {
 		int id = Integer.parseInt(request.params(":id"));
 		
-		int current = Integer.parseInt(request.queryParams("current_id"));
-		
-		boolean status = ScoreDAO.hasScore(current, id);
-
 		User user = UserDAO.getUser(id);
 
 		if (user != null) {
@@ -57,7 +53,7 @@ public class UserService extends UserDAO {
 					+ user.getProfile_localization() + "</localization>\n" + "\t<description>"
 					+ user.getProfile_description() + "</description>\n" + "\t<userLikes>"
 					+ user.getUser_likes() + "</userLikes>" + "\t<currentLike>"
-					+ status + "</currentLike>" + "</user>\n";
+					+ "false" + "</currentLike>" + "</user>\n";
 		} else {
 			response.status(404); // 404 Not found
 			return "User " + id + " não encontrado.";

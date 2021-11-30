@@ -43,7 +43,6 @@ public class Application {
 		post("/events/musicians", (request, response) -> userService.SistemaInteligente(request, response));
 		post("/events/create/si", (request, response) -> userService.getEventType(request, response));
 		get("/user/:id", (request, response) -> userService.get(request, response));
-		post("/user/:id", (request, response) -> userService.get(request, response));
     //		delete("/user/remove/:id", (request, response) -> userService.remove(request, response));
 
 		get("/login/", (request, response) -> loginService.tryLogin(request, response));

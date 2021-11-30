@@ -1,43 +1,127 @@
 .containerPerfil {
-    margin:30px;
-    margin-top: 0;
+  margin: 30px;
+  margin-top: 0;
 }
 
 .profile-head {
-    transform: translateY(5rem)
+  transform: translateY(5rem);
 }
 
 .cover {
-    background-image: url(https://picsum.photos/1500/400?random);
-    background-size: cover;
-    background-repeat: no-repeat
+  background-image: url(https://picsum.photos/1500/400?random);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .corExemplo {
-    float: left;
+  float: left;
 }
 
-input#inputComentario{
-    margin-bottom: 10px;
+input#inputComentario {
+  margin-bottom: 10px;
 }
 
-#buttonEnviar{
-    width: 55px;
+#buttonEnviar {
+  width: 55px;
 }
 
 label {
-    color: rgb(230, 225, 225);
+  color: rgb(230, 225, 225);
 }
 
 #txtTitles {
-    font-weight: bolder;
-    color: rgb(230, 225, 225);
+  font-weight: bolder;
+  color: rgb(230, 225, 225);
 }
 
-.modal-header, .modal-body, .modal-footer{
-    background-color: #121313 !important;
+.modal-header,
+.modal-body,
+.modal-footer {
+  background-color: #121313 !important;
 }
 
 body {
-    background: #121313 !important;
+  background: #121313 !important;
+}
+
+#show-profile-grid {
+  justify-content: center;
+}
+
+#show-profile-card {
+  border-radius: 25px !important;
+  padding: 0rem !important;
+}
+
+#profile-photo {
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.card {
+  padding: 0.8rem 0.8rem 0.3rem 0.8rem;
+  margin: 15px;
+  background-color: rgba(0, 0, 0, 0.39) !important;
+  border-radius: 5% !important;
+  color: rgb(230, 225, 225);
+}
+
+#imgPreview {
+  background-color: rgba(0, 0, 0) !important;
+  border: 0;
+}
+
+#about,
+#localization {
+  background-color: rgba(0, 0, 0, 0.39) !important;
+}
+
+#tituloAbout,
+#tituloLocal {
+  padding-bottom: 0px !important;
+}
+
+button {
+  border: none !important;
+  outline: none !important;
+}
+
+#type {
+  text-align: left;
+  width: 80%;
+}
+
+#profile-info-row {
+  padding: 0px 24px 0px 185px;
+}
+
+#likes {
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  padding-right: 24px;
+}
+
+.cover {
+  background-image: url(https://picsum.photos/1500/400?random);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 25px 25px 0px 0px;
+}
+
+#like-img {
+  margin: 0px 10px 0px 10px;
+}
+
+#edit-img {
+    margin: 0;
+}
+
+#edit-btn {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 5px !important;
+  color: rgb(230, 225, 225);
+  cursor: pointer  !important;
+  z-index: 1 !important;
 }
