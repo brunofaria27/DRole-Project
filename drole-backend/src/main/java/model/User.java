@@ -1,5 +1,9 @@
 package model;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class User {
 	private int user_id;
 	private String username;
@@ -98,7 +102,15 @@ public class User {
 	}
 
 	public void setHashPassword(String hashPassword) {
-		this.hashPassword = hashPassword;
+		MessageDigest md;
+		String newPass = "";
+		try {
+			md = MessageDigest.getInstance("MD5");
+			BigInteger hash = new BigInteger(1, md.digest(hashPassword.getBytes()));
+			newPass = hash.toString(16);
+		} catch (NoSuchAlgorithmException e) {}
+		
+		this.hashPassword = newPass;
 	}
 
 	public String getProfile_localization() {

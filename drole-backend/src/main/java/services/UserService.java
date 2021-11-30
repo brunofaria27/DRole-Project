@@ -1,6 +1,11 @@
 package services;
 
 import org.json.JSONObject;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -18,8 +23,16 @@ public class UserService extends UserDAO {
 		int userType = Integer.parseInt(request.queryParams("user_type"));
 		String email = request.queryParams("email");
 		String password = request.queryParams("password");
+		
+		MessageDigest md;
+		String newPass = "";
+		try {
+			md = MessageDigest.getInstance("MD5");
+			BigInteger hash = new BigInteger(1, md.digest(password.getBytes()));
+			newPass = hash.toString(16);
+		} catch (NoSuchAlgorithmException e) {}
 
-		User user = new User(username, userType, email, password);
+		User user = new User(username, userType, email, newPass);
 
 		User[] existentUsers = UserDAO.getUsers();
 

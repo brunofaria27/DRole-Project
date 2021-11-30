@@ -1,5 +1,9 @@
 package services;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import dao.UserDAO;
 import model.User;
 import spark.Request;
@@ -12,10 +16,20 @@ public class LoginService {
         
         String email = request.queryParams("email");
         String password = request.queryParams("password");
+        
+        MessageDigest md;
+		String newPass = "";
+		try {
+			md = MessageDigest.getInstance("MD5");
+			BigInteger hash = new BigInteger(1, md.digest(password.getBytes()));
+			newPass = hash.toString(16);
+		} catch (NoSuchAlgorithmException e) {}
+		
+		System.out.println(newPass);
 
         
         for(User u : users) {
-            if((u.getEmail().equals(email)) && (u.getHashPassword().equals(password))) {
+            if((u.getEmail().equals(email)) && (u.getHashPassword().equals(newPass))) {
                 status = true;
                 response.status(200);
                 response.header("Content-Type", "application/xml");
