@@ -16,4 +16,8 @@ a.nav-link{
     background-color: #121313;
 }
 
+body {
+    background-color: #121313 !important;
+}
+
 /* COLOCAR EM TODOS CSS */

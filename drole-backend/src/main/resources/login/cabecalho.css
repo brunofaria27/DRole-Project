@@ -1,6 +1,6 @@
 /* COLOCAR EM TODOS CSS */
 .header{
-    background: #121313;
+    background: #000000;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -21,4 +21,20 @@
 .active{
     background-color: #121313 !important ;
 }
+
+body {
+    background-color: #121313 !important;
+}
+
+.modal-header, .modal-body, .modal-footer{
+    background-color: #121313 !important;
+  }
+
+  label {
+    color: rgb(230, 225, 225);
+  }
+  #loginModalLabel {
+    font-weight: bolder;
+    color: rgb(230, 225, 225);
+  }
 /* COLOCAR EM TODOS CSS */

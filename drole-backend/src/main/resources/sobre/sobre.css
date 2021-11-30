@@ -4,7 +4,7 @@
 
 .cards {
   width: 270px;
-  background-color: rgb(167, 106, 87);
+  background-color: rgb(58, 58, 58);
   border-radius: 40px;
   display: inline-block;
   padding: 15px;
@@ -21,13 +21,13 @@
 .tituloCriadores {
   text-align: center;
   font-size: 70px;
-  color: rgb(100, 140, 141);
+  color: rgb(255, 255, 255);
   margin-bottom: 10px;
 }
 .tituloSobre {
   text-align: center;
   font-size: 70px;
-  color: rgb(100, 140, 141);
+  color: rgb(255, 255, 255);
   margin-top: 50px;
 }
 
@@ -45,9 +45,9 @@
 }
 
 .textoSobre {
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
-  color: rgb(66, 66, 64);
+  color: rgb(255, 255, 255);
   justify-content: center;
 }
 
@@ -59,8 +59,8 @@
   width: 70%;
 }
 
-#tags button{
-  background-color: rgba(97,124,148, 0.76);
+#tags button {
+  background-color: rgba(255, 255, 255, 0.76);
   border-radius: 20px;
   border: none;
   margin-top: 10px;

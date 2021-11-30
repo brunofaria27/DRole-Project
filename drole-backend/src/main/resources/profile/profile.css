@@ -24,3 +24,20 @@ input#inputComentario{
 #buttonEnviar{
     width: 55px;
 }
+
+label {
+    color: rgb(230, 225, 225);
+}
+
+#txtTitles {
+    font-weight: bolder;
+    color: rgb(230, 225, 225);
+}
+
+.modal-header, .modal-body, .modal-footer{
+    background-color: #121313 !important;
+}
+
+body {
+    background: #121313 !important;
+}
