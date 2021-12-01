@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 import java.util.*;
 
 public class Recommender {
-    private static final String MODEL_URL = "http://337f59df-5b23-41b3-8d3c-044cb54a2dd9.brazilsouth.azurecontainer.io/score";
+    private static final String MODEL_URL = "http://66a0b4b8-4c84-4a41-b356-6aa61ab9845d.eastus2.azurecontainer.io/score";
 
 
     public String classify(String hard) {

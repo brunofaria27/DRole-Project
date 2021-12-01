@@ -161,6 +161,7 @@ public class UserService extends UserDAO {
 		int event_hour = Integer.parseInt(request.queryParams("event_hour"));
 		int event_price = Integer.parseInt(request.queryParams("event_price"));
 		
+		
 		String hard = "[{\"type\":\"\", \"value_capacity\":" + event_capacity + ", \"value_formality\":" + event_formality + ", \"value_target\":" + event_target + ", \"value_hour\":" + event_hour + ", \"value_price\":" + event_price + "}]";
 		Recommender recommender = new Recommender();
 		String recomenda = recommender.classify(hard);
