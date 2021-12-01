@@ -8,13 +8,13 @@ import java.net.http.HttpResponse;
 import java.util.*;
 
 public class Recommender {
-    private static final String MODEL_URL = "http://66a0b4b8-4c84-4a41-b356-6aa61ab9845d.eastus2.azurecontainer.io/score";
-
+//    private static final String MODEL_URL = "http://66a0b4b8-4c84-4a41-b356-6aa61ab9845d.eastus2.azurecontainer.io/score";
+//    private static final String API_KEY = "S2gK3i6CHLCZL5JNMgH1bVt7YSL7P1Ld";
 
     public String classify(String hard) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(MODEL_URL))
-                .headers("Content-Type", "application/json")
+                .headers("Content-Type", "application/json", "Authorization", "Bearer " + API_KEY)
                 .POST(HttpRequest.BodyPublishers.ofString(hard))
                 .build();
 
