@@ -45,7 +45,7 @@ function showProfiles() {
                 </div>
                 <div class="row">
                   <div id="like-img-div" class="col-6 text-left"><img data-bs-toggle="tooltip" data-bs-placement="top" title="Likes deste Perfil" id="like-img" src="../images/like.png" alt="Likes" width="30px" height="30px">${likes}</div>
-                  <div class="col-6 text-right"><button here data-bs-toggle="tooltip" data-bs-placement="top" title="Visitar Perfil" id="visit-profile-${id}" value="${id}" type="button" class="btn-event" ><img id="btn-visit-img" src="../images/VisitarPerfil.png" alt="Visitar Perfil" width="100%" height="50px"></button></div>
+                  <div class="col-6 text-right"><button here data-bs-toggle="tooltip" data-bs-placement="top" title="Visitar Perfil" id="visit-profile-${id}" value="${id}" type="button" class="btn-event" ><img id="btn-visit-img" src="../images/foward.png" alt="Visitar Perfil" width="100%" height="50px"></button></div>
                 </div>
             </div>`).appendTo("#profiles-grid");
 

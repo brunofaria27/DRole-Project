@@ -23,6 +23,7 @@ public class UserService extends UserDAO {
 		int userType = Integer.parseInt(request.queryParams("user_type"));
 		String email = request.queryParams("email");
 		String password = request.queryParams("password");
+		String profileName = request.queryParams("profileName");
 		
 		MessageDigest md;
 		String newPass = "";
@@ -32,7 +33,7 @@ public class UserService extends UserDAO {
 			newPass = hash.toString(16);
 		} catch (NoSuchAlgorithmException e) {}
 
-		User user = new User(username, userType, email, newPass);
+		User user = new User(profileName, username, userType, email, newPass);
 
 		User[] existentUsers = UserDAO.getUsers();
 

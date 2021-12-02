@@ -30,31 +30,46 @@
     </header>
 
 
-    <div class="container-login">
+    <div class="container-fluid">
         <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
-                <div id="login-box" class="col-md-12">
-                    <form id="login-form" class="form" method="post">
-                        <h3 class="text-center text-light">LOGIN</h3>
-                        <div id="sucessLogin">
-                            <!-- JS SUCESS CADASTRO -->
+            <div id="login-div" class="col-md-4 card">
+
+                <form id="login-form" class="form" method="post">
+
+                    <img id="titulo" src="../images/Login.png" alt="Login">
+                    <div id="sucessLogin">
+                        <!-- JS SUCESS CADASTRO -->
+                    </div>
+                    <div class="form-group row">
+                        <label id="txtModal" class="col-sm-2 col-form-label"
+                            for="inlineFormCustomSelectPref">E-mail:</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="email" id="email" class="form-control"
+                                placeholder="Insira seu e-mail." required>
                         </div>
-                        <div class="form-group">
-                            <label for="username" class="text-light">E-mail</label><br>
-                            <input type="text" name="username" id="username" class="form-control" required>
+                    </div>
+                    <div class="form-group row">
+                        <label id="txtModal" class="col-sm-2 col-form-label"
+                            for="inlineFormCustomSelectPref">Senha:</label>
+                        <div class="col-sm-9">
+                            <input type="password" placeholder="Insira sua senha." name="password" id="password"
+                                class="form-control" required>
                         </div>
-                        <div class="form-group">
-                            <label for="password" class="text-light">Senha</label><br>
-                            <input type="password" name="password" id="password" class="form-control" required>
-                        </div>
-                        <div class="form-group text-right">
-                            <input type="submit" name="submit" class="btn btn-dark btn-md" id="submit-login"
-                                value="Login">
-                        </div>
-                    </form>
+                    </div>
+                </form>
+
+                <div class="row">
+                    <div class="col-6" id="cadastrese-btn-div">
+                        <button data-bs-toggle="tooltip" data-bs-placement="top" title="Cadastrar-se" type="button"
+                            class="btn-event" data-toggle="modal" data-target="#loginModal"><img id="btn-foward-img"
+                                src="../images/Cadastrar-se.png" alt="Recomendação" width="100%" height="50px"></button>
+                    </div>
+                    <div class="col-6" id="login-btn-div">
+                        <button data-bs-toggle="tooltip" data-bs-placement="top" title="Login" id="login-btn"
+                            type="button" class="btn-event"><img id="btn-foward-img" src="../images/foward.png"
+                                alt="Recomendação" width="100%" height="50px"></button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-dark" data-toggle="modal"
-                    data-target="#loginModal">Cadastre-se</button>
             </div>
         </div>
     </div>
@@ -64,51 +79,77 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">CADASTRO</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
                 <div class="modal-body">
                     <div id="login-box" class="col-md-12">
+                        <img id="tituloCadastro" src="../images/Cadastro.png" alt="Editar Perfil">
                         <form class="form" method="post">
-                            <h3 class="text-center text-light">Novo usuário</h3>
                             <div id="sucessCadas">
                                 <!-- JS SUCESS CADASTRO -->
                             </div>
-                            <div class="form-group">
-                                <label for="login" class="text-light">Usuário</label><br>
-                                <input type="text" name="txt_login" id="txt_login" class="form-control" required>
+                            <div class="form-group row">
+                                <label for="username" class="col-sm-2 col-form-label">Usuário:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" placeholder="Insira um usuário." name="cadUsername"
+                                        id="cadUsername" class="form-control" required>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="my-1 mr-2 text-light" for="login">Tipo de perfil</label>
-                                <select class="custom-select my-1 mr-sm-2" id="user-type" required>
-                                    <option value="2">Estabelecimento</option>
-                                    <option value="3">Músico</option>
-                                    <option value="1">Frequentador</option>
-                                </select>
+                            <div class="form-group row">
+                                <label for="names" class="col-sm-2 col-form-label">Nome:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" placeholder="Insira o nome do seu Perfil." name="cadName"
+                                        id="cadName" class="form-control" required>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="email" class="text-light">Email</label><br>
-                                <input type="text" name="txt_email" id="txt_email" class="form-control" required>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="type">Tipo:</label>
+                                <div class="col-sm-10">
+                                    <select class="custom-select my-1 mr-sm-2" id="cadType" required>
+                                        <option value="2">Estabelecimento</option>
+                                        <option value="3">Músico</option>
+                                        <option value="1">Frequentador</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="senha" class="text-light">Senha</label><br>
-                                <input type="password" name="txt_senha" id="txt_senha" class="form-control" required>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="email">E-mail:</label>
+                                <div class="col-sm-10">
+
+                                    <input type="text" placeholder="Insira seu e-mail." name="cadEmail" id="cadEmail"
+                                        class="form-control" required>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="senha2" class="text-light">Confirmação de senha</label><br>
-                                <input type="password" name="txt_senha2" id="txt_senha2" class="form-control" required>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="senha">Senha:</label>
+                                <div class="col-sm-10">
+                                    <input type="password" placeholder="Insira uma senha." name="cadSenha" id="cadSenha"
+                                        class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="senha2">Confirmação:</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="cadSenha2" placeholder="Confirme sua senha."
+                                        id="cadSenha2" class="form-control" required>
+                                </div>
                             </div>
                         </form>
+                        <div id="btnsModal">
+                            <div id="btnCancelar-div">
+                                <button type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar"
+                                    class="btn-modal" data-dismiss="modal" aria-label="Cancelar"><img
+                                        id="btn-modal-cancelar" src="../images/Cancelar.png" alt="Cancelar"></button>
+                            </div>
+                            <div id="btnSalvar-div">
+                                <button id="saveProfile" type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Salvar Perfil" class="btn-modal" data-dismiss="modal"
+                                    aria-label="Salvar Perfil"><img id="btn-modal-salvar"
+                                        src="../images/SalvarPerfil.png" alt="Salvar Perfil"></button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" id="btn_salvar" class="btn btn-dark">Salvar</button>
                 </div>
             </div>
         </div>
