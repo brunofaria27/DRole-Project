@@ -13,6 +13,10 @@ document
 
 window.onload = () => {
   window.event.preventDefault();
+  showCurrentUserProfile()
+
+  document.getElementById("user-logout").addEventListener("click", logout);
+
   document
     .getElementById("filter-musical-style")
     .addEventListener("change", function () {
@@ -45,9 +49,6 @@ window.onload = () => {
 
   // Se o usuário não for do tipo frequentador poderá ver o link para perfil
   if (user_type == 2 || user_type == 4 || user_type == 3) {
-    $('<a class="nav-link" href="../profile/index.html">Perfil</a>').appendTo(
-      "#showProfile"
-    );
     $(`<option value="Recusados">Apenas Recusados</option>`).appendTo(
       "#filter-musical-style"
     );

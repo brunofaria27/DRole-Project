@@ -12,6 +12,7 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
    <script src="https://kit.fontawesome.com/a55657dc48.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="../utils/utils.js"></script>
    <!-- Bootstrap -->
    <title>D'Rolé - Perfil</title>
 </head>
@@ -31,7 +32,7 @@
               </button>
 
               <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
-                  <ul class="navbar-nav">
+                  <ul id="ul-navbar" class="navbar-nav">
                       <li class="nav-item active">
                           <a class="nav-link" href="../home/index.html">Home</a>
                       </li>
@@ -41,8 +42,13 @@
                       <li class="nav-item">
                           <a class="nav-link" href="../calendario/index.html">Calendário</a>
                       </li>
-                      <li id="showProfile" class="nav-item">
-                          <!-- Shows Perfil para dono -->
+                      <li id="profile-dropdown" class="nav-item dropdown">
+                          <a class="nav-link" href="#" id="navbarDropdown">
+                              <img id="image-profile" src="../images/noimg.png" alt="dropdown perfil">
+                          </a>
+                          <div id="showProfile" class="dropdown-menu mt-0" aria-labelledby="navbarDropdown">
+                              <a id="user-logout" class="dropdown-item" href="#">Sair</a>
+                          </div>
                       </li>
                   </ul>
               </div>
