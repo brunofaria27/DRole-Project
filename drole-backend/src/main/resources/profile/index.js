@@ -12,13 +12,6 @@ window.onload = () => {
     $('<a class="nav-link" href="../profile/index.html">Perfil</a>').appendTo(
       "#showProfile"
     );
-    // $(
-    //   '<a id="editprofile" class="btn btn-outline-dark btn-sm btn-block" data-toggle="modal" data-target="#mudarModal">Editar Perfil</a>'
-    // ).appendTo("#buttonEditLike");
-  } else {
-    // $(
-    //   '<a class="btn btn-outline-dark btn-sm btn-block">Curtir Perfil</a>'
-    // ).appendTo("#buttonEditLike");
   }
 };
 
@@ -52,7 +45,7 @@ function showProfile() {
   </div> <!-- End porcentagem de avaliaÃ§Ã£o -->
   
   <div id="likes">
-    <button data-toggle="modal" data-target="#mudarModal" data-bs-toggle="tooltip" data-bs-placement="top" id="edit-btn" title="Editar Perfil" type="button" class="font-weight-light d-block">
+    <button data-toggle="modal" data-target="#editProfileModal" data-bs-toggle="tooltip" data-bs-placement="top" id="edit-btn" title="Editar Perfil" type="button" class="font-weight-light d-block">
       <img id="edit-img" src="../images/edit.png" alt="Editar Perfil" style="margin-bottom: 2px;" width="25px" height="25px"></button>
     </button>
     <img data-bs-toggle="tooltip" data-bs-placement="top" title="Likes deste Perfil" id="like-img" src="../images/like.png" alt="Likes" style="margin-bottom: 2px;" width="25px" height="25px"></button><spam id="num-likes"></spam>
@@ -102,11 +95,7 @@ function showProfile() {
           else if (type == 3) type = "Músico";
           else if (type == 4) type = "ADM";
 
-          // document.getElementById("edit-btn").addEventListener("click", function(e){
-          //   document.getElementById("mudarModal").classList.add("show");
-          // });
-
-          document.getElementById("profilePic").setAttribute("src", photo_path);
+          document.getElementById("imgPreview").setAttribute("src", photo_path);
           document.getElementById("about").innerHTML = `${description}`;
           document.getElementById("localization").innerHTML = `${localization}`;
           document.getElementById("profileName").innerHTML = `<h4>${name}</h4>`;
@@ -114,6 +103,21 @@ function showProfile() {
           <h6 class="font-weight-light d-block">${type}</h6>
           `;
 
+          if (description != null) {
+            document
+              .getElementById("aboutModal")
+              .setAttribute("placeholder", description);
+          }
+          if (name != null) {
+            document
+              .getElementById("nameModal")
+              .setAttribute("placeholder", name);
+          }
+          if (localization != null) {
+            document
+              .getElementById("localModal")
+              .setAttribute("placeholder", localization);
+          }
           document.getElementById("num-likes").innerHTML = likes;
         });
     },
@@ -129,13 +133,28 @@ function updateProfile() {
   let obj = JSON.parse(localStorage.getItem("currentUser"));
   let user_id = obj.id;
 
-  let value_description = document.getElementById("aboutDescription").value;
-  let value_profileName = document.getElementById("nameProfile").value;
-  let value_photo = document.getElementById("minhafoto").value;
-  let value_localization = document.getElementById("localizationInput").value;
+  let value_description = document.getElementById("aboutModal").value;
+  let value_profileName = document.getElementById("nameModal").value;
+  let value_photo = document.getElementById("photoModal").value;
+  let value_localization = document.getElementById("localModal").value;
 
   if (value_photo == "") {
-    value_photo = null;
+    value_photo = "../images/noimg.png";
+  }
+  if (value_description == "") {
+    value_description = document
+      .getElementById("aboutModal")
+      .getAttribute("placeholder");
+  }
+  if (value_profileName == "") {
+    value_profileName = document
+      .getElementById("nameModal")
+      .getAttribute("placeholder");
+  }
+  if (value_localization == "") {
+    value_localization = document
+      .getElementById("localModal")
+      .getAttribute("placeholder");
   }
 
   $.ajax({
