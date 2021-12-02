@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D'Rolé - Sobre</title>
     <link rel="stylesheet" href="../styles/cabecalho.css">
-    <link rel="stylesheet" href="../styles/sobre.css">
     <link rel="stylesheet" href="calendario.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -71,7 +70,7 @@
 
         </div>
         <div class="row" id="div-first-table-events">
-           
+
         </div>
 
         <div class="row" id="div-scnd-table-events">
@@ -122,55 +121,93 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="txtTitles">Sistema de recomendação - Calendário</h5>
-                </div>
                 <div class="modal-body">
-                    <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Capacidade do Evento</label>
-                    <select class="custom-select my-1 mr-sm-2" id="event_capacity">
-                        <option value="1">10 - 50 pessoas</option>
-                        <option value="2">50 - 100 pessoas</option>
-                        <option value="3">100 - 200 pessoas</option>
-                        <option value="4">200 - 1000 pessoas</option>
-                        <option value="5">1000+ pessoas</option>
-                    </select>
-                    <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Formalidade do Evento</label>
-                    <select class="custom-select my-1 mr-sm-2" id="event_formality">
-                        <option value="1">Informal</option>
-                        <option value="2">Pouco formal</option>
-                        <option value="3">Formal</option>
-                        <option value="4">Muito formal</option>
-                        <option value="5">Cerimonial</option>
-                    </select>
-                    <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Público Alvo do Evento</label>
-                    <select class="custom-select my-1 mr-sm-2" id="event_target">
-                        <option value="1">0 - 18 anos</option>
-                        <option value="2">18 - 25 anos</option>
-                        <option value="3">25 - 40 anos</option>
-                        <option value="4">40 - 65 anos</option>
-                        <option value="5">65+ anos</option>
-                    </select>
-                    <label id="txtModal"class="my-1 mr-2" for="inlineFormCustomSelectPref">Horário do Evento</label>
-                    <select class="custom-select my-1 mr-sm-2" id="event_hour">
-                        <option value="1">8:00 - 11:00</option>
-                        <option value="2">11:00 - 15:00</option>
-                        <option value="3">15:00 - 18:00</option>
-                        <option value="4">18:00 - 22:00</option>
-                        <option value="5">22:00 - 8:00</option>
-                    </select>
-                    <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Gasto Médio por Pessoa</label>
-                    <select class="custom-select my-1 mr-sm-2" id="event_price">
-                        <option value="1">R$00,00 - R$20,00</option>
-                        <option value="2">R$20,00 - R$50,00</option>
-                        <option value="3">R$50,00 - R$100,00</option>
-                        <option value="4">R$100,00 - R$300,00</option>
-                        <option value="5">R$300,00+</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dadosModal"
-                        data-dismiss="modal" aria-label="Close" id="btn-prox-modal">Próximo</button>
+                    <img id="tituloAdicionarEvento" src="../images/AdicionarEvento.png" alt="Adicionar Evento">
+
+                    <div class="form-group row">
+                        <label id="txtModal" class="col-sm-3 col-form-label"
+                            for="inlineFormCustomSelectPref">Capacidade:</label>
+                        <div class="col-sm-9">
+                            <select class="custom-select my-1 mr-sm-2" id="event_capacity">
+                                <option value="1">10 - 50 pessoas</option>
+                                <option value="2">50 - 100 pessoas</option>
+                                <option value="3">100 - 200 pessoas</option>
+                                <option value="4">200 - 1000 pessoas</option>
+                                <option value="5">1000+ pessoas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label id="txtModal" class="col-sm-3 col-form-label"
+                            for="inlineFormCustomSelectPref">Formalidade:</label>
+                        <div class="col-sm-9">
+                            <select class="custom-select my-1 mr-sm-2" id="event_formality">
+                                <option value="1">Informal</option>
+                                <option value="2">Pouco formal</option>
+                                <option value="3">Formal</option>
+                                <option value="4">Muito formal</option>
+                                <option value="5">Cerimonial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label id="txtModal" class="col-sm-3 col-form-label" for="inlineFormCustomSelectPref">Público
+                            Alvo:</label>
+                        <div class="col-sm-9">
+                            <select class="custom-select my-1 mr-sm-2" id="event_target">
+
+                                <option value="1">0 - 18 anos</option>
+                                <option value="2">18 - 25 anos</option>
+                                <option value="3">25 - 40 anos</option>
+                                <option value="4">40 - 65 anos</option>
+                                <option value="5">65+ anos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label id="txtModal" class="col-sm-3 col-form-label"
+                            for="inlineFormCustomSelectPref">Horário:</label>
+                        <div class="col-sm-9">
+                            <select class="custom-select my-1 mr-sm-2" id="event_hour">
+                                <option value="1">8:00 - 11:00</option>
+                                <option value="2">11:00 - 15:00</option>
+                                <option value="3">15:00 - 18:00</option>
+                                <option value="4">18:00 - 22:00</option>
+                                <option value="5">22:00 - 8:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label id="txtModal" class="col-sm-3 col-form-label" for="inlineFormCustomSelectPref">Gasto
+                            Médio:<small style="color: #495057;">(por Pessoa)</small></label>
+                        <div class="col-sm-9">
+                            <select class="custom-select my-1 mr-sm-2" id="event_price">
+                                <option value="1">R$00,00 - R$20,00</option>
+                                <option value="2">R$20,00 - R$50,00</option>
+                                <option value="3">R$50,00 - R$100,00</option>
+                                <option value="4">R$100,00 - R$300,00</option>
+                                <option value="5">R$300,00+</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="btnsModal">
+                        <div id="btnCancelar-div">
+                            <button type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar"
+                                class="btn-modal" data-dismiss="modal" aria-label="Cancelar"><img
+                                    id="btn-modal-cancelar" src="../images/Cancelar.png" alt="Cancelar"></button>
+                        </div>
+                        <div id="btnAvancar-div">
+                            <button id="btn-modal-avancar" type="button" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Avançar" class="btn-modal" data-dismiss="modal"
+                                data-toggle="modal" data-target="#dadosModal" aria-label="Avançar"><img
+                                    id="btn-modal-avancar" src="../images/Avancar.png" alt="Avançar"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -182,66 +219,92 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="txtTitles">Criação do evento - Calendário</h5>
-                </div>
-
                 <div class="modal-body">
+                    <img id="tituloAdicionarEvento" src="../images/AdicionarEvento.png" alt="Adicionar Evento">
 
                     <form>
-                        <div class="my-1 mr-2" for="inlineFormCustomSelectPref">
-                            <button id="showEventType" type="button" class="btn btn-dark">Mostrar tipo de evento adequando</button>
-                            <div id="notificationSi" class="my-1 mr-2" for="inlineFormCustomSelectPref">
-                                <!-- JAVASCRIPT NOTIFICATION -->
+
+                        <div class="form-group row" id="si-div" >
+
+                            <label id="txtModal" for="siEvento" class="col-sm-2 col-form-label">
+                                <button data-bs-toggle="tooltip" data-bs-placement="top" title="Recomendação"
+                                    id="btn-si" type="button" class="btn-event"><img id="btn-si-img"
+                                        src="../images/VisitarPerfil.png" alt="Recomendação" width="100%"
+                                        height="50px"></button>
+                            </label>
+                            <div class="col-sm-10" style="margin: auto;">
+                                <p>Exibir estilo musical recomendado</p>
                             </div>
+
                         </div>
-    
+
                         <div class="form-group row">
-                            <label id="txtModal" for="nomeEvento" class="col-sm-12 col-form-label">Nome do Evento:</label>
-                            <div class="col-sm-12">
+                            <label id="txtModal" for="nomeEvento" class="col-sm-2 col-form-label">Nome:</label>
+                            <div class="col-sm-10">
                                 <input name="NOME" type="text" class="form-control" id="event_name"
-                                    placeholder="Nome do evento" autocomplete="off" required="required">
+                                    placeholder="Nome do evento." autocomplete="off" required="required">
                             </div>
                         </div>
-    
+
                         <div class="form-group row">
-                            <label id="txtModal" for="dataEvento" class="col-sm-12 col-form-label">Dia:</label>
-                            <div class="col-sm-12">
+                            <label id="txtModal" for="dataEvento" class="col-sm-2 col-form-label">Data:</label>
+                            <div class="col-sm-10">
                                 <input name="DATA" type="date" class="form-control" id="date_event"
-                                    placeholder="Selecione o dia do evento" autocomplete="off" required="required">
+                                    placeholder="Selecione o dia do evento." autocomplete="off" required="required">
                             </div>
                         </div>
-    
-                        <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Tipo musical:</label>
-                        <select class="custom-select my-1 mr-sm-2" id="musical_style">
-                            <option value="Funk">Funk</option>
-                            <option value="Pop">Pop</option>
-                            <option value="Rock">Rock</option>
-                            <option value="Axé">Axé</option>
-                            <option value="Sertanejo">Sertanejo</option>
-                            <option value="Eletrônica">Eletrônica</option>
-                            <option value="Clássica">Clássica</option>
-                            <option value="Samba">Samba</option>
-                            <option value="Pagode">Pagode</option>
-                        </select>
-    
-                        <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Músico:</label>
-                        <select class="custom-select my-1 mr-sm-2" id="musicians">
-                            <!-- js vai aqui -->
-                        </select>
-    
-                        <label id="txtModal" class="my-1 mr-2" for="inlineFormCustomSelectPref">Entrada evento:</label>
-                        <select class="custom-select my-1 mr-sm-2" id="minimum_age">
-                            <option value="1">+18</option>
-                            <option value="0">-18</option>
-                        </select>    
+                        <div class="form-group row">
+                            <label id="txtModal" class="col-sm-2 col-form-label"
+                                for="inlineFormCustomSelectPref">Estilo:</label>
+                            <div class="col-sm-10">
+                                <select class="custom-select" id="musical_style">
+                                    <option value="Funk">Funk</option>
+                                    <option value="Pop">Pop</option>
+                                    <option value="Rock">Rock</option>
+                                    <option value="Axé">Axé</option>
+                                    <option value="Sertanejo">Sertanejo</option>
+                                    <option value="Eletrônica">Eletrônica</option>
+                                    <option value="Clássica">Clássica</option>
+                                    <option value="Samba">Samba</option>
+                                    <option value="Pagode">Pagode</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label id="txtModal" class="col-sm-2 col-form-label"
+                                for="inlineFormCustomSelectPref">Músico:</label>
+                            <div class="col-sm-10">
+                                <select class="custom-select my-1 mr-sm-2" id="musicians">
+                                    <!-- js vai aqui -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label id="txtModal" class="col-sm-2 col-form-label"
+                                for="inlineFormCustomSelectPref">Entrada:</label>
+                            <div class="col-sm-10">
+                                <select class="custom-select my-1 mr-sm-2" id="minimum_age">
+                                    <option value="1">+18</option>
+                                    <option value="0">-18</option>
+                                </select>
+                            </div>
+
+                        </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        aria-label="Close">Close</button>
-                    <button id="btn-save-event" type="button" class="btn btn-outline-success" data-toggle="modal"
-                        data-target="#dadosModal" data-dismiss="modal" aria-label="Close">Salvar</button>
+
+                    <div id="btnsModal">
+                        <div id="btnCancelar-div">
+                            <button id="btn-modal2-cancelar" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar"
+                                class="btn-modal" data-dismiss="modal" aria-label="Cancelar"><img
+                                    src="../images/Cancelar.png" alt="Cancelar"></button>
+                        </div>
+                        <div id="btnAvancar-div">
+                            <button id="btn-modal-salvar" type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Salvar Evento" class="btn-modal" data-dismiss="modal" aria-label="Salvar"><img
+                                 src="../images/SalvarPerfil.png" alt="Avançar"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

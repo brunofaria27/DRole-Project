@@ -52,48 +52,48 @@
                       </li>
                   </ul>
               </div>
-
           </div>
       </nav>
-  </header>
-  <!-- Fim Header -->
+   </header>
+   <!-- Fim Header -->
 
    <!-- Inicio Perfil -->
    <div class="container-fluid" id="body-content">
       <div id="grid-container">
          <div class="row " id="show-profile-grid">
-             
+
          </div>
-     </div>
+      </div>
    </div>
    <!-- End div container -->
    <!-- Fim Perfil -->
 
    <!-- Modal -->
-   <div class="modal fade" id="mudarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+   <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
          <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="txtTitles">Editar Perfil</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-
             <div class="modal-body">
+
+               <img id="tituloEditar" src="../images/EditarPerfil.png" alt="Editar Perfil">
+
                <form method="post" id="insert_form" action="">
                   <!-- Inicio body -->
-                  <div class="custom-file">
-                     <input id="minhafoto" type="file" class="custom-file-input">
-                     <label id="Sendminhafoto" class=" custom-file-label arquivo" for="customFileLang">Selecione a foto de perfil</label>
-                  </div> <!-- Selecionar foto do perfil -->
+                  <div class="form-group row">
+                     <label for="fotoEditavel" class="col-sm-2 col-form-label">Foto</label>
+                     <div class="col-sm-10">
+                        <input name="foto" type="text" class="form-control" id="photoModal"
+                           placeholder="Link para foto do perfil." autocomplete="off">
+                     </div>
+                  </div>
 
                   <p></p> <!-- Pular linha no form-->
 
                   <div class="form-group row">
                      <label for="nomeEditavel" class="col-sm-2 col-form-label">Nome</label>
                      <div class="col-sm-10">
-                        <input name="NAME" type="text" class="form-control" id="nameProfile"
-                           placeholder="Nome apresentado no perfil" autocomplete="off">
+                        <input name="nome" type="text" class="form-control" id="nameModal"
+                           placeholder="Nome apresentado no perfil." autocomplete="off">
                      </div>
                   </div>
 
@@ -101,7 +101,7 @@
                      <span id="msg"></span> <!-- Alerta para dados alterados -->
                      <label for="sobreEditavel" class="col-sm-2 col-form-label">Sobre</label>
                      <div class="col-sm-10">
-                        <input name="sobre" type="text" class="form-control" id="aboutDescription"
+                        <input name="sobre" type="text" class="form-control" id="aboutModal"
                            placeholder="Sobre você(s)." autocomplete="off">
                      </div>
                   </div>
@@ -109,22 +109,28 @@
                   <div class="form-group row">
                      <label for="localizacaoEditavel" class="col-sm-2 col-form-label">Local</label>
                      <div class="col-sm-10">
-                        <input name="local" type="text" class="form-control" id="localizationInput"
-                           placeholder="Escreva a sua localização." autocomplete="off">
+                        <input name="local" type="text" class="form-control" id="localModal"
+                           placeholder="Sua localização." autocomplete="off">
                      </div>
                   </div>
 
-                  <div class="form-group row">
-                     <div class="col-sm-10">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"
-                           aria-label="Close">Cancelar</button>
-                        <input type="button" name="salvaralt" id="saveProfile" value="Salvar"
-                           class="btn btn-outline-success">
-                     </div>
-                  </div>
+
+
                </form>
+               <div id="btnsModal">
+                  <div id="btnCancelar-div">
+                     <button type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar"
+                        class="btn-modal" data-dismiss="modal" aria-label="Cancelar"><img id="btn-modal-cancelar"
+                           src="../images/Cancelar.png" alt="Cancelar"></button>
+                  </div>
+                  <div id="btnSalvar-div">
+                     <button id="saveProfile" type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Salvar Perfil" class="btn-modal" data-dismiss="modal" aria-label="Salvar Perfil"><img
+                           id="btn-modal-salvar" src="../images/SalvarPerfil.png" alt="Salvar Perfil"></button>
+                  </div>
+               </div>
             </div>
-            
+
          </div>
       </div>
    </div>

@@ -15,6 +15,7 @@ public class User {
 	private String profile_description;
 	private String profile_name;
 	private int user_likes;
+	private boolean like_received;
 
 	public User(String username, int user_type, String photo_path, String email, String hashPassword,
 			String profile_localization, String profile_description, String profile_name, int user_likes) {
@@ -27,9 +28,29 @@ public class User {
 		this.profile_description = profile_description;
 		this.profile_name = profile_name;
 		this.user_likes = user_likes;
+		this.like_received = false;
 	}
 	
 	
+	public User(int user_id, String username, int user_type, String photo_path, String email, String hashPassword,
+			String profile_localization, String profile_description, String profile_name, int user_likes,
+			boolean like_received) {
+		super();
+		this.user_id = user_id;
+		this.username = username;
+		this.user_type = user_type;
+		this.photo_path = photo_path;
+		this.email = email;
+		this.hashPassword = hashPassword;
+		this.profile_localization = profile_localization;
+		this.profile_description = profile_description;
+		this.profile_name = profile_name;
+		this.user_likes = user_likes;
+		this.like_received = like_received;
+	}
+
+
+
 
 	public User(int user_id, String username, int user_type, String photo_path, String email, String hashPassword,
 			String profile_localization, String profile_description, String profile_name, int user_likes) {
@@ -44,6 +65,7 @@ public class User {
 		this.profile_description = profile_description;
 		this.profile_name = profile_name;
 		this.user_likes = user_likes;
+		this.like_received = false; 
 	}
 
 
@@ -145,6 +167,14 @@ public class User {
 		this.user_likes = user_likes;
 	}
 
+	public boolean getLike_received() {
+		return like_received;
+	}
+
+
+	public void setLike_received(boolean like_received) {
+		this.like_received = like_received;
+	}
 
 
 	@Override

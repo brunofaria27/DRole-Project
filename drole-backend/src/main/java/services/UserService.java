@@ -115,7 +115,7 @@ public class UserService extends UserDAO {
 		
 		StringBuffer returnValue = new StringBuffer("<users type=\"array\">");
 
-		for (User user : UserDAO.getUsers()) {
+		for (User user : UserDAO.getUsersCompleteInfo(id)) {
 			returnValue.append("<user>\n" + "\t<id>" + user.getUser_id() + "</id>\n" + "\t<username>"
 					+ user.getUsername() + "</username>\n" + "\t<userType>" + user.getUser_type() + "</userType>\n"
 					+ "\t<userPhoto>" + user.getPhoto_path() + "</userPhoto>\n" + "\t<email>" + user.getEmail()
@@ -123,7 +123,7 @@ public class UserService extends UserDAO {
 					+ "\t<localization>" + user.getProfile_localization() + "</localization>\n" + "\t<description>"
 					+ user.getProfile_description() + "</description>\n" + "\t<userLikes>"
 					+ user.getUser_likes() + "</userLikes>\n" + "\t<currentLike>"
-					+ ScoreDAO.hasScore(id, user.getUser_id()) + "</currentLike>\n" + "</user>\n");
+					+ user.getLike_received() + "</currentLike>\n" + "</user>\n");
 		}
 
 		returnValue.append("</users>");
@@ -165,11 +165,8 @@ public class UserService extends UserDAO {
 		String hard = "[{\"type\":\"\", \"value_capacity\":" + event_capacity + ", \"value_formality\":" + event_formality + ", \"value_target\":" + event_target + ", \"value_hour\":" + event_hour + ", \"value_price\":" + event_price + "}]";
 		Recommender recommender = new Recommender();
 		String recomenda = recommender.classify(hard);
-		System.out.println(recomenda);
 		JSONObject jsonObject = new JSONObject(recomenda);
-//		System.out.println(jsonObject.get("result"));
 		JSONArray jsonArray = (JSONArray) jsonObject.get("result");
-//		System.out.println(((JSONObject) jsonArray.get(0)).get("Scored Labels"));
 		
 		return ((JSONObject) jsonArray.get(0)).get("Scored Labels");
 	}

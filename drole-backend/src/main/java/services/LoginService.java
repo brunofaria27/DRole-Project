@@ -24,8 +24,6 @@ public class LoginService {
 			BigInteger hash = new BigInteger(1, md.digest(password.getBytes()));
 			newPass = hash.toString(16);
 		} catch (NoSuchAlgorithmException e) {}
-		
-		System.out.println(newPass);
 
         
         for(User u : users) {

@@ -34,12 +34,6 @@ label {
   color: rgb(230, 225, 225);
 }
 
-.modal-header,
-.modal-body,
-.modal-footer {
-  background-color: #121313 !important;
-}
-
 body {
   background: #121313 !important;
 }
@@ -114,7 +108,7 @@ button {
 }
 
 #edit-img {
-    margin: 0;
+  margin: 0;
 }
 
 #edit-btn {
@@ -122,6 +116,68 @@ button {
   padding: 0;
   border-radius: 5px !important;
   color: rgb(230, 225, 225);
-  cursor: pointer  !important;
+  cursor: pointer !important;
   z-index: 1 !important;
+}
+
+#tituloEditar {
+  width: 300px;
+  height: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-body {
+  background-color: #0a0a0a !important;
+  border-radius: 25px;
+}
+.form-control {
+  color: #495057 !important;
+  border: none !important;
+}
+
+.form-control:focus {
+  outline: 0;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 8%), 0 0 5px #c06a30b6 !important;
+}
+
+.modal-content {
+  background-color: transparent !important;
+}
+
+input {
+  background-color: rgba(0, 0, 0, 0.39) !important;
+}
+
+label {
+  text-align: right;
+  padding-right: 0 !important;
+}
+
+::placeholder {
+  color: #495057 !important;
+}
+
+#btnCancelar-div {
+  text-align: left;
+  width: 49%;
+  display: inline-block;
+}
+#btnSalvar-div {
+  text-align: right;
+  width: 50%;
+  display: inline-block;
+}
+
+.btn-modal {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-modal img {
+  background-color: transparent;
+  height: 60px;
 }

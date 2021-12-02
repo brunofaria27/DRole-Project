@@ -19,6 +19,7 @@ function showProfiles() {
     url: "http://localhost:4568/users/" + current_id,
     dataType: "xml",
     success: function (xml) {
+      document.getElementById("profiles-grid").innerHTML = "";
       $(xml)
         .find("user")
         .each(function () {
@@ -33,7 +34,7 @@ function showProfiles() {
           else if (type == 3) type = "Músico";
           else if (type == 4) type = "ADM";
 
-          if (name != "null") {
+          if (name != "null" && description != "null") {
             $(`
             <div id="profile-cards" class="card col-mb-4" style="width: 18rem;">
                 <img id="profile-photo" src="${photo_path}" class="card-img-top" alt="..." style="width: 100%; height: 12vw; object-fit: cover;">
@@ -69,61 +70,70 @@ function showProfile(xml, profile_id) {
   let obj = JSON.parse(localStorage.getItem("currentUser"));
   let current_id = obj.id;
 
+  document.getElementById("backHome-div").innerHTML = `
+  <div class="col-12">
+    <button data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" id="backHome-btn" type="button"
+        class="btn-event">
+        <img id="btn-visit-img" src="../images/BackHome.png" alt="Visitar Perfil" width="100%"
+            height="50px">
+    </button>
+  </div>
+`
+document.getElementById("backHome-btn").addEventListener("click", function(e){
+  window.location = "../home/index.html";
+})
+
+
   document.getElementById("profiles-grid").innerHTML = "";
   document.getElementById("show-profile-grid").innerHTML = `
+  
   <div id="show-profile-card" class="card col-mb-4" style="width: 45rem;">
-  <div class="px-4 pt-0 pb-4 cover">
-      <div class="media align-items-end profile-head">
+    <div class="px-4 pt-0 pb-4 cover">
+        <div class="media align-items-end profile-head">
 
-          <div id="profilePic" class="profile mr-3">
-              <img id="imgPreview" src="../images/noimg.png" alt="..." width="130px"
-                  class="rounded mb-2 img-thumbnail">
-          </div>
+            <div id="profilePic" class="profile mr-3">
+                <img id="imgPreview" src="../images/noimg.png" alt="..." width="130px"
+                    class="rounded mb-2 img-thumbnail">
+            </div>
 
-          <div id="profileName" class="media-body mb-5">
-              <h4>NOME</h4>
-          </div>
-      </div>
+            <div id="profileName" class="media-body mb-5">
+                <h4>NOME</h4>
+            </div>
+        </div>
 
-  </div>
+    </div>
 
-  <div class="row" id="profile-info-row">
+    <div class="row" id="profile-info-row">
       <div id="type">
           <h6 class="font-weight-light d-block">Tipo de Perfil</h6>
       </div>
-
-  </div> <!-- End porcentagem de avaliaÃ§Ã£o -->
+     </div> 
   
-  <div id="likes">
+    <div id="likes">
+    </div>
 
-  </div>
-
-  <div id="tituloAbout" class="px-4 py-3">
+    <div id="tituloAbout" class="px-4 py-3">
       <h5 class="mb-0">Sobre</h5>
-  </div> <!-- End sobre -->
+    </div> <!-- End sobre -->
 
-  <div class="px-4 py-3">
+    <div class="px-4 py-3">
       <div id="about" class="p-4 rounded shadow-sm bg-light">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil blanditiis, architecto
-          laboriosam amet sit similique sequi excepturi quibusdam suscipit. Consequuntur.
       </div>
+     </div>
 
-  </div> <!-- End sobre -->
-  <hr color="black" style="margin: 10px 24px 10px 24px;">
-  <div id="tituloLocal" class="px-4 py-3">
-      <h5 class="mb-0">Localização</h5>
+   <hr color="black" style="margin: 10px 24px 10px 24px;">
+
+    <div id="tituloLocal" class="px-4 py-3">
+        <h5 class="mb-0">Localização</h5>
+    </div>
+
+    <div class="px-4 py-3">
+        <div id="localization" class="p-4 rounded shadow-sm bg-light">
+        </div>
+    </div>
   </div>
 
-  <div class="px-4 py-3">
-      <div id="localization" class="p-4 rounded shadow-sm bg-light">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo commodi a quod rerum ea id!
-          Ipsum architecto, animi obcaecati laboriosam neque doloribus vitae! Saepe totam molestias
-          suscipit veritatis, voluptatum fugiat quis sunt dolore facilis consectetur iusto dolor, odit
-          voluptatibus sequi quisquam unde nihil reiciendis exercitationem. Numquam aliquid incidunt
-          beatae earum.
-      </div>
-  </div>
-</div>
+
   `;
 
   $(xml)
@@ -143,7 +153,8 @@ function showProfile(xml, profile_id) {
       else if (type == 4) type = "ADM";
 
       if (profile_id == id) {
-        document.getElementById("profilePic").setAttribute("src", photo_path);
+//        document.getElementById("profilePic").setAttribute("src", photo_path);
+        document.getElementById("profilePic").innerHTML = `<img id="imgPreview" src="${photo_path}" alt="..." width="130px" class="rounded mb-2 img-thumbnail">`;
         document.getElementById("about").innerHTML = `${description}`;
         document.getElementById("localization").innerHTML = `${localization}`;
         document.getElementById("profileName").innerHTML = `<h4>${name}</h4>`;

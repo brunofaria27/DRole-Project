@@ -112,6 +112,54 @@ public class UserDAO extends DAO {
 		close();
 		return user;
 	}
+	
+	public static User[] getUsersCompleteInfo(int current_id) {
+		User[] users = null;
+		
+		try {
+			connect();
+			Statement st = DAO.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+
+			ResultSet rs = st.executeQuery("SELECT * FROM USERS");
+			
+			
+			if (rs.next()) {
+				rs.last();
+				users = new User[rs.getRow()];
+				rs.beforeFirst();
+
+				for (int i = 0; rs.next(); i++) {
+					boolean likesReceived = false;
+					
+					Statement st2 = connection.createStatement();
+					String queryLikes = "SELECT rate FROM score WHERE valuer_id = " + current_id + " AND valued_id = " + rs.getInt("user_id");
+					ResultSet rsLikes = st2.executeQuery(queryLikes);
+
+					if (rsLikes.next()) {
+						likesReceived = rsLikes.getBoolean("rate");
+					}
+
+					st.close();
+					
+					users[i] = new User(rs.getInt("user_id"), rs.getString("username"), rs.getInt("user_type"),
+							rs.getString("photo_path"), rs.getString("email"), rs.getString("hashpassword"),
+							rs.getString("profile_localization"), rs.getString("profile_description"),
+							rs.getString("profile_name"), rs.getInt("user_likes"), likesReceived);
+				}
+			}
+
+			st.close();
+		} catch (Exception e) {
+			close();
+			System.err.println(e.getMessage());
+		}
+
+		close();
+		return users;
+	}
+	
+	
 
 	public static User[] getUsers() {
 		User[] users = null;
@@ -120,7 +168,7 @@ public class UserDAO extends DAO {
 			Statement st = DAO.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 
-			ResultSet rs = st.executeQuery("SELECT * FROM USERS");
+			ResultSet rs = st.executeQuery("SELECT * FROM users");
 			
 			
 			if (rs.next()) {

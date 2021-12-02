@@ -71,26 +71,19 @@ public class EventsDAO extends DAO {
 		boolean status = false;
 
 		try {
-			PreparedStatement stmt = null;
 			connect();
+			Statement st = connection.createStatement();
+			String query = "UPDATE events SET " + "event_name = '" + event.getEvent_name() + "', event_musician_id = "
+					+ event.getEvent_musician_id() + ", musical_style = '" + event.getMusical_style()
+					+ "', minimum_age = " + event.getMinimum_age() + ", event_host_id = " + event.getEvent_host_id()
+					+ ", event_status = '" + event.getEvent_status() + "', date_event = '" + event.getDate_event()
+					+ "', event_capacity = '" + event.getEvent_capacity() + "', event_formality = '"
+					+ event.getEvent_formality() + "', event_target = '" + event.getEvent_target() + "', event_hour = '"
+					+ event.getEvent_hour() + "', event_price = '" + event.getEvent_price() + "' WHERE event_id = "
+					+ event.getEvent_id();
 
-			String query = "UPDATE events SET event_name = ?, event_musician_id = ?, musical_style = ?, minimum_age = ?, event_host_id = ?"
-					+ ", event_status = ?, date_event = ?, event_capacity = ?, event_formality = ?, event_target = ?, event_hour = ?, event_price = ?;";
-
-			stmt = connection.prepareStatement(query);
-			stmt.setString(1, event.getEvent_name());
-			stmt.setInt(2, event.getEvent_musician_id());
-			stmt.setString(3, event.getMusical_style());
-			stmt.setInt(4, event.getMinimum_age());
-			stmt.setInt(5, event.getEvent_host_id());
-			stmt.setString(6, event.getEvent_status());
-			stmt.setString(7, event.getDate_event());
-			stmt.setInt(8, event.getEvent_capacity());
-			stmt.setInt(9, event.getEvent_formality());
-			stmt.setInt(10, event.getEvent_target());
-			stmt.setInt(11, event.getEvent_hour());
-			stmt.setInt(12, event.getEvent_price());
-			stmt.executeUpdate();
+			st.executeUpdate(query);
+			st.close();
 			status = true;
 
 		} catch (SQLException e) {
