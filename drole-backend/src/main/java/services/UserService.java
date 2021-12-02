@@ -115,7 +115,7 @@ public class UserService extends UserDAO {
 		
 		StringBuffer returnValue = new StringBuffer("<users type=\"array\">");
 
-		for (User user : UserDAO.getUsers()) {
+		for (User user : UserDAO.getUsersCompleteInfo(id)) {
 			returnValue.append("<user>\n" + "\t<id>" + user.getUser_id() + "</id>\n" + "\t<username>"
 					+ user.getUsername() + "</username>\n" + "\t<userType>" + user.getUser_type() + "</userType>\n"
 					+ "\t<userPhoto>" + user.getPhoto_path() + "</userPhoto>\n" + "\t<email>" + user.getEmail()
@@ -123,7 +123,7 @@ public class UserService extends UserDAO {
 					+ "\t<localization>" + user.getProfile_localization() + "</localization>\n" + "\t<description>"
 					+ user.getProfile_description() + "</description>\n" + "\t<userLikes>"
 					+ user.getUser_likes() + "</userLikes>\n" + "\t<currentLike>"
-					+ ScoreDAO.hasScore(id, user.getUser_id()) + "</currentLike>\n" + "</user>\n");
+					+ user.getLike_received() + "</currentLike>\n" + "</user>\n");
 		}
 
 		returnValue.append("</users>");
