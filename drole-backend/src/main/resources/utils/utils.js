@@ -2,7 +2,7 @@
 function logout() {
   localStorage.removeItem("currentUser");
   let newURl =
-    window.location.protocol + "//" + window.location.host + "/" + "login/";
+    window.location = "../login/index.html";
   window.location.href = newURl;
 }
 
