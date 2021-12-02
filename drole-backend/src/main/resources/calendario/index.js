@@ -28,7 +28,7 @@ document
 
 window.onload = () => {
   window.event.preventDefault();
-  showCurrentUserProfile()
+  showCurrentUserProfile();
 
   document.getElementById("user-logout").addEventListener("click", logout);
 
@@ -266,9 +266,9 @@ function showEvents(filtro) {
                   </tr>`).appendTo("#table-events");
             }
           } else if (filtro == "Recusados") {
-            //if (current_id == hostId) {
-            if (event_status == "Recusado") {
-              $(`<tr>
+            if (current_id == hostId) {
+              if (event_status == "Recusado") {
+                $(`<tr>
                   <td id="td-eventName-${eventId}" scope="row"> ${eventName}</td>
                   <td scope="row"> ${date}</td>
                   <td scope="row"> ${hostName}</td>
@@ -276,8 +276,8 @@ function showEvents(filtro) {
                   <td scope="row"> ${musicalStyle}</td>
                   <td scope="row"> ${entrance}</td>
                   </tr>`).appendTo("#table-events");
+              }
             }
-            //}
           } else if (musicalStyle == filtro) {
             $(`<tr>
                 <td id="td-eventName-${eventId}" scope="row"> ${eventName}</td>
@@ -363,8 +363,7 @@ function getValuesForm() {
       event_hour: valueHour,
       event_price: valuePrice,
     },
-    success: function (data) {
-    },
+    success: function (data) {},
     error: function () {
       alert("Ocorreu um erro inesperado durante o processamento.");
     },
