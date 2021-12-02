@@ -2,33 +2,37 @@
   color: rgb(212, 211, 198);
 }
 
-.cards {
-  width: 270px;
-  background-color: #0a0a0a;
-  border-radius: 40px;
-  display: inline-block;
-  padding: 15px;
-  margin: 15px;
+#card-img-div{
   text-align: center;
 }
-.cards img {
-  width: 150px;
+
+.card {
+  padding: 0.8rem;
+  display: inline-block;
+  text-align: center;
+  margin: 15px;
+  background-color: rgba(0, 0, 0, 0.39) !important;
+  border-radius: 25px !important;
+  color: rgb(230, 225, 225);
+  justify-content: center;
+}
+
+.card img {
   height: 150px;
   border-radius: 75px;
   justify-content: center;
 }
 
-.tituloCriadores {
+#tituloCriadores {
   text-align: center;
-  font-size: 70px;
+  width: 500px;
   color: rgb(255, 255, 255);
-  margin-bottom: 10px;
 }
-.tituloSobre {
+
+#tituloSobre {
   text-align: center;
-  font-size: 70px;
+  width: 500px;
   color: rgb(255, 255, 255);
-  margin-top: 50px;
 }
 
 .nome {
@@ -55,7 +59,7 @@
   border-radius: 100px;
   display: inline-block;
   padding: 15px 30px;
-  margin-bottom: 300px;
+  margin-bottom: 100px;
   width: 70%;
 }
 
