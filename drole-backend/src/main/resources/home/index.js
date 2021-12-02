@@ -39,7 +39,7 @@ function showProfiles() {
           else if (type == 3) type = "Músico";
           else if (type == 4) type = "ADM";
 
-          if (name != "null") {
+          if (name != "null" && description != "null") {
             $(`
             <div id="profile-cards" class="card col-mb-4" style="width: 18rem;">
                 <img id="profile-photo" src="${photo_path}" class="card-img-top" alt="..." style="width: 100%; height: 12vw; object-fit: cover;">
@@ -158,7 +158,8 @@ document.getElementById("backHome-btn").addEventListener("click", function(e){
       else if (type == 4) type = "ADM";
 
       if (profile_id == id) {
-        document.getElementById("profilePic").setAttribute("src", photo_path);
+//        document.getElementById("profilePic").setAttribute("src", photo_path);
+        document.getElementById("profilePic").innerHTML = `<img id="imgPreview" src="${photo_path}" alt="..." width="130px" class="rounded mb-2 img-thumbnail">`;
         document.getElementById("about").innerHTML = `${description}`;
         document.getElementById("localization").innerHTML = `${localization}`;
         document.getElementById("profileName").innerHTML = `<h4>${name}</h4>`;

@@ -165,11 +165,8 @@ public class UserService extends UserDAO {
 		String hard = "[{\"type\":\"\", \"value_capacity\":" + event_capacity + ", \"value_formality\":" + event_formality + ", \"value_target\":" + event_target + ", \"value_hour\":" + event_hour + ", \"value_price\":" + event_price + "}]";
 		Recommender recommender = new Recommender();
 		String recomenda = recommender.classify(hard);
-		System.out.println(recomenda);
 		JSONObject jsonObject = new JSONObject(recomenda);
-//		System.out.println(jsonObject.get("result"));
 		JSONArray jsonArray = (JSONArray) jsonObject.get("result");
-//		System.out.println(((JSONObject) jsonArray.get(0)).get("Scored Labels"));
 		
 		return ((JSONObject) jsonArray.get(0)).get("Scored Labels");
 	}
