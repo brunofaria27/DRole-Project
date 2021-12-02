@@ -69,8 +69,9 @@ public class User {
 	}
 
 
-	public User(String username, int user_type, String email, String hashPassword) {
+	public User(String profile_name, String username, int user_type, String email, String hashPassword) {
 		super();
+		this.profile_name = profile_name;
 		this.username = username;
 		this.user_type = user_type;
 		this.email = email;
