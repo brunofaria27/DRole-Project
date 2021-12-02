@@ -182,6 +182,7 @@ function showEvents(filtro) {
   }
 
   var this_pendents = 0;
+  var this_events = 0;
 
   $.ajax({
     type: "GET",
@@ -191,6 +192,8 @@ function showEvents(filtro) {
       $(xml)
         .find("event")
         .each(function () {
+          this_events++;
+
           var event_status = $(this).find("status").text();
           var eventName = $(this).find("name").text();
           var eventId = $(this).find("id").text();
@@ -306,7 +309,16 @@ function showEvents(filtro) {
       }
     },
     error: function () {
-      alert("Ocorreu um erro inesperado durante o processamento.");
+      if (this_pendents == 0) {
+        document.getElementById("div-first-table-events").innerHTML = "";
+      }
+      if (this_events == 0) {
+        $(`<tr>
+                <td scope="row"> Nenhum evento disponível.</td>
+                </tr>`).appendTo("#table-events");
+      } else {
+        alert("Ocorreu um erro inesperado durante o processamento.");
+      }
     },
   });
 }

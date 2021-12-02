@@ -34,7 +34,7 @@ function showProfiles() {
           else if (type == 3) type = "Músico";
           else if (type == 4) type = "ADM";
 
-          if (name != "null" && description != "null") {
+          if (name != "null" && description != "null" && current_id != id) {
             $(`
             <div id="profile-cards" class="card col-mb-4" style="width: 18rem;">
                 <img id="profile-photo" src="${photo_path}" class="card-img-top" alt="..." style="width: 100%; height: 12vw; object-fit: cover;">
@@ -165,11 +165,11 @@ document.getElementById("backHome-btn").addEventListener("click", function(e){
         if (currentLike == "true") {
           document.getElementById("likes").innerHTML = `
           <button data-bs-toggle="tooltip" data-bs-placement="top" title="Remover Like" id="like-btn-${id}" value="${id}" type="button" class="like-btn">
-          <img id="like-img" src="../images/filledLike.png" alt="Likes" style="margin-bottom: 2px;" width="25px" height="25px"></button><spam id="num-likes">${likes}</spam>`;
+          <img id="like-img" src="../images/filledLike.png" alt="Likes" style="margin-bottom: 2px;" width="25px" height="25px"></button><span id="num-likes">${likes}</span>`;
         } else {
           document.getElementById("likes").innerHTML = `
           <button data-bs-toggle="tooltip" data-bs-placement="top" title="Dar Like" id="like-btn-${id}" value="${id}" type="button" class="like-btn">
-          <img id="like-img" src="../images/like.png" alt="Likes" style="margin-bottom: 2px;" width="25px" height="25px"></button><spam id="num-likes">${likes}</spam>`;
+          <img id="like-img" src="../images/like.png" alt="Likes" style="margin-bottom: 2px;" width="25px" height="25px"></button><span id="num-likes">${likes}</span>`;
         }
 
         var btnId = "like-btn-" + id;
@@ -184,7 +184,7 @@ document.getElementById("backHome-btn").addEventListener("click", function(e){
             document
               .getElementById("like-img")
               .setAttribute("title", "Remover Like");
-            likes += 1;
+            likes = parseInt(likes) + 1;
             document.getElementById("num-likes").innerHTML = likes;
 
             addLike(current_id, id);
@@ -195,7 +195,7 @@ document.getElementById("backHome-btn").addEventListener("click", function(e){
             document
               .getElementById("like-img")
               .setAttribute("title", "Dar Like");
-            likes -= 1;
+            likes = parseInt(likes) - 1;
             document.getElementById("num-likes").innerHTML = likes;
             removeLike(current_id, id);
           }
