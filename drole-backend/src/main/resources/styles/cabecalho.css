@@ -20,4 +20,17 @@ body {
     background-color: #121313 !important;
 }
 
+#image-profile{
+    width: 50px;
+}
+
+#ul-navbar {
+  display: contents;  
+}
+
+.navbar-nav li:hover .dropdown-menu {
+    display: block;
+} 
+
+
 /* COLOCAR EM TODOS CSS */
