@@ -120,7 +120,7 @@ public class UserDAO extends DAO {
 			Statement st = DAO.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 
-			ResultSet rs = st.executeQuery("SELECT * FROM USERS");
+			ResultSet rs = st.executeQuery("SELECT * FROM users");
 			
 			
 			if (rs.next()) {

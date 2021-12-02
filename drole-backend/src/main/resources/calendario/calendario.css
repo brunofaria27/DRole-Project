@@ -35,9 +35,6 @@ h1 {
   margin-right: auto;
 }
 
-.modal-header, .modal-body, .modal-footer{
-  background-color: #121313 !important;
-}
 
 #btnInsert img{
   width: 200px;
@@ -83,6 +80,14 @@ body {
   cursor: pointer;
 }
 
+.btn-event-delete {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  float: right;
+}
+
 
 #btn-pendent-img {
   padding: 0;
@@ -103,4 +108,63 @@ table {
 th,
 td {
   border: 1px solid black !important;
+}
+
+button {
+  border: none !important;
+  outline: none !important;
+}
+
+.modal-body {
+  background-color: #0a0a0a !important;
+  border-radius: 25px;
+}
+.form-control {
+  color: rgb(230, 225, 225) !important;
+  border: none !important;
+}
+
+.modal-content {
+  background-color: transparent !important;
+}
+
+input, option, select {
+  border: none !important;
+  background-color: rgba(0, 0, 0, 0.39) !important;
+}
+
+label {
+  text-align: right;
+  padding-right: 0 !important;
+}
+
+#btnCancelar-div {
+  text-align: left;
+  width: 49%;
+  display: inline-block;
+}
+#btnAvancar-div {
+  text-align: right;
+  width: 50%;
+  display: inline-block;
+}
+
+.btn-modal {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-modal img {
+  background-color: transparent;
+  height: 60px;
+}
+
+#tituloAdicionarEvento {
+  width: 300px;
+  height: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
