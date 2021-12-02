@@ -2,13 +2,28 @@ document
   .getElementById("btn-modal-avancar")
   .addEventListener("click", showMusicians);
 document
+  .getElementById("btn-modal2-cancelar")
+  .addEventListener("click", function (e) {
+    document.getElementById("si-div").innerHTML = `
+    <label id="txtModal" for="siEvento" class="col-sm-2 col-form-label">
+      <button data-bs-toggle="tooltip" data-bs-placement="top" title="Recomendação"
+          id="btn-si" type="button" class="btn-event"><img id="btn-si-img"
+              src="../images/VisitarPerfil.png" alt="Recomendação" width="100%"
+              height="50px"></button>
+    </label>
+    <div class="col-sm-10" style="margin: auto;">
+      <p style="margin: 0;">Exibir estilo musical recomendado</p>
+    </div>
+    `;
+  });
+document
   .getElementById("btn-modal-salvar")
   .addEventListener("click", createEvent);
 document
   .getElementById("btn-modal-avancar")
   .addEventListener("click", getValuesForm);
 document
-  .getElementById("showEventType")
+  .getElementById("btn-si")
   .addEventListener("click", getSistemaInteligente);
 
 window.onload = () => {
@@ -101,30 +116,34 @@ function createEvent() {
   let event_hour = document.getElementById("event_hour").value;
   let event_price = document.getElementById("event_price").value;
 
-  $.ajax({
-    url: "http://localhost:4568/events/create",
-    method: "POST",
-    data: {
-      event_name: event_name,
-      event_musician_id: event_musician_id,
-      musical_style: musical_style,
-      minimum_age: minimum_age,
-      event_host_id: event_host_id,
-      event_status: event_status,
-      date_event: date_event,
-      event_capacity: event_capacity,
-      event_formality: event_formality,
-      event_target: event_target,
-      event_hour: event_hour,
-      event_price: event_price,
-    },
-    success: function (data) {
-      window.location = "../calendario/index.html";
-    },
-    error: function () {
-      alert("Ocorreu um erro inesperado durante o processamento.");
-    },
-  });
+  if (event_name == "" || event_musician_id == null || date_event == "") {
+    alert("Preencha todos os campos antes de criar um evento!");
+  } else {
+    $.ajax({
+      url: "http://localhost:4568/events/create",
+      method: "POST",
+      data: {
+        event_name: event_name,
+        event_musician_id: event_musician_id,
+        musical_style: musical_style,
+        minimum_age: minimum_age,
+        event_host_id: event_host_id,
+        event_status: event_status,
+        date_event: date_event,
+        event_capacity: event_capacity,
+        event_formality: event_formality,
+        event_target: event_target,
+        event_hour: event_hour,
+        event_price: event_price,
+      },
+      success: function (data) {
+        window.location = "../calendario/index.html";
+      },
+      error: function () {
+        alert("Ocorreu um erro inesperado durante o processamento.");
+      },
+    });
+  }
 }
 
 function showEvents(filtro) {
@@ -344,7 +363,6 @@ function getValuesForm() {
       event_price: valuePrice,
     },
     success: function (data) {
-      console.log("Azure Requisition");
     },
     error: function () {
       alert("Ocorreu um erro inesperado durante o processamento.");
@@ -371,15 +389,13 @@ function getSistemaInteligente() {
       event_price: valuePrice,
     },
   }).done(function (data) {
-    $(
-      `<div class="alert alert-success" role="alert">O tipo de estilo musical mais adequado para seu evento é <strong>${
+    document.getElementById("si-div").innerHTML = `
+    <div id="notificationSi" class="col-sm-12" style="margin: auto;">
+      <p style="margin: 0;">Estilo musical recomendado para o evento: <strong>${
         data === "Axe" ? "Axé" : data
-      }</strong></div>`
-    )
-      .appendTo("#notificationSi")
-      .fadeIn(300)
-      .delay(10000)
-      .fadeOut(400);
+      }</strong></p>
+    </div>
+    `;
   });
 }
 

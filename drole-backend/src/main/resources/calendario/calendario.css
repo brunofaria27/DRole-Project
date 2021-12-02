@@ -35,13 +35,12 @@ h1 {
   margin-right: auto;
 }
 
-
-#btnInsert img{
+#btnInsert img {
   width: 200px;
   height: 40px;
 }
 
-#btnInsert{
+#btnInsert {
   float: right;
 }
 
@@ -88,7 +87,6 @@ body {
   float: right;
 }
 
-
 #btn-pendent-img {
   padding: 0;
   border: 0;
@@ -119,23 +117,46 @@ button {
   background-color: #0a0a0a !important;
   border-radius: 25px;
 }
+
 .form-control {
-  color: rgb(230, 225, 225) !important;
+  color: #495057 !important;
   border: none !important;
+}
+
+.form-control:focus {
+  outline: 0;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 8%), 0 0 5px #c06a30b6 !important;
 }
 
 .modal-content {
   background-color: transparent !important;
 }
 
-input, option, select {
+input, select
+{
   border: none !important;
   background-color: rgba(0, 0, 0, 0.39) !important;
+}
+
+option
+{
+  border: none !important;
+  background-color: rgba(0, 0, 0) !important;
+}
+
+.custom-select:focus {
+  border-color: #8f8f8f;
+  outline: 0;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 8%), 0 0 5px #c06a30b6 !important;
 }
 
 label {
   text-align: right;
   padding-right: 0 !important;
+}
+
+::placeholder {
+  color: #495057 !important;
 }
 
 #btnCancelar-div {
@@ -167,4 +188,21 @@ label {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+#notificationSi {
+  background-color: rgba(0, 0, 0, 0.39) !important;
+  padding: 5px;
+  color: rgb(230, 225, 225) !important;
+  border-radius: 25px;
+  text-align: center;
+}
+
+#si-div {
+  margin: 0 16px 16px 16px;
+}
+
+#si-div p {
+  margin: 0;
+  color: rgb(230, 225, 225) !important;
 }
