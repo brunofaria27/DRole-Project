@@ -6,15 +6,15 @@ public class DAO {
 	public static Connection connection;
 
 	public static boolean connect() {
-		final String driverName = "org.postgresql.Driver";
-		final String serverName = "drole.postgres.database.azure.com";
-		final String database = "drole";
+		final String driverName = "*";
+		final String serverName = "*";
+		final String database = "*";
 
-		final int port = 5432;
+		final int port = *;
 		
-		final String url = "jdbc:postgresql://" + serverName + ":" + port + "/" + database;
-		final String username = "adm@drole";
-		final String password = "drole@#2021";
+		final String url = "*;
+		final String username = "*";
+		final String password = "*";
 
 		boolean status = false;
 
